@@ -18,10 +18,10 @@ public class Carta extends Opcion{
 	
 	public void elegirOpcion(Personaje personaje, int[] opcionA, int[] opcionB, String opcion) throws NivelExcedidoException, NivelInvalidoException {
 		if(opcion.equals("A")) {
-			this.opcionA.modificarEstadisticas(personaje, opcionA);
+			this.opcionA.modificarEstadisticas(personaje);
 		}
 		else if(opcion.equals("B")){
-			this.opcionB.modificarEstadisticas(personaje, opcionB);
+			this.opcionB.modificarEstadisticas(personaje);
 		}
 		
 	}
@@ -47,4 +47,23 @@ public class Carta extends Opcion{
 		Opcion[] opciones = {opcionA, opcionB};
 		return opciones;
 	}
+	
+	public void setOpcionA(Opcion opcionA) {
+        this.opcionA = opcionA;
+    }
+    
+    // Método para obtener la opción A
+    public Opcion getOpcionA() {
+        return opcionA;
+    }
+    
+    // Método para establecer la opción B
+    public void setOpcionB(Opcion opcionB) {
+        this.opcionB = opcionB;
+    }
+    
+    // Método para obtener la opción B
+    public Opcion getOpcionB() {
+        return opcionB;
+    }
 }

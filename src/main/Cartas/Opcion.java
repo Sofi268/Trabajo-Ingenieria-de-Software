@@ -7,12 +7,14 @@ import Juego.Personaje;
 public class Opcion {
 	
 	private String informacion;
+	private int niveles[];
 	
 	public Opcion() {
 		informacion = null;
+		niveles = null;
 	}
 	
-	public void modificarEstadisticas(Personaje personaje, int niveles[]) throws NivelExcedidoException, NivelInvalidoException {
+	public void modificarEstadisticas(Personaje personaje) throws NivelExcedidoException, NivelInvalidoException {
 		personaje.getEstadisticas().modificarEjercito(niveles[0]);
 		personaje.getEstadisticas().modificarIglesia(niveles[1]);
 		personaje.getEstadisticas().modificarOro(niveles[2]);
@@ -25,5 +27,13 @@ public class Opcion {
 	
 	public String getInformacion() {
 		return informacion;
+	}
+	
+	public int[] getNiveles() {
+		return niveles;
+	}
+	
+	public void setNiveles(int niveles[]) {
+		this.niveles = niveles;
 	}
 }
