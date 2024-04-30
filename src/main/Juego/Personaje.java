@@ -1,4 +1,6 @@
 package Juego;
+import java.util.HashMap;
+
 import Estadisticas.EstadisticasConjuntas;
 
 public class Personaje {
@@ -25,5 +27,9 @@ public class Personaje {
 	public void aumentarAnios() {
 		anios += 1;
 	}
-
+	
+	public HashMap<String, Integer> getNiveles(){
+		return estadisticas.getEstadisticasNiveles();
+	}
+	
 }

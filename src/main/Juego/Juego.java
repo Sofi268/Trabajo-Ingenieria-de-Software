@@ -1,10 +1,14 @@
 package Juego;
 
 
+import java.util.HashMap;
+
 import Cartas.Carta;
 import Cartas.Opcion;
 import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
+import Interfaz.ConjuntoBarras;
+import Interfaz.Icono;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PauseTransition;
@@ -38,10 +42,12 @@ public class Juego extends Application{
 	private Historia historia;
 	private Personaje personaje;
 	private Carta cartaActual;
+	ConjuntoBarras barrasEstadisticas;
 	private Group root;
 	private Scene escena;
 	private Canvas lienzo;
     private Pane interfazCartaPane = new Pane();
+    private Pane interfazEstadisticasPane = new Pane();
 	private GraphicsContext graficos;
 	Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 	
@@ -78,7 +84,9 @@ public class Juego extends Application{
 	
 	private void comenzarJuego(){
 	    personaje = new Personaje();
+	    barrasEstadisticas = new ConjuntoBarras(50); // barras al 50%
 	    historia.llenarCartas(); // Debes pasar el objeto personaje al método llenarCartas().
+	    generarVistaEstadisticas(interfazEstadisticasPane);
 	    continuarJugando();
 	    
 	}
@@ -87,6 +95,7 @@ public class Juego extends Application{
 	    int anioActual = historia.getAnioActual();
 	    int anioLimite = 200 + muertes * 5;
 	    if(historia.getCartaActual(muertes) != null && anioActual < anioLimite) {
+	    	
 	        historia.jugarCarta(muertes); 
 	        cartaActual = historia.getCartaActual(muertes); 
 	        interfazCartaPane.getChildren().clear();
@@ -99,6 +108,8 @@ public class Juego extends Application{
 		historia.aumentarAnio(5);
 		personaje = null;
 	    personaje = new Personaje(); 
+	    barrasEstadisticas.resetBarras();
+	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.19); // reubica Y de barras 
 	    continuarJugando();
 	}
 	
@@ -110,6 +121,7 @@ public class Juego extends Application{
 	    root.getChildren().add(lienzo);
 	    graficos = lienzo.getGraphicsContext2D();
 	    root.getChildren().add(interfazCartaPane);
+	    root.getChildren().add(interfazEstadisticasPane);
 
 	}
 
@@ -122,7 +134,7 @@ public class Juego extends Application{
 	    double anchoPantalla = screenSize.getWidth();
 	    double altoPantalla = screenSize.getHeight();
 	    
-	    Image imagen = new Image("\\resources\\Fondos\\tierra.png");
+	    Image imagen = new Image("/Fondos/tierra.png");
 	    
 	    double x = (anchoPantalla - imagen.getWidth()) / 2;
 	    double y = (altoPantalla - imagen.getHeight()) / 2;
@@ -213,6 +225,53 @@ public class Juego extends Application{
         pane.getChildren().add(textoAnios);
     }
 	
+	public void generarVistaEstadisticas(Pane pane) {
+		//barras de estadisticas
+		barrasEstadisticas.setBarrasLayoutX(screenSize.getWidth() * 0.40, screenSize.getWidth());
+		barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.19);
+		
+		pane.getChildren().add(barrasEstadisticas.getBarraOro().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraOro().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraPueblo().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraPueblo().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraIglesia().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraIglesia().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraEjercito().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraEjercito().getRelleno());
+		
+		//Iconos de estadisticas
+		Icono iconoOro = new Icono("/Iconos/oro.png", 35, 35);
+		iconoOro.setX(screenSize.getWidth() * 0.40);
+        iconoOro.setY(screenSize.getHeight() * 0.295 );
+        
+        Icono iconoPueblo = new Icono("/Iconos/pueblo.png", 35, 35);
+		iconoPueblo.setX(screenSize.getWidth() * 0.46);
+        iconoPueblo.setY(screenSize.getHeight() * 0.295 );
+        
+        Icono iconoIglesia = new Icono("/Iconos/iglesia.png", 35, 35);
+		iconoIglesia.setX(screenSize.getWidth() * 0.52);
+        iconoIglesia.setY(screenSize.getHeight() * 0.295 );
+        
+        Icono iconoEjercito = new Icono("/Iconos/ejercito.png", 35, 35);
+		iconoEjercito.setX(screenSize.getWidth() * 0.58);
+        iconoEjercito.setY(screenSize.getHeight() * 0.295 ); 
+        
+		pane.getChildren().add(iconoOro.getImageView());
+		pane.getChildren().add(iconoPueblo.getImageView());
+		pane.getChildren().add(iconoIglesia.getImageView());
+		pane.getChildren().add(iconoEjercito.getImageView());
+	}
+	
+	public void actualizarEstadisticas() {
+		//hashmap con niveles actuales de estadisticas
+		HashMap<String, Integer> niveles = personaje.getNiveles();
+		barrasEstadisticas.nuevasAlturas(
+				niveles.get("oro"),
+				niveles.get("pueblo"),
+				niveles.get("iglesia"),
+				niveles.get("ejercito"));
+		System.out.println("--Actualizacion de estadisticas--");
+	}
 
 	private void elegirOpcion(Opcion opcion) {
 	    try {
@@ -223,6 +282,7 @@ public class Juego extends Application{
 	        }
 	        historia.aumentarAnio(1); // Incrementar el año de la historia
 	        personaje.aumentarAnios();
+	        actualizarEstadisticas();
 	        continuarJugando();
 	        
 	    } catch (NivelExcedidoException | NivelInvalidoException e) {
@@ -390,7 +450,6 @@ public class Juego extends Application{
 	    interfazCartaPane.getChildren().add(texto);
 
 	    verAnios();
-
 	}
 
 
