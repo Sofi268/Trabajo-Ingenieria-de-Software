@@ -1,0 +1,97 @@
+[
+    {
+        "nombre": "personaje1",
+        "descripcion": "Descripción random para la carta 1. Descripción random para la carta 1.",
+        "imagen":"",
+        "opcionA": {
+            "descripcion": "Esta es la opción A",
+            "ejercito": 10,
+            "iglesia": 0,
+            "oro": 0,
+            "pueblo": -10
+        },
+        "opcionB": {
+            "descripcion": "Esta es la opción B",
+            "ejercito": -10,
+            "iglesia": 0,
+            "oro": 20,
+            "pueblo": 0
+        }
+    },
+    {
+        "nombre": "personaje2",
+        "descripcion": "Descripción random para la carta 2.",
+        "imagen":"",
+        "opcionA": {
+            "descripcion": "Esta es la opción A",
+            "ejercito": 0,
+            "iglesia": 10,
+            "oro": 15,
+            "pueblo": -5
+        },
+        "opcionB": {
+            "descripcion": "Esta es la opción B",
+            "ejercito": -10,
+            "iglesia": 0,
+            "oro": 0,
+            "pueblo": 10
+        }
+    },
+    {
+        "nombre": "personaje3",
+        "descripcion": "Descripción random para la carta 3. Descripción random para la carta 3.",
+        "imagen":"",
+        "opcionA": {
+            "descripcion": "Esta es la opción A",
+            "ejercito": 0,
+            "iglesia": 20,
+            "oro": -10,
+            "pueblo": 0
+        },
+        "opcionB": {
+            "descripcion": "Esta es la opción B",
+            "ejercito": 15,
+            "iglesia": -10,
+            "oro": 0,
+            "pueblo": 0
+        }
+    },
+    {
+        "nombre": "personaje4",
+        "descripcion": "Descripción random para la carta 4. Descripción random para la carta 4.",
+        "imagen":"",
+        "opcionA": {
+            "descripcion": "Esta es la opción A",
+            "ejercito": 0,
+            "iglesia": 0,
+            "oro": 10,
+            "pueblo": -10
+        },
+        "opcionB": {
+            "descripcion": "Esta es la opción B",
+            "ejercito": 10,
+            "iglesia": 0,
+            "oro": 0,
+            "pueblo": -10
+        }
+    },
+    {
+        "nombre": "personaje5",
+        "descripcion": "Descripción random para la carta 5. Descripción random para la carta 1.",
+        "imagen":"",
+        "opcionA": {
+            "descripcion": "Esta es la opción A",
+            "ejercito": 5,
+            "iglesia": 5,
+            "oro": 10,
+            "pueblo": -15
+        },
+        "opcionB": {
+            "descripcion": "Esta es la opción B",
+            "ejercito": 0,
+            "iglesia": 10,
+            "oro": 20,
+            "pueblo": 0
+        }
+    }
+]

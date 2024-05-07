@@ -81,7 +81,6 @@ public class Barra {
                 }
                 //decremento
                 if (relleno.getHeight() > nuevaAltura && totalCambio < 0) {
-                	System.out.println(relleno.getHeight());
                 	double nuevaAlturaBarra = Math.max(relleno.getHeight() + cambioPorFrame, nuevaAltura);
                     double nuevaYBarra = relleno.getY() + (relleno.getHeight() - nuevaAlturaBarra); // Ajustar la posición Y
                     relleno.setHeight(nuevaAlturaBarra);

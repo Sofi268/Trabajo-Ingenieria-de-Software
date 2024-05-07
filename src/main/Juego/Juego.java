@@ -1,8 +1,6 @@
 package Juego;
 
-
 import java.util.HashMap;
-
 import Cartas.Carta;
 import Cartas.Opcion;
 import Estadisticas.Estadistica.NivelExcedidoException;
@@ -35,7 +33,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
 public class Juego extends Application{
 	
 	private int muertes;
@@ -48,6 +45,7 @@ public class Juego extends Application{
 	private Canvas lienzo;
     private Pane interfazCartaPane = new Pane();
     private Pane interfazEstadisticasPane = new Pane();
+    private Pane interfazImagenCarta = new Pane();
 	private GraphicsContext graficos;
 	Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 	
@@ -122,6 +120,7 @@ public class Juego extends Application{
 	    graficos = lienzo.getGraphicsContext2D();
 	    root.getChildren().add(interfazCartaPane);
 	    root.getChildren().add(interfazEstadisticasPane);
+	    root.getChildren().add(interfazImagenCarta);
 
 	}
 
@@ -442,13 +441,36 @@ public class Juego extends Application{
 	    
 	    texto.translateXProperty().bind(cuadrado.translateXProperty());
 	    texto.translateYProperty().bind(cuadrado.translateYProperty().subtract(ladoCuadrado * 0.1));
-
+	    
+	    //texto descripcion carta
+	    Text textoDescripcion = new Text(cartaActual.getDescripcion());
+	    textoDescripcion.setFont(Font.font("Rockwell", screenSize.getHeight() * 0.028));
+	    textoDescripcion.setFill(Color.WHITE);
+	    double xDescripcion = screenSize.getWidth() * 0.35; 
+        double yDescripcion = screenSize.getHeight() * 0.25; 
+        textoDescripcion.setX(xDescripcion);
+        textoDescripcion.setY(yDescripcion);
+        textoDescripcion.setWrappingWidth(550);
+        textoDescripcion.setTextAlignment(TextAlignment.CENTER);
+        
+        //texto nombre personaje en carta carta
+	    Text textoNombrePersonaje = new Text(cartaActual.getNombre());
+	    textoNombrePersonaje.setFont(Font.font("Rockwell", screenSize.getHeight() * 0.028));
+	    textoNombrePersonaje.setFill(Color.WHITE);
+	    double xPersonaje = screenSize.getWidth() * 0.45; 
+        double yPersonaje = screenSize.getHeight() * 0.84; 
+        textoNombrePersonaje.setX(xPersonaje);
+        textoNombrePersonaje.setY(yPersonaje);
+        textoNombrePersonaje.setWrappingWidth(200);
+        textoNombrePersonaje.setTextAlignment(TextAlignment.CENTER);
+        
 	    // Agregar los elementos de la interfaz de la carta al Pane
 	    interfazCartaPane.getChildren().add(cuadradoFondo);
 	    interfazCartaPane.getChildren().add(cuadrado);
 	    interfazCartaPane.getChildren().add(cuadradoAtras);
 	    interfazCartaPane.getChildren().add(texto);
-
+	    interfazCartaPane.getChildren().add(textoDescripcion);
+	    interfazCartaPane.getChildren().add(textoNombrePersonaje);
 	    verAnios();
 	}
 
