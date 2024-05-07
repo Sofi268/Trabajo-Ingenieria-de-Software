@@ -109,7 +109,7 @@ public class Juego extends Application{
 		personaje = null;
 	    personaje = new Personaje(); 
 	    barrasEstadisticas.resetBarras();
-	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.19); // reubica Y de barras 
+	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.05); // reubica Y de barras 
 	    continuarJugando();
 	}
 	
@@ -165,7 +165,7 @@ public class Juego extends Application{
 	    double anchoRectangulos = anchoRectanguloCentral;
 	    
 	    // Crea el rectángulo oscuro en la parte superior
-	    double altoRectanguloSuperior = altoPantalla * 0.15; // Establece un 15% del alto de la pantalla
+	    double altoRectanguloSuperior = altoPantalla * 0.20; // Establece un 15% del alto de la pantalla
 	    double xSuperior = (anchoPantalla - anchoRectangulos) / 2; // Centra el rectángulo
 	    double ySuperior = 0; // Comienza desde el borde superior de la pantalla
 	    
@@ -228,7 +228,7 @@ public class Juego extends Application{
 	public void generarVistaEstadisticas(Pane pane) {
 		//barras de estadisticas
 		barrasEstadisticas.setBarrasLayoutX(screenSize.getWidth() * 0.40, screenSize.getWidth());
-		barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.19);
+		barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.05);
 		
 		pane.getChildren().add(barrasEstadisticas.getBarraOro().getBorde());
 		pane.getChildren().add(barrasEstadisticas.getBarraOro().getRelleno());
@@ -242,19 +242,19 @@ public class Juego extends Application{
 		//Iconos de estadisticas
 		Icono iconoOro = new Icono("/Iconos/oro.png", 35, 35);
 		iconoOro.setX(screenSize.getWidth() * 0.40);
-        iconoOro.setY(screenSize.getHeight() * 0.295 );
+        iconoOro.setY(screenSize.getHeight() * 0.155 );
         
         Icono iconoPueblo = new Icono("/Iconos/pueblo.png", 35, 35);
 		iconoPueblo.setX(screenSize.getWidth() * 0.46);
-        iconoPueblo.setY(screenSize.getHeight() * 0.295 );
+        iconoPueblo.setY(screenSize.getHeight() * 0.155 );
         
         Icono iconoIglesia = new Icono("/Iconos/iglesia.png", 35, 35);
 		iconoIglesia.setX(screenSize.getWidth() * 0.52);
-        iconoIglesia.setY(screenSize.getHeight() * 0.295 );
+        iconoIglesia.setY(screenSize.getHeight() * 0.155 );
         
         Icono iconoEjercito = new Icono("/Iconos/ejercito.png", 35, 35);
 		iconoEjercito.setX(screenSize.getWidth() * 0.58);
-        iconoEjercito.setY(screenSize.getHeight() * 0.295 ); 
+        iconoEjercito.setY(screenSize.getHeight() * 0.155 ); 
         
 		pane.getChildren().add(iconoOro.getImageView());
 		pane.getChildren().add(iconoPueblo.getImageView());
