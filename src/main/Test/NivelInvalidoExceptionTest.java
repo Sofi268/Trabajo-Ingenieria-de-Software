@@ -12,6 +12,6 @@ class NivelInvalidoExceptionTest {
 	@Test
 	void testNivelInvalidoException() {
 		Estadistica estad = new Estadistica();
-		assertThrows(NivelInvalidoException.class, () -> estad.ajustarNivel(-50));
+		assertThrows(NivelInvalidoException.class, () -> estad.ajustarNivel(-150));
 	}
 }

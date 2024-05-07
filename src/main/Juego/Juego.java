@@ -122,7 +122,7 @@ public class Juego extends Application{
 	    double anchoPantalla = screenSize.getWidth();
 	    double altoPantalla = screenSize.getHeight();
 	    
-	    Image imagen = new Image("\\resources\\Fondos\\tierra.png");
+	    Image imagen = new Image("..\\resources\\Fondos\\tierra.png");
 	    
 	    double x = (anchoPantalla - imagen.getWidth()) / 2;
 	    double y = (altoPantalla - imagen.getHeight()) / 2;
