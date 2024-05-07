@@ -28,4 +28,20 @@ public class EstadisticasConjuntas extends Estadistica {
     public void modificarEjercito(int cantidad) throws NivelExcedidoException, NivelInvalidoException {
         ejercito.ajustarNivel(cantidad);
     }
+
+	public int getEjercito() {
+		return ejercito.getNivelActual();
+	}
+
+	public int getIglesia() {
+		return iglesia.getNivelActual();
+	}
+
+	public int getOro() {
+		return oro.getNivelActual();
+	}
+
+	public int getPueblo() {
+		return pueblo.getNivelActual();
+	}
 }
