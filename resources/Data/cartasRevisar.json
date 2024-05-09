@@ -226,5 +226,81 @@
             "fuego": 20,
             "aire": -10
         }
+    },
+    {
+        "nombre": "Carta Decision 11",
+        "descripcion": "Descubren que Azula está planificando su ataque a Ba Sing Se con una máquina de guerra indestructible pero también oyen que están atacando a una aldea a las afueras de la ciudad",
+        "imagen":"",
+        "opcionA": {
+            "descripcion": "Se separan en grupos sabiendo que es casi imposible ganarles divididos",
+            "tierra": 10,
+            "agua": 10,
+            "fuego": -5,
+            "aire": 10
+        },
+        "opcionB": {
+            "descripcion": "Prefieren acabar con Azula de una vez, sacrificando la aldea",
+            "tierra": -15,
+            "agua": -5,
+            "fuego": -10,
+            "aire": -5
+        }
+    },
+    {
+        "nombre": "Carta Decision 12",
+        "descripcion": "Katara fue capturada por soldados de la Nación del Fuego pero estás intentando finaliizar tu entrenamiento espiritual sin el cual no podras vencer al Señor del Fuego ",
+        "imagen":"",
+        "opcionA": {
+            "descripcion": "Abandonas todo por ir a salvarla",
+            "tierra": -5,
+            "agua": 10,
+            "fuego": 5,
+            "aire": 10
+        },
+        "opcionB": {
+            "descripcion": "Decides esperar a terminar el entrenamiento y luego ir a rescatarla",
+            "tierra": 10,
+            "agua": -10,
+            "fuego": -5,
+            "aire": -5
+        }
+    },
+    {
+        "nombre": "Carta Decision 13",
+        "descripcion": "Sokka tiene un plan para acabar con un grupo de rebeldes en el Reino Tierra pero es muy arriesgado y podrian llamar la atención de soldados enemigos.",
+        "imagen":"",
+        "opcionA": {
+            "descripcion": "Confias en su plan y lo ayudas",
+            "tierra": 10,
+            "agua": -5,
+            "fuego": 5,
+            "aire": 5
+        },
+        "opcionB": {
+            "descripcion": "Prefieres seguir escondido y no arriesgarte",
+            "tierra": -10,
+            "agua": 5,
+            "fuego": -5,
+            "aire": -5
+        }
+    },
+    {
+        "nombre": "Carta Decision 14",
+        "descripcion": "Toph te confiesa que extraña a su padre y quiere ir a buscarlo para arreglar las cosas con él.",
+        "imagen":"",
+        "opcionA": {
+            "descripcion": "La animas a encontrarlo y le deseas suerte aunque implique una baja importante para el equipo",
+            "tierra": 10,
+            "agua": -5,
+            "fuego": 5,
+            "aire": 5
+        },
+        "opcionB": {
+            "descripcion": "La convences de que se quede para ayudarlos a vencer a Ozai",
+            "tierra": -5,
+            "agua": 5,
+            "fuego": -5,
+            "aire": -10
+        }
     }
 ]
