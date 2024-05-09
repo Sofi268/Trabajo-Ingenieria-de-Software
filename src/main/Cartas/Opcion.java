@@ -15,10 +15,10 @@ public class Opcion {
 	}
 	
 	public void modificarEstadisticas(Personaje personaje) throws NivelExcedidoException, NivelInvalidoException {
-		personaje.getEstadisticas().modificarEjercito(niveles[0]);
-		personaje.getEstadisticas().modificarIglesia(niveles[1]);
-		personaje.getEstadisticas().modificarOro(niveles[2]);
-		personaje.getEstadisticas().modificarPueblo(niveles[3]);
+		personaje.getEstadisticas().modificarTierra(niveles[0]);
+		personaje.getEstadisticas().modificarAgua(niveles[1]);
+		personaje.getEstadisticas().modificarFuego(niveles[2]);
+		personaje.getEstadisticas().modificarAire(niveles[3]);
 	}
 	
 	public void setInformacion(String informacion) {

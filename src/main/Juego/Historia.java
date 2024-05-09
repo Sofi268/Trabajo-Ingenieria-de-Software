@@ -11,7 +11,7 @@ import java.io.FileReader;
 
 public class Historia {
 	private static final int ANIO_INICIAL = 0;
-	private static final int ANIO_FINAL = 5; //SE MODIFICO PARCIALMENTE
+	private static final int ANIO_FINAL = 10; //SE MODIFICO PARCIALMENTE
 
 	private int anioActual;
 	private Carta[] cartas;
@@ -35,18 +35,18 @@ public class Historia {
                  JsonObject opcionAJson = jsonObject.getAsJsonObject("opcionA");//obj con datos de opcion A
                  //obtengo datos(descripcion y niveles) de opcion A
                  String descripcionOpcionA = opcionAJson.get("descripcion").getAsString();
-                 int ejercitoOpcionA = opcionAJson.get("ejercito").getAsInt();
-                 int iglesiaOpcionA = opcionAJson.get("iglesia").getAsInt();
-                 int oroOpcionA = opcionAJson.get("oro").getAsInt();
-                 int puebloOpcionA = opcionAJson.get("pueblo").getAsInt();
+                 int tierraOpcionA = opcionAJson.get("tierra").getAsInt();
+                 int aguaOpcionA = opcionAJson.get("agua").getAsInt();
+                 int fuegoOpcionA = opcionAJson.get("fuego").getAsInt();
+                 int aireOpcionA = opcionAJson.get("aire").getAsInt();
 
                  JsonObject opcionBJson = jsonObject.getAsJsonObject("opcionB");//obj con datos de opcion B
                  //obtengo datos(descripcion y niveles) de opcion B
                  String descripcionOpcionB = opcionBJson.get("descripcion").getAsString();
-                 int ejercitoOpcionB = opcionBJson.get("ejercito").getAsInt();
-                 int iglesiaOpcionB = opcionBJson.get("iglesia").getAsInt();
-                 int oroOpcionB = opcionBJson.get("oro").getAsInt();
-                 int puebloOpcionB = opcionBJson.get("pueblo").getAsInt();
+                 int tierraOpcionB = opcionBJson.get("tierra").getAsInt();
+                 int aguaOpcionB = opcionBJson.get("agua").getAsInt();
+                 int fuegoOpcionB = opcionBJson.get("fuego").getAsInt();
+                 int aireOpcionB = opcionBJson.get("aire").getAsInt();
                  
                  // Crear una nueva instancia de Carta y asignarla al arreglo en la posición i
                  cartas[i] = new Carta();
@@ -56,10 +56,10 @@ public class Historia {
                  // Crear las opciones A y B
                  Opcion opcionA = new Opcion();
                  opcionA.setInformacion(descripcionOpcionA);
-                 opcionA.setNiveles(new int[]{ejercitoOpcionA, iglesiaOpcionA, oroOpcionA, puebloOpcionA});
+                 opcionA.setNiveles(new int[]{tierraOpcionA, aguaOpcionA, fuegoOpcionA, aireOpcionA});
                  Opcion opcionB = new Opcion();
                  opcionB.setInformacion(descripcionOpcionB);
-                 opcionB.setNiveles(new int[]{ejercitoOpcionB, iglesiaOpcionB, oroOpcionB, puebloOpcionB});
+                 opcionB.setNiveles(new int[]{tierraOpcionB, aguaOpcionB, fuegoOpcionB, aireOpcionB});
                  // Asignar las opciones a la carta en la posición i
      	         cartas[i].setOpcionA(opcionA);
      	         cartas[i].setOpcionB(opcionB);

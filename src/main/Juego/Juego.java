@@ -22,12 +22,14 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -229,46 +231,46 @@ public class Juego extends Application{
 		barrasEstadisticas.setBarrasLayoutX(screenSize.getWidth() * 0.40, screenSize.getWidth());
 		barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.05);
 		
-		pane.getChildren().add(barrasEstadisticas.getBarraOro().getBorde());
-		pane.getChildren().add(barrasEstadisticas.getBarraOro().getRelleno());
-		pane.getChildren().add(barrasEstadisticas.getBarraPueblo().getBorde());
-		pane.getChildren().add(barrasEstadisticas.getBarraPueblo().getRelleno());
-		pane.getChildren().add(barrasEstadisticas.getBarraIglesia().getBorde());
-		pane.getChildren().add(barrasEstadisticas.getBarraIglesia().getRelleno());
-		pane.getChildren().add(barrasEstadisticas.getBarraEjercito().getBorde());
-		pane.getChildren().add(barrasEstadisticas.getBarraEjercito().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraTierra().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraTierra().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraAgua().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraAgua().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraFuego().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraFuego().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraAire().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraAire().getRelleno());
 		
 		//Iconos de estadisticas
-		Icono iconoOro = new Icono("/Iconos/oro.png", 35, 35);
-		iconoOro.setX(screenSize.getWidth() * 0.40);
-        iconoOro.setY(screenSize.getHeight() * 0.155 );
+		Icono iconoTierra = new Icono("/Iconos/tierra.png", 37, 37);
+		iconoTierra.setX(screenSize.getWidth() * 0.40);
+        iconoTierra.setY(screenSize.getHeight() * 0.155 );
         
-        Icono iconoPueblo = new Icono("/Iconos/pueblo.png", 35, 35);
-		iconoPueblo.setX(screenSize.getWidth() * 0.46);
-        iconoPueblo.setY(screenSize.getHeight() * 0.155 );
+        Icono iconoAgua = new Icono("/Iconos/agua.png", 37, 37);
+		iconoAgua.setX(screenSize.getWidth() * 0.46);
+        iconoAgua.setY(screenSize.getHeight() * 0.155 );
         
-        Icono iconoIglesia = new Icono("/Iconos/iglesia.png", 35, 35);
-		iconoIglesia.setX(screenSize.getWidth() * 0.52);
-        iconoIglesia.setY(screenSize.getHeight() * 0.155 );
+        Icono iconoFuego = new Icono("/Iconos/fuego.png", 37, 37);
+		iconoFuego.setX(screenSize.getWidth() * 0.52);
+        iconoFuego.setY(screenSize.getHeight() * 0.155 );
         
-        Icono iconoEjercito = new Icono("/Iconos/ejercito.png", 35, 35);
-		iconoEjercito.setX(screenSize.getWidth() * 0.58);
-        iconoEjercito.setY(screenSize.getHeight() * 0.155 ); 
+        Icono iconoAire = new Icono("/Iconos/aire.png", 37, 37);
+		iconoAire.setX(screenSize.getWidth() * 0.58);
+        iconoAire.setY(screenSize.getHeight() * 0.155 ); 
         
-		pane.getChildren().add(iconoOro.getImageView());
-		pane.getChildren().add(iconoPueblo.getImageView());
-		pane.getChildren().add(iconoIglesia.getImageView());
-		pane.getChildren().add(iconoEjercito.getImageView());
+		pane.getChildren().add(iconoTierra.getImageView());
+		pane.getChildren().add(iconoAgua.getImageView());
+		pane.getChildren().add(iconoFuego.getImageView());
+		pane.getChildren().add(iconoAire.getImageView());
 	}
 	
 	public void actualizarEstadisticas() {
 		//hashmap con niveles actuales de estadisticas
 		HashMap<String, Integer> niveles = personaje.getNiveles();
 		barrasEstadisticas.nuevasAlturas(
-				niveles.get("oro"),
-				niveles.get("pueblo"),
-				niveles.get("iglesia"),
-				niveles.get("ejercito"));
+				niveles.get("tierra"),
+				niveles.get("agua"),
+				niveles.get("fuego"),
+				niveles.get("aire"));
 		System.out.println("--Actualizacion de estadisticas--");
 	}
 
@@ -443,15 +445,20 @@ public class Juego extends Application{
 	    texto.translateYProperty().bind(cuadrado.translateYProperty().subtract(ladoCuadrado * 0.1));
 	    
 	    //texto descripcion carta
-	    Text textoDescripcion = new Text(cartaActual.getDescripcion());
-	    textoDescripcion.setFont(Font.font("Rockwell", screenSize.getHeight() * 0.028));
-	    textoDescripcion.setFill(Color.WHITE);
+	    TextFlow textoDescripcion = new TextFlow();
 	    double xDescripcion = screenSize.getWidth() * 0.35; 
-        double yDescripcion = screenSize.getHeight() * 0.25; 
-        textoDescripcion.setX(xDescripcion);
-        textoDescripcion.setY(yDescripcion);
-        textoDescripcion.setWrappingWidth(550);
-        textoDescripcion.setTextAlignment(TextAlignment.CENTER);
+        double yDescripcion = screenSize.getHeight() * 0.21; 
+        textoDescripcion.setPrefWidth(550); // Ancho máximo
+        textoDescripcion.setMaxHeight(300); // Altura máxima
+        textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Alinear texto al centro verticalmente
+        textoDescripcion.setLayoutX(xDescripcion);
+        textoDescripcion.setLayoutY(yDescripcion);
+
+        // Crear un Text con el contenido y estilo deseado
+        Text text = new Text(cartaActual.getDescripcion());
+        text.setFont(Font.font("Rockwell", FontWeight.NORMAL, 20));
+        text.setFill(Color.WHITE);
+        textoDescripcion.getChildren().add(text);
         
         //texto nombre personaje en carta carta
 	    Text textoNombrePersonaje = new Text(cartaActual.getNombre());
@@ -469,8 +476,8 @@ public class Juego extends Application{
 	    interfazCartaPane.getChildren().add(cuadrado);
 	    interfazCartaPane.getChildren().add(cuadradoAtras);
 	    interfazCartaPane.getChildren().add(texto);
-	    interfazCartaPane.getChildren().add(textoDescripcion);
 	    interfazCartaPane.getChildren().add(textoNombrePersonaje);
+	    interfazCartaPane.getChildren().add(textoDescripcion);
 	    verAnios();
 	}
 

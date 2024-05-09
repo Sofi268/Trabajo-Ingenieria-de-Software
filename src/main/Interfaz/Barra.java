@@ -22,17 +22,17 @@ public class Barra {
 	
 	public void setRellenoColor(String estadistica) {
 		switch(estadistica) {
-			case "oro":
-				relleno.setFill(Color.web("D4AF37"));
+			case "tierra":
+				relleno.setFill(Color.web("1d6314"));
 				break;
-			case "pueblo":
-				relleno.setFill(Color.web("82CF20"));
+			case "agua":
+				relleno.setFill(Color.web("0d286e"));
 				break;
-			case "iglesia":
-				relleno.setFill(Color.web("DE5D2D"));
+			case "fuego":
+				relleno.setFill(Color.web("970a08"));
 				break;
-			case "ejercito":
-				relleno.setFill(Color.web("3085F1"));
+			case "aire":
+				relleno.setFill(Color.web("3294ae"));
 				break;
 		}
 	}
