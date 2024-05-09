@@ -11,7 +11,7 @@ import java.io.FileReader;
 
 public class Historia {
 	private static final int ANIO_INICIAL = 0;
-	private static final int ANIO_FINAL = 10; //SE MODIFICO PARCIALMENTE
+	private static final int ANIO_FINAL = 20; //SE MODIFICO PARCIALMENTE
 
 	private int anioActual;
 	private Carta[] cartas;
