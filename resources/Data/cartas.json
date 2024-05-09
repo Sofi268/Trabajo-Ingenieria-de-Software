@@ -1,7 +1,7 @@
 [
     {
         "nombre": "Carta Contexto 1: Inicio parte 1",
-        "descripcion": "Antiguamente, las cuatro naciones vivían en armonía: Agua, Tierra, Fuego y Aire. Pero todo cambió cuando la Nación del Fuego atacó. Solo el Avatar, maestro de los cuatro elementos, podía detenerlos. Pero cuando el mundo más lo necesitaba, desapareció.",
+        "descripcion": "Antiguamente, las cuatro naciones vivían en armonía: Agua, Tierra, Fuego y Aire. Pero todo cambió cuando la Nación del Fuego atacó.",
         "imagen":"",
         "opcionA": {
             "descripcion": "",
@@ -19,7 +19,26 @@
         }
     },
     {
-        "nombre": "Carta Contexto 2: Inicio parte 2",
+        "nombre": "Carta Contexto 1: Inicio parte 2",
+        "descripcion": "Solo el Avatar, maestro de los cuatro elementos, podía detenerlos. Pero cuando el mundo más lo necesitaba, desapareció.",
+        "imagen":"",
+        "opcionA": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire":0
+        },
+        "opcionB": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0
+        }
+    },
+    {
+        "nombre": "Carta Contexto 2: Inicio parte 3",
         "descripcion": "Has estado congelado por 100 años en un iceberg luego de que una tormenta te azotara. Te han despertado y es tu momento de salvar al mundo.",
         "imagen":"",
         "opcionA": {

@@ -2,18 +2,21 @@ package Interfaz;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Screen;
 import javafx.util.Duration;
 
 public class Barra {
 
 	private Rectangle borde;
 	private Rectangle relleno;
+	private Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 	
 	public Barra(String estadistica, double inicio) {
-		borde = new Rectangle(35 ,100);
-		relleno = new Rectangle(35 ,inicio);
+		borde = new Rectangle(screenSize.getWidth()*0.025 , screenSize.getHeight()*0.1);
+		relleno = new Rectangle(screenSize.getWidth()*0.025 ,inicio);
 		
 		borde.setFill(null);
 		borde.setStroke(Color.WHITE);
@@ -74,7 +77,8 @@ public class Barra {
             new KeyFrame(Duration.seconds(1.0 / fps), e -> {
             	//incremento
                 if (relleno.getHeight() < nuevaAltura && totalCambio > 0) {
-                	double nuevaAlturaBarra = Math.min(relleno.getHeight() + cambioPorFrame, nuevaAltura);
+                	double alturaRelativa = nuevaAltura * 0.001 * screenSize.getHeight();
+                	double nuevaAlturaBarra = Math.min(relleno.getHeight() + cambioPorFrame, alturaRelativa);
                     double nuevaYBarra = relleno.getY() - (nuevaAlturaBarra - relleno.getHeight()); // Ajustar la posición Y
                     relleno.setHeight(nuevaAlturaBarra);
                     relleno.setY(nuevaYBarra);

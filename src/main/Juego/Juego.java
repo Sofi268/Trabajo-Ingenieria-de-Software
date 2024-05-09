@@ -15,6 +15,7 @@ import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -41,7 +42,7 @@ public class Juego extends Application{
 	private Historia historia;
 	private Personaje personaje;
 	private Carta cartaActual;
-	ConjuntoBarras barrasEstadisticas;
+	private ConjuntoBarras barrasEstadisticas;
 	private Group root;
 	private Scene escena;
 	private Canvas lienzo;
@@ -49,7 +50,7 @@ public class Juego extends Application{
     private Pane interfazEstadisticasPane = new Pane();
     private Pane interfazImagenCarta = new Pane();
 	private GraphicsContext graficos;
-	Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+	private Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 	
 	
 	
@@ -84,8 +85,8 @@ public class Juego extends Application{
 	
 	private void comenzarJuego(){
 	    personaje = new Personaje();
-	    barrasEstadisticas = new ConjuntoBarras(50); // barras al 50%
-	    historia.llenarCartas(); // Debes pasar el objeto personaje al método llenarCartas().
+	    barrasEstadisticas = new ConjuntoBarras(screenSize.getHeight()*0.05); // barras al 50%
+	    historia.llenarCartas(); // 
 	    generarVistaEstadisticas(interfazEstadisticasPane);
 	    continuarJugando();
 	    
@@ -109,7 +110,7 @@ public class Juego extends Application{
 		personaje = null;
 	    personaje = new Personaje(); 
 	    barrasEstadisticas.resetBarras();
-	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.05); // reubica Y de barras 
+	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.03); // reubica Y de barras 
 	    continuarJugando();
 	}
 	
@@ -166,7 +167,7 @@ public class Juego extends Application{
 	    double anchoRectangulos = anchoRectanguloCentral;
 	    
 	    // Crea el rectángulo oscuro en la parte superior
-	    double altoRectanguloSuperior = altoPantalla * 0.20; // Establece un 15% del alto de la pantalla
+	    double altoRectanguloSuperior = altoPantalla * 0.20; // Establece un 20% del alto de la pantalla
 	    double xSuperior = (anchoPantalla - anchoRectangulos) / 2; // Centra el rectángulo
 	    double ySuperior = 0; // Comienza desde el borde superior de la pantalla
 	    
@@ -229,7 +230,7 @@ public class Juego extends Application{
 	public void generarVistaEstadisticas(Pane pane) {
 		//barras de estadisticas
 		barrasEstadisticas.setBarrasLayoutX(screenSize.getWidth() * 0.40, screenSize.getWidth());
-		barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.05);
+		barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.03);
 		
 		pane.getChildren().add(barrasEstadisticas.getBarraTierra().getBorde());
 		pane.getChildren().add(barrasEstadisticas.getBarraTierra().getRelleno());
@@ -241,21 +242,21 @@ public class Juego extends Application{
 		pane.getChildren().add(barrasEstadisticas.getBarraAire().getRelleno());
 		
 		//Iconos de estadisticas
-		Icono iconoTierra = new Icono("/Iconos/tierra.png", 37, 37);
+		Icono iconoTierra = new Icono("/Iconos/tierra.png", screenSize.getWidth() * 0.025, screenSize.getWidth() * 0.025);
 		iconoTierra.setX(screenSize.getWidth() * 0.40);
-        iconoTierra.setY(screenSize.getHeight() * 0.155 );
+        iconoTierra.setY(screenSize.getHeight() * 0.14 );
         
-        Icono iconoAgua = new Icono("/Iconos/agua.png", 37, 37);
+        Icono iconoAgua = new Icono("/Iconos/agua.png", screenSize.getWidth() * 0.025, screenSize.getWidth() * 0.025);
 		iconoAgua.setX(screenSize.getWidth() * 0.46);
-        iconoAgua.setY(screenSize.getHeight() * 0.155 );
+        iconoAgua.setY(screenSize.getHeight() * 0.14 );
         
-        Icono iconoFuego = new Icono("/Iconos/fuego.png", 37, 37);
+        Icono iconoFuego = new Icono("/Iconos/fuego.png", screenSize.getWidth() * 0.025, screenSize.getWidth() * 0.025);
 		iconoFuego.setX(screenSize.getWidth() * 0.52);
-        iconoFuego.setY(screenSize.getHeight() * 0.155 );
+        iconoFuego.setY(screenSize.getHeight() * 0.14 );
         
-        Icono iconoAire = new Icono("/Iconos/aire.png", 37, 37);
+        Icono iconoAire = new Icono("/Iconos/aire.png", screenSize.getWidth() * 0.025, screenSize.getWidth() * 0.025);
 		iconoAire.setX(screenSize.getWidth() * 0.58);
-        iconoAire.setY(screenSize.getHeight() * 0.155 ); 
+        iconoAire.setY(screenSize.getHeight() * 0.14 ); 
         
 		pane.getChildren().add(iconoTierra.getImageView());
 		pane.getChildren().add(iconoAgua.getImageView());
@@ -444,34 +445,43 @@ public class Juego extends Application{
 	    texto.translateXProperty().bind(cuadrado.translateXProperty());
 	    texto.translateYProperty().bind(cuadrado.translateYProperty().subtract(ladoCuadrado * 0.1));
 	    
-	    //texto descripcion carta
+	    
+	    // Texto descripcion carta
 	    TextFlow textoDescripcion = new TextFlow();
-	    double xDescripcion = screenSize.getWidth() * 0.35; 
-        double yDescripcion = screenSize.getHeight() * 0.21; 
-        textoDescripcion.setPrefWidth(550); // Ancho máximo
-        textoDescripcion.setMaxHeight(300); // Altura máxima
-        textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Alinear texto al centro verticalmente
-        textoDescripcion.setLayoutX(xDescripcion);
-        textoDescripcion.setLayoutY(yDescripcion);
+	    textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Centra el texto horizontalmente
 
-        // Crear un Text con el contenido y estilo deseado
-        Text text = new Text(cartaActual.getDescripcion());
-        text.setFont(Font.font("Rockwell", FontWeight.NORMAL, 20));
-        text.setFill(Color.WHITE);
-        textoDescripcion.getChildren().add(text);
+	    // Crea un Text con el contenido
+	    Text text = new Text(cartaActual.getDescripcion());
+	    text.setFont(Font.font("Rockwell", FontWeight.NORMAL, altoPantalla * 0.028));
+	    text.setFill(Color.WHITE);
+	    textoDescripcion.getChildren().add(text);
+
+	    // Calcula el número de lineas de texto basado en el tamaño del contenedor
+	    int numLineas = (int) Math.ceil(textoDescripcion.prefWidth(-1) / (anchoPantalla * 0.32));
+
+	    // Calcula la posición del texto
+	    double xDescripcion = (anchoPantalla - (anchoPantalla * 0.32)) / 2; // Centra horizontalmente el texto
+
+	    // Ajusta la posición vertical inicial dependiendo del número de líneas
+	    double yDescripcion = (altoPantalla * 0.52 - (numLineas * altoPantalla * 0.028)) / 2;
+
+	    textoDescripcion.setPrefWidth(anchoPantalla * 0.32); // Establece que como máximo el ancho sea del 32%
+	    textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Centra el texto horizontalmente
+	    textoDescripcion.setLayoutX(xDescripcion);
+	    textoDescripcion.setLayoutY(yDescripcion);
+
         
-        //texto nombre personaje en carta carta
+        // Texto nombre personaje en carta carta
 	    Text textoNombrePersonaje = new Text(cartaActual.getNombre());
-	    textoNombrePersonaje.setFont(Font.font("Rockwell", screenSize.getHeight() * 0.028));
+	    textoNombrePersonaje.setFont(Font.font("Rockwell", altoPantalla * 0.028));
 	    textoNombrePersonaje.setFill(Color.WHITE);
-	    double xPersonaje = screenSize.getWidth() * 0.45; 
-        double yPersonaje = screenSize.getHeight() * 0.84; 
+	    double xPersonaje = (anchoPantalla - textoNombrePersonaje.getBoundsInLocal().getWidth()) / 2;
+        double yPersonaje = altoPantalla * 0.86; 
         textoNombrePersonaje.setX(xPersonaje);
         textoNombrePersonaje.setY(yPersonaje);
-        textoNombrePersonaje.setWrappingWidth(200);
         textoNombrePersonaje.setTextAlignment(TextAlignment.CENTER);
         
-	    // Agregar los elementos de la interfaz de la carta al Pane
+	    // Agrega los elementos de la interfaz de la carta al Pane
 	    interfazCartaPane.getChildren().add(cuadradoFondo);
 	    interfazCartaPane.getChildren().add(cuadrado);
 	    interfazCartaPane.getChildren().add(cuadradoAtras);
