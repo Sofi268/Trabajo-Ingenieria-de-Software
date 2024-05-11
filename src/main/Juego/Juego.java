@@ -38,7 +38,6 @@ import javafx.util.Duration;
 
 public class Juego extends Application{
 	
-	private int muertes;
 	private Historia historia;
 	private Personaje personaje;
 	private Carta cartaActual;
@@ -66,7 +65,6 @@ public class Juego extends Application{
 	public void start(Stage ventana) throws Exception {
 		
 		// Inicializa atributos
-		muertes = 0;
 		historia = new Historia();
 		personaje = null;
 		
@@ -89,16 +87,13 @@ public class Juego extends Application{
 	    historia.llenarCartas(); // 
 	    generarVistaEstadisticas(interfazEstadisticasPane);
 	    continuarJugando();
-	    
 	}
 
 	private void continuarJugando() {
 	    int anioActual = historia.getAnioActual();
-	    int anioLimite = 200 + muertes * 5;
-	    if(historia.getCartaActual(muertes) != null && anioActual < anioLimite) {
-	    	
-	        historia.jugarCarta(muertes); 
-	        cartaActual = historia.getCartaActual(muertes); 
+	    int anioLimite = 200;
+	    if(historia.getCartaActual() != null && anioActual < anioLimite) {
+	        cartaActual = historia.jugarCarta(); 
 	        interfazCartaPane.getChildren().clear();
 	        interfazCarta();
 	    }
@@ -106,11 +101,12 @@ public class Juego extends Application{
 
 
 	private void morir() {
-		historia.aumentarAnio(5);
+		historia.aumentarAnio(15);
 		personaje = null;
 	    personaje = new Personaje(); 
 	    barrasEstadisticas.resetBarras();
 	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.03); // reubica Y de barras 
+	    historia.aumentarIndiceCartaActual();
 	    continuarJugando();
 	}
 	
@@ -277,14 +273,15 @@ public class Juego extends Application{
 
 	private void elegirOpcion(Opcion opcion) {
 	    try {
-	        if (opcion.equals(historia.getCartaActual(muertes).getOpciones()[0])) {
-	            historia.elegirOpcionDeCarta(muertes, "A", personaje);
-	        } else if (opcion.equals(historia.getCartaActual(muertes).getOpciones()[1])) {
-	            historia.elegirOpcionDeCarta(muertes, "B", personaje);
+	        if (opcion.equals(historia.getCartaActual().getOpciones()[0])) {
+	            historia.elegirOpcionDeCarta("A", personaje);
+	        } else if (opcion.equals(historia.getCartaActual().getOpciones()[1])) {
+	            historia.elegirOpcionDeCarta("B", personaje);
 	        }
-	        historia.aumentarAnio(1); // Incrementar el año de la historia
-	        personaje.aumentarAnios();
+	        historia.aumentarAnio(historia.getCartaActual().getAnios()); // Incrementar el año de la historia
+	        personaje.aumentarAnios(historia.getCartaActual().getAnios());
 	        actualizarEstadisticas();
+	        historia.aumentarIndiceCartaActual();
 	        continuarJugando();
 	        
 	    } catch (NivelExcedidoException | NivelInvalidoException e) {

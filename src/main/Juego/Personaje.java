@@ -24,8 +24,8 @@ public class Personaje {
 		return estadisticas;
 	}
 	
-	public void aumentarAnios() {
-		anios += 1;
+	public void aumentarAnios(int aniosPasados) {
+		anios += aniosPasados;
 	}
 	
 	public HashMap<String, Integer> getNiveles(){

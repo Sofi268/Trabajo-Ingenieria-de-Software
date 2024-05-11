@@ -10,7 +10,8 @@ public class Carta extends Opcion{
 	private Opcion opcionB;
 	private String descripcion;
 	private String nombre;
-	
+	private int anios;
+
 	public Carta() {
 		opcionA = new Opcion();
 		opcionB = new Opcion();
@@ -56,6 +57,14 @@ public class Carta extends Opcion{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	public int getAnios() {
+		return anios;
+	}
+
+	public void setAnios(int anios) {
+		this.anios = anios;
 	}
 
 	public void setOpcionA(Opcion opcionA) {

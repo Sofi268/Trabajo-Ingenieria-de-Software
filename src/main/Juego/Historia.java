@@ -11,14 +11,15 @@ import java.io.FileReader;
 
 public class Historia {
 	private static final int ANIO_INICIAL = 0;
-	private static final int ANIO_FINAL = 20; //SE MODIFICO PARCIALMENTE
+	private static final int ANIO_FINAL = 200; 
 
 	private int anioActual;
+	private int indiceCartaActual = 0;
 	private Carta[] cartas;
 	
 	public Historia() {
 		anioActual = ANIO_INICIAL;
-		cartas = new Carta[ANIO_FINAL];
+		cartas = new Carta[20];//SE MODIFICO PARCIALMENTE SEGUN CARTAS DEFINIDAS
 	}
 	
 	public void llenarCartas(){
@@ -28,9 +29,10 @@ public class Historia {
         	JsonArray jsonArray = gson.fromJson(reader, JsonArray.class); //array con datos del json
         	 for (int i = 0; i < jsonArray.size()-1; i++) {
         		 JsonObject jsonObject = jsonArray.get(i).getAsJsonObject(); //obj con datos de la carta
-        		 //obtengo nombre y descripción de la carta
+        		 //obtengo nombre, descripción y anios de la carta
                  String nombre = jsonObject.get("nombre").getAsString();
                  String descripcion = jsonObject.get("descripcion").getAsString();
+                 int anios = jsonObject.get("anios").getAsInt();
                
                  JsonObject opcionAJson = jsonObject.getAsJsonObject("opcionA");//obj con datos de opcion A
                  //obtengo datos(descripcion y niveles) de opcion A
@@ -53,6 +55,7 @@ public class Historia {
                  // Establecer la descripción y nombre del personaje de la carta
                  cartas[i].setDescripcion(descripcion);
                  cartas[i].setNombre(nombre);
+                 cartas[i].setAnios(anios);
                  // Crear las opciones A y B
                  Opcion opcionA = new Opcion();
                  opcionA.setInformacion(descripcionOpcionA);
@@ -77,20 +80,24 @@ public class Historia {
 		return anioActual;
 	}
 	
-	public Carta jugarCarta(int muertes) {
-		return getCartaActual(muertes);
+	public Carta jugarCarta() {
+		return getCartaActual();
 	}
 	
-	public Carta getCartaActual(int muertes) {
-		return cartas[anioActual - (muertes*5)];
+	public Carta getCartaActual() {
+		return cartas[indiceCartaActual];
 	}
 	
 	public Carta getCartaX(int i) {
 		return cartas[i];
 	}
 	
-	public void elegirOpcionDeCarta(int muertes, String opcionElegida, Personaje personaje) throws NivelExcedidoException, NivelInvalidoException {
-	    Carta cartaActual = getCartaActual(muertes);
+	public void aumentarIndiceCartaActual() {
+		indiceCartaActual++;
+	}
+	
+	public void elegirOpcionDeCarta(String opcionElegida, Personaje personaje) throws NivelExcedidoException, NivelInvalidoException {
+	    Carta cartaActual = getCartaActual();
 	    cartaActual.elegirOpcion(personaje, cartaActual.getOpciones()[0].getNiveles(), cartaActual.getOpciones()[1].getNiveles(), opcionElegida);
 	   
 	}
