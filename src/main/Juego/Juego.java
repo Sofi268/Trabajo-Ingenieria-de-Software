@@ -45,9 +45,8 @@ public class Juego extends Application{
 	private Group root;
 	private Scene escena;
 	private Canvas lienzo;
-    private Pane interfazCartaPane = new Pane();
-    private Pane interfazEstadisticasPane = new Pane();
-    private Pane interfazImagenCarta = new Pane();
+  private Pane interfazCartaPane = new Pane();
+  private Pane interfazEstadisticasPane = new Pane();
 	private GraphicsContext graficos;
 	private Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 	
@@ -119,8 +118,6 @@ public class Juego extends Application{
 	    graficos = lienzo.getGraphicsContext2D();
 	    root.getChildren().add(interfazCartaPane);
 	    root.getChildren().add(interfazEstadisticasPane);
-	    root.getChildren().add(interfazImagenCarta);
-
 	}
 
 	public void verAnios() {

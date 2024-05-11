@@ -1,7 +1,6 @@
 package Interfaz;
 
 public class ConjuntoBarras {
-
 	private Barra barraTierra;
 	private Barra barraAgua;
 	private Barra barraFuego;

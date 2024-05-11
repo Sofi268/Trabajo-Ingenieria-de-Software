@@ -17,7 +17,6 @@ public class Barra {
 	public Barra(String estadistica, double inicio) {
 		borde = new Rectangle(screenSize.getWidth()*0.025 , screenSize.getHeight()*0.1);
 		relleno = new Rectangle(screenSize.getWidth()*0.025 ,inicio);
-		
 		borde.setFill(null);
 		borde.setStroke(Color.WHITE);
 		setRellenoColor(estadistica);
@@ -36,6 +35,7 @@ public class Barra {
 				break;
 			case "aire":
 				relleno.setFill(Color.web("3294ae"));
+
 				break;
 		}
 	}
@@ -79,6 +79,7 @@ public class Barra {
                 if (relleno.getHeight() < nuevaAltura && totalCambio > 0) {
                 	double alturaRelativa = nuevaAltura * 0.001 * screenSize.getHeight();
                 	double nuevaAlturaBarra = Math.min(relleno.getHeight() + cambioPorFrame, alturaRelativa);
+
                     double nuevaYBarra = relleno.getY() - (nuevaAlturaBarra - relleno.getHeight()); // Ajustar la posición Y
                     relleno.setHeight(nuevaAlturaBarra);
                     relleno.setY(nuevaYBarra);
@@ -95,6 +96,4 @@ public class Barra {
         timeline.setCycleCount((int) (duration.toMillis() / 1000 * fps));
         timeline.play();
 	}
-	
-
 }
