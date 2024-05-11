@@ -83,7 +83,7 @@ public class Juego extends Application{
 	private void comenzarJuego(){
 	    personaje = new Personaje();
 	    barrasEstadisticas = new ConjuntoBarras(screenSize.getHeight()*0.05); // barras al 50%
-	    historia.llenarCartas(); 
+	    historia.llenarCartas(); // 
 	    generarVistaEstadisticas(interfazEstadisticasPane);
 	    continuarJugando();
 	}
@@ -92,7 +92,7 @@ public class Juego extends Application{
 	    int anioActual = historia.getAnioActual();
 	    int anioLimite = 200;
 	    if(historia.getCartaActual() != null && anioActual < anioLimite) {
-	        cartaActual = historia.jugarCarta();
+	        cartaActual = historia.jugarCarta(); 
 	        interfazCartaPane.getChildren().clear();
 	        interfazCarta();
 	    }

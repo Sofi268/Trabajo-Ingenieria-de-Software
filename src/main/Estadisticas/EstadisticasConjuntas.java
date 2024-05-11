@@ -39,5 +39,4 @@ public class EstadisticasConjuntas extends Estadistica {
     	estadisticasNiveles.put("fuego", fuego.getNivelActual());
     	return estadisticasNiveles;
     }
-    
 }
