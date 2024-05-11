@@ -2,19 +2,22 @@ package Interfaz;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Screen;
 import javafx.util.Duration;
 
 public class Barra {
 
 	private Rectangle borde;
 	private Rectangle relleno;
+
+	private Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 	
 	public Barra(String estadistica, double inicio) {
-		borde = new Rectangle(35 ,100);
-		relleno = new Rectangle(35 ,inicio);
-		
+		borde = new Rectangle(screenSize.getWidth()*0.025 , screenSize.getHeight()*0.1);
+		relleno = new Rectangle(screenSize.getWidth()*0.025 ,inicio);
 		borde.setFill(null);
 		borde.setStroke(Color.WHITE);
 		setRellenoColor(estadistica);
@@ -22,17 +25,17 @@ public class Barra {
 	
 	public void setRellenoColor(String estadistica) {
 		switch(estadistica) {
-			case "oro":
-				relleno.setFill(Color.web("D4AF37"));
+			case "tierra":
+				relleno.setFill(Color.web("1d6314"));
 				break;
-			case "pueblo":
-				relleno.setFill(Color.web("82CF20"));
+			case "agua":
+				relleno.setFill(Color.web("0d286e"));
 				break;
-			case "iglesia":
-				relleno.setFill(Color.web("DE5D2D"));
+			case "fuego":
+				relleno.setFill(Color.web("970a08"));
 				break;
-			case "ejercito":
-				relleno.setFill(Color.web("3085F1"));
+			case "aire":
+				relleno.setFill(Color.web("3294ae"));
 				break;
 		}
 	}
@@ -74,14 +77,14 @@ public class Barra {
             new KeyFrame(Duration.seconds(1.0 / fps), e -> {
             	//incremento
                 if (relleno.getHeight() < nuevaAltura && totalCambio > 0) {
-                	double nuevaAlturaBarra = Math.min(relleno.getHeight() + cambioPorFrame, nuevaAltura);
+                	double alturaRelativa = nuevaAltura * 0.001 * screenSize.getHeight();
+                	double nuevaAlturaBarra = Math.min(relleno.getHeight() + cambioPorFrame, alturaRelativa);
                     double nuevaYBarra = relleno.getY() - (nuevaAlturaBarra - relleno.getHeight()); // Ajustar la posición Y
                     relleno.setHeight(nuevaAlturaBarra);
                     relleno.setY(nuevaYBarra);
                 }
                 //decremento
                 if (relleno.getHeight() > nuevaAltura && totalCambio < 0) {
-                	System.out.println(relleno.getHeight());
                 	double nuevaAlturaBarra = Math.max(relleno.getHeight() + cambioPorFrame, nuevaAltura);
                     double nuevaYBarra = relleno.getY() + (relleno.getHeight() - nuevaAlturaBarra); // Ajustar la posición Y
                     relleno.setHeight(nuevaAlturaBarra);
@@ -92,6 +95,4 @@ public class Barra {
         timeline.setCycleCount((int) (duration.toMillis() / 1000 * fps));
         timeline.play();
 	}
-	
-
 }

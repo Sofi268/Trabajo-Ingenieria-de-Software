@@ -1,8 +1,6 @@
 package Juego;
 
-
 import java.util.HashMap;
-
 import Cartas.Carta;
 import Cartas.Opcion;
 import Estadisticas.Estadistica.NivelExcedidoException;
@@ -17,6 +15,7 @@ import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -24,32 +23,32 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
 public class Juego extends Application{
 	
-	private int muertes;
 	private Historia historia;
 	private Personaje personaje;
 	private Carta cartaActual;
-	ConjuntoBarras barrasEstadisticas;
+	private ConjuntoBarras barrasEstadisticas;
 	private Group root;
 	private Scene escena;
 	private Canvas lienzo;
     private Pane interfazCartaPane = new Pane();
     private Pane interfazEstadisticasPane = new Pane();
 	private GraphicsContext graficos;
-	Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+	private Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 	
 	
 	
@@ -65,7 +64,6 @@ public class Juego extends Application{
 	public void start(Stage ventana) throws Exception {
 		
 		// Inicializa atributos
-		muertes = 0;
 		historia = new Historia();
 		personaje = null;
 		
@@ -84,20 +82,17 @@ public class Juego extends Application{
 	
 	private void comenzarJuego(){
 	    personaje = new Personaje();
-	    barrasEstadisticas = new ConjuntoBarras(50); // barras al 50%
-	    historia.llenarCartas(); // Debes pasar el objeto personaje al método llenarCartas().
+	    barrasEstadisticas = new ConjuntoBarras(screenSize.getHeight()*0.05); // barras al 50%
+	    historia.llenarCartas(); 
 	    generarVistaEstadisticas(interfazEstadisticasPane);
 	    continuarJugando();
-	    
 	}
 
 	private void continuarJugando() {
 	    int anioActual = historia.getAnioActual();
-	    int anioLimite = 200 + muertes * 5;
-	    if(historia.getCartaActual(muertes) != null && anioActual < anioLimite) {
-	    	
-	        historia.jugarCarta(muertes); 
-	        cartaActual = historia.getCartaActual(muertes); 
+	    int anioLimite = 200;
+	    if(historia.getCartaActual() != null && anioActual < anioLimite) {
+	        cartaActual = historia.jugarCarta();
 	        interfazCartaPane.getChildren().clear();
 	        interfazCarta();
 	    }
@@ -105,11 +100,12 @@ public class Juego extends Application{
 
 
 	private void morir() {
-		historia.aumentarAnio(5);
+		historia.aumentarAnio(15);
 		personaje = null;
 	    personaje = new Personaje(); 
 	    barrasEstadisticas.resetBarras();
-	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.19); // reubica Y de barras 
+	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.03); // reubica Y de barras 
+	    historia.aumentarIndiceCartaActual();
 	    continuarJugando();
 	}
 	
@@ -122,7 +118,6 @@ public class Juego extends Application{
 	    graficos = lienzo.getGraphicsContext2D();
 	    root.getChildren().add(interfazCartaPane);
 	    root.getChildren().add(interfazEstadisticasPane);
-
 	}
 
 	public void verAnios() {
@@ -165,7 +160,7 @@ public class Juego extends Application{
 	    double anchoRectangulos = anchoRectanguloCentral;
 	    
 	    // Crea el rectángulo oscuro en la parte superior
-	    double altoRectanguloSuperior = altoPantalla * 0.15; // Establece un 15% del alto de la pantalla
+	    double altoRectanguloSuperior = altoPantalla * 0.20; // Establece un 20% del alto de la pantalla
 	    double xSuperior = (anchoPantalla - anchoRectangulos) / 2; // Centra el rectángulo
 	    double ySuperior = 0; // Comienza desde el borde superior de la pantalla
 	    
@@ -228,61 +223,62 @@ public class Juego extends Application{
 	public void generarVistaEstadisticas(Pane pane) {
 		//barras de estadisticas
 		barrasEstadisticas.setBarrasLayoutX(screenSize.getWidth() * 0.40, screenSize.getWidth());
-		barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.19);
+		barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.03);
 		
-		pane.getChildren().add(barrasEstadisticas.getBarraOro().getBorde());
-		pane.getChildren().add(barrasEstadisticas.getBarraOro().getRelleno());
-		pane.getChildren().add(barrasEstadisticas.getBarraPueblo().getBorde());
-		pane.getChildren().add(barrasEstadisticas.getBarraPueblo().getRelleno());
-		pane.getChildren().add(barrasEstadisticas.getBarraIglesia().getBorde());
-		pane.getChildren().add(barrasEstadisticas.getBarraIglesia().getRelleno());
-		pane.getChildren().add(barrasEstadisticas.getBarraEjercito().getBorde());
-		pane.getChildren().add(barrasEstadisticas.getBarraEjercito().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraTierra().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraTierra().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraAgua().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraAgua().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraFuego().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraFuego().getRelleno());
+		pane.getChildren().add(barrasEstadisticas.getBarraAire().getBorde());
+		pane.getChildren().add(barrasEstadisticas.getBarraAire().getRelleno());
 		
 		//Iconos de estadisticas
-		Icono iconoOro = new Icono("/Iconos/oro.png", 35, 35);
-		iconoOro.setX(screenSize.getWidth() * 0.40);
-        iconoOro.setY(screenSize.getHeight() * 0.295 );
+		Icono iconoTierra = new Icono("/Iconos/tierra.png", screenSize.getWidth() * 0.025, screenSize.getWidth() * 0.025);
+		iconoTierra.setX(screenSize.getWidth() * 0.40);
+        iconoTierra.setY(screenSize.getHeight() * 0.14 );
         
-        Icono iconoPueblo = new Icono("/Iconos/pueblo.png", 35, 35);
-		iconoPueblo.setX(screenSize.getWidth() * 0.46);
-        iconoPueblo.setY(screenSize.getHeight() * 0.295 );
+        Icono iconoAgua = new Icono("/Iconos/agua.png", screenSize.getWidth() * 0.025, screenSize.getWidth() * 0.025);
+		iconoAgua.setX(screenSize.getWidth() * 0.46);
+        iconoAgua.setY(screenSize.getHeight() * 0.14 );
         
-        Icono iconoIglesia = new Icono("/Iconos/iglesia.png", 35, 35);
-		iconoIglesia.setX(screenSize.getWidth() * 0.52);
-        iconoIglesia.setY(screenSize.getHeight() * 0.295 );
+        Icono iconoFuego = new Icono("/Iconos/fuego.png", screenSize.getWidth() * 0.025, screenSize.getWidth() * 0.025);
+		iconoFuego.setX(screenSize.getWidth() * 0.52);
+        iconoFuego.setY(screenSize.getHeight() * 0.14 );
         
-        Icono iconoEjercito = new Icono("/Iconos/ejercito.png", 35, 35);
-		iconoEjercito.setX(screenSize.getWidth() * 0.58);
-        iconoEjercito.setY(screenSize.getHeight() * 0.295 ); 
+        Icono iconoAire = new Icono("/Iconos/aire.png", screenSize.getWidth() * 0.025, screenSize.getWidth() * 0.025);
+		iconoAire.setX(screenSize.getWidth() * 0.58);
+        iconoAire.setY(screenSize.getHeight() * 0.14 ); 
         
-		pane.getChildren().add(iconoOro.getImageView());
-		pane.getChildren().add(iconoPueblo.getImageView());
-		pane.getChildren().add(iconoIglesia.getImageView());
-		pane.getChildren().add(iconoEjercito.getImageView());
+		pane.getChildren().add(iconoTierra.getImageView());
+		pane.getChildren().add(iconoAgua.getImageView());
+		pane.getChildren().add(iconoFuego.getImageView());
+		pane.getChildren().add(iconoAire.getImageView());
 	}
 	
 	public void actualizarEstadisticas() {
 		//hashmap con niveles actuales de estadisticas
 		HashMap<String, Integer> niveles = personaje.getNiveles();
 		barrasEstadisticas.nuevasAlturas(
-				niveles.get("oro"),
-				niveles.get("pueblo"),
-				niveles.get("iglesia"),
-				niveles.get("ejercito"));
+				niveles.get("tierra"),
+				niveles.get("agua"),
+				niveles.get("fuego"),
+				niveles.get("aire"));
 		System.out.println("--Actualizacion de estadisticas--");
 	}
 
 	private void elegirOpcion(Opcion opcion) {
 	    try {
-	        if (opcion.equals(historia.getCartaActual(muertes).getOpciones()[0])) {
-	            historia.elegirOpcionDeCarta(muertes, "A", personaje);
-	        } else if (opcion.equals(historia.getCartaActual(muertes).getOpciones()[1])) {
-	            historia.elegirOpcionDeCarta(muertes, "B", personaje);
+	        if (opcion.equals(historia.getCartaActual().getOpciones()[0])) {
+	            historia.elegirOpcionDeCarta("A", personaje);
+	        } else if (opcion.equals(historia.getCartaActual().getOpciones()[1])) {
+	            historia.elegirOpcionDeCarta("B", personaje);
 	        }
-	        historia.aumentarAnio(1); // Incrementar el año de la historia
-	        personaje.aumentarAnios();
+	        historia.aumentarAnio(historia.getCartaActual().getAnios()); // Incrementar el año de la historia
+	        personaje.aumentarAnios(historia.getCartaActual().getAnios());
 	        actualizarEstadisticas();
+	        historia.aumentarIndiceCartaActual();
 	        continuarJugando();
 	        
 	    } catch (NivelExcedidoException | NivelInvalidoException e) {
@@ -442,13 +438,50 @@ public class Juego extends Application{
 	    
 	    texto.translateXProperty().bind(cuadrado.translateXProperty());
 	    texto.translateYProperty().bind(cuadrado.translateYProperty().subtract(ladoCuadrado * 0.1));
+	    
+	    
+	    // Texto descripcion carta
+	    TextFlow textoDescripcion = new TextFlow();
+	    textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Centra el texto horizontalmente
 
-	    // Agregar los elementos de la interfaz de la carta al Pane
+	    // Crea un Text con el contenido
+	    Text text = new Text(cartaActual.getDescripcion());
+	    text.setFont(Font.font("Rockwell", FontWeight.NORMAL, altoPantalla * 0.028));
+	    text.setFill(Color.WHITE);
+	    textoDescripcion.getChildren().add(text);
+
+	    // Calcula el número de lineas de texto basado en el tamaño del contenedor
+	    int numLineas = (int) Math.ceil(textoDescripcion.prefWidth(-1) / (anchoPantalla * 0.32));
+
+	    // Calcula la posición del texto
+	    double xDescripcion = (anchoPantalla - (anchoPantalla * 0.32)) / 2; // Centra horizontalmente el texto
+
+	    // Ajusta la posición vertical inicial dependiendo del número de líneas
+	    double yDescripcion = (altoPantalla * 0.52 - (numLineas * altoPantalla * 0.028)) / 2;
+
+	    textoDescripcion.setPrefWidth(anchoPantalla * 0.32); // Establece que como máximo el ancho sea del 32%
+	    textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Centra el texto horizontalmente
+	    textoDescripcion.setLayoutX(xDescripcion);
+	    textoDescripcion.setLayoutY(yDescripcion);
+
+        
+        // Texto nombre personaje en carta carta
+	    Text textoNombrePersonaje = new Text(cartaActual.getNombre());
+	    textoNombrePersonaje.setFont(Font.font("Rockwell", altoPantalla * 0.028));
+	    textoNombrePersonaje.setFill(Color.WHITE);
+	    double xPersonaje = (anchoPantalla - textoNombrePersonaje.getBoundsInLocal().getWidth()) / 2;
+        double yPersonaje = altoPantalla * 0.86; 
+        textoNombrePersonaje.setX(xPersonaje);
+        textoNombrePersonaje.setY(yPersonaje);
+        textoNombrePersonaje.setTextAlignment(TextAlignment.CENTER);
+        
+	    // Agrega los elementos de la interfaz de la carta al Pane
 	    interfazCartaPane.getChildren().add(cuadradoFondo);
 	    interfazCartaPane.getChildren().add(cuadrado);
 	    interfazCartaPane.getChildren().add(cuadradoAtras);
 	    interfazCartaPane.getChildren().add(texto);
-
+	    interfazCartaPane.getChildren().add(textoNombrePersonaje);
+	    interfazCartaPane.getChildren().add(textoDescripcion);
 	    verAnios();
 	}
 

@@ -9,11 +9,14 @@ public class Carta extends Opcion{
 	private Opcion opcionA;
 	private Opcion opcionB;
 	private String descripcion;
-	
+	private String nombre;
+	private int anios;
+
 	public Carta() {
 		opcionA = new Opcion();
 		opcionB = new Opcion();
 		descripcion = null;
+		nombre = null;
 	}
 	
 	public void elegirOpcion(Personaje personaje, int[] opcionA, int[] opcionB, String opcion) throws NivelExcedidoException, NivelInvalidoException {
@@ -48,6 +51,22 @@ public class Carta extends Opcion{
 		return opciones;
 	}
 	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public int getAnios() {
+		return anios;
+	}
+
+	public void setAnios(int anios) {
+		this.anios = anios;
+	}
+
 	public void setOpcionA(Opcion opcionA) {
         this.opcionA = opcionA;
     }
