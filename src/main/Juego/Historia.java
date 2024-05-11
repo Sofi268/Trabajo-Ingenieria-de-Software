@@ -101,5 +101,9 @@ public class Historia {
 	    cartaActual.elegirOpcion(personaje, cartaActual.getOpciones()[0].getNiveles(), cartaActual.getOpciones()[1].getNiveles(), opcionElegida);
 	   
 	}
+
+	public Carta[] getCartas() {
+		return cartas;
+	}
 	
 }

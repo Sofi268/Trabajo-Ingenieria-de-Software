@@ -40,4 +40,21 @@ public class EstadisticasConjuntas extends Estadistica {
     	return estadisticasNiveles;
     }
     
+
+	public int getAgua() {
+		return agua.getNivelActual();
+	}
+
+	public int getAire() {
+		return aire.getNivelActual();
+	}
+
+	public int getTierra() {
+		return tierra.getNivelActual();
+	}
+
+	public int getFuego() {
+		return fuego.getNivelActual();
+	}
+
 }
