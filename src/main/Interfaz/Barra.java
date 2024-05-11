@@ -12,10 +12,6 @@ public class Barra {
 
 	private Rectangle borde;
 	private Rectangle relleno;
-<<<<<<< HEAD
-
-=======
->>>>>>> 40d74f911acff894192193a50a82db79c62c0946
 	private Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 	
 	public Barra(String estadistica, double inicio) {
@@ -39,10 +35,6 @@ public class Barra {
 				break;
 			case "aire":
 				relleno.setFill(Color.web("3294ae"));
-<<<<<<< HEAD
-=======
-
->>>>>>> 40d74f911acff894192193a50a82db79c62c0946
 				break;
 		}
 	}
