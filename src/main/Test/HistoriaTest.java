@@ -29,4 +29,22 @@ public class HistoriaTest {
         // test
         assertEquals(ANIOS_AUMENTO, historia.getAnioActual()); // Verifica que haya 5 anios de hstoria
     }
+	
+    @Test
+    public void testLlenarCartas() {
+    	
+    	Historia historia = new Historia();
+    	historia.llenarCartas();
+    	Carta cartas[] = historia.getCartas();
+    	Carta carta = cartas[3];
+    	int nivelesOpcionA[] = carta.getOpcionA().getNiveles();
+    	int nivelesOpcionB[] = carta.getOpcionB().getNiveles();
+    	
+    	int nivelesCorrectosOpA[] = {-5, 0, 15, 0};
+    	int nivelesCorrectosOpB[] = {10, 0, -5, 0};
+    	
+    	//test
+    	assertArrayEquals(nivelesOpcionA, nivelesCorrectosOpA);
+    	assertArrayEquals(nivelesOpcionB, nivelesCorrectosOpB);
+    }
 }
