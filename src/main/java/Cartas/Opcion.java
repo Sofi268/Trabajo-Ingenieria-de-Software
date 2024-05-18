@@ -11,7 +11,7 @@ public class Opcion {
 	
 	public Opcion() {
 		informacion = null;
-		niveles = null;
+		this.niveles = new int[4];
 	}
 	
 	public void modificarEstadisticas(Personaje personaje) throws NivelExcedidoException, NivelInvalidoException {
