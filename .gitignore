@@ -23,3 +23,6 @@ bin/
 build/
 /bin1/
 java/build/**
+
+# Maven
+target/
