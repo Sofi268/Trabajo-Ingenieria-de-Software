@@ -1,53 +1,79 @@
-
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import Cartas.Carta;
 import Juego.Historia;
 
+@ExtendWith(MockitoExtension.class)
 public class HistoriaTest {
+	
+	@Mock
+	private Historia historia;
+	private final int ANIO_INICIAL = 0;
+    private final int ANIO_FINAL = 200;
+    
+    @BeforeEach
+    void setup() {
+        historia = Mockito.spy(new Historia());
+    }
+
 	
 	 @Test
 	    public void testConstructor() {
-	        final int ANIO_INICIAL = 0;
-	        final int ANIO_FINAL = 200;
-	        Historia historia = new Historia();
-	        
-	        // test
-	        assertEquals(ANIO_INICIAL, historia.getAnioActual()); // Verifica que el año actual se haya inicializado correctamente
-	        assertEquals(ANIO_FINAL, historia.getCartas().length*10); // Verifica que el arreglo de cartas sea igual a los anios
+		 	// Establece los niveles esperados como el anio inicial y final
+		 	int expected_inicial = ANIO_INICIAL;
+		 	int expected_final = ANIO_FINAL;
+		 	
+		 	// Establece los valores resultantes 
+		 	int result_incial = historia.getAnioActual();
+		 	int result_final = historia.getCartas().length*10;
+		 	
+	        Assertions.assertEquals(expected_inicial, result_incial); // Verifica que el año actual se haya inicializado correctamente
+	        Assertions.assertEquals(expected_final, result_final); // Verifica que el arreglo de cartas sea igual a los anios
 	    }
 
     @Test
     public void testAumentarAnio() {
-        // crea una historia y define que los anios aumenten 5
-        Historia historia = new Historia();
-        final int ANIOS_AUMENTO = 5;
-        historia.aumentarAnio(ANIOS_AUMENTO);// aumenta 5 anios
+        // Crea una historia y define que los anios aumenten 5
+    	final int ANIOS_AUMENTO = 5;
+    	
+    	// Define el valor esperado como los anios que aumentan
+    	int expected = ANIOS_AUMENTO;
         
-        // test
-        assertEquals(ANIOS_AUMENTO, historia.getAnioActual()); // Verifica que haya 5 anios de hstoria
+    	// Aumenta 5 anios
+        historia.aumentarAnio(ANIOS_AUMENTO);
+        
+        // Establece el valor resultante como el que tiene la historia en ese momento
+        int result = historia.getAnioActual();
+        
+        Assertions.assertEquals(expected, result); // Verifica que haya 5 anios de historia
     }
     
     @Test
     public void testLlenarCartas() {
-    	
-    	Historia historia = new Historia();
+    	// Llama al metodo llenar cartas de historia
     	historia.llenarCartas();
+    	
+    	// Obtiene la carta 4 de historia
     	Carta cartas[] = historia.getCartas();
     	Carta carta = cartas[3];
-    	int nivelesOpcionA[] = carta.getOpcionA().getNiveles();
-    	int nivelesOpcionB[] = carta.getOpcionB().getNiveles();
     	
-    	int nivelesCorrectosOpA[] = {-5, 0, 15, 0};
-    	int nivelesCorrectosOpB[] = {10, 0, -5, 0};
+    	// Establece los niveles esperados
+    	int expected_nivelesOpcionA[] = {-5, 0, 15, 0};
+    	int expected_nivelesOpcionB[] = {10, 0, -5, 0};
     	
-    	//test
-    	assertArrayEquals(nivelesOpcionA, nivelesCorrectosOpA);
-    	assertArrayEquals(nivelesOpcionB, nivelesCorrectosOpB);
+    	// Establece los resultantes como los obtenidos de las opciones
+    	int result_nivelesOpcionA[] = carta.getOpcionA().getNiveles();
+    	int result_nivelesOpcionB[] = carta.getOpcionB().getNiveles();
+    	
+    	// Verifica que los niveles esperados coincidan con los resultantes
+    	Assertions.assertArrayEquals(expected_nivelesOpcionA, result_nivelesOpcionA);
+    	Assertions.assertArrayEquals(expected_nivelesOpcionB, result_nivelesOpcionB);
     	
     }
 }
