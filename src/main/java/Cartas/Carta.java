@@ -1,5 +1,7 @@
 package Cartas;
 
+import javafx.scene.image.Image;
+
 import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
 import Juego.Personaje;
@@ -11,12 +13,14 @@ public class Carta extends Opcion{
 	private String descripcion;
 	private String nombre;
 	private int anios;
+	private Image fondo;
 
 	public Carta() {
 		opcionA = new Opcion();
 		opcionB = new Opcion();
 		descripcion = null;
 		nombre = null;
+		fondo = null;
 	}
 	
 	public void elegirOpcion(Personaje personaje, int[] opcionA, int[] opcionB, String opcion) throws NivelExcedidoException, NivelInvalidoException {
@@ -54,7 +58,15 @@ public class Carta extends Opcion{
 	public String getNombre() {
 		return nombre;
 	}
-
+	
+	public Image getFondo() {
+		return fondo;
+	}
+	
+	public void setFondoCarta(Image imagenFondo) {
+		fondo = imagenFondo;
+	}
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
