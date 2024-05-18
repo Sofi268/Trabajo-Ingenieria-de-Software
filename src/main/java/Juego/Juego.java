@@ -104,7 +104,6 @@ public class Juego extends Application{
 	}
 
 	private void continuarJugando() {
-		System.out.println("muertes totales: "+ muertesTotales);
 	    int anioActual = historia.getAnioActual();
 	    int anioLimite = 200;
 	    actualizarFondo();
@@ -159,27 +158,21 @@ public class Juego extends Application{
 	
 	private void actualizarFondo() {
 		int aux = muertesTotales % 4;
-		System.out.println("aux: " + aux);
 		switch(aux) {
 		case 0:
 			setFondoStrategy(fondoAire);
-			System.out.println("Fondo Aire");
 			break;
 		case 1:
 			setFondoStrategy(fondoAgua);
-			System.out.println("Fondo Agua");
 			break;
 		case 2:
 			setFondoStrategy(fondoTierra);
-			System.out.println("Fondo Tierra");
 			break;
 		case 3:
 			setFondoStrategy(fondoFuego);
-			System.out.println("Fondo Fuego");
 			break;
 		default:
 			setFondoStrategy(fondoAire);
-			System.out.println("Default");
 			break;
 		}
 	}
