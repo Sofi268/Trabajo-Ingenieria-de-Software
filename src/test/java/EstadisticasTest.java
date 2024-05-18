@@ -1,3 +1,4 @@
+package Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -19,17 +20,29 @@ public class EstadisticasTest {
     }
 	
     @Test
-    public void testAjustarNivel() throws NivelExcedidoException, NivelInvalidoException {
+    public void testAjustarNivel1() throws NivelExcedidoException, NivelInvalidoException {
         Estadistica estadistica = new Estadistica();
         
         // Prueba Ajustar la estadistica en un rango normal
         estadistica.ajustarNivel(10);
-        assertEquals(60, estadistica.getNivelActual());
+        assertEquals(60, estadistica.getNivelActual()); 
+    }
+    
+    @Test
+    public void testAjustarNivel2() throws NivelExcedidoException, NivelInvalidoException {
+        Estadistica estadistica = new Estadistica();
         
         // Prueba Exceder el nivel permitido
-        assertThrows(NivelExcedidoException.class, () -> estadistica.ajustarNivel(150));
+        assertThrows(NivelExcedidoException.class, () -> estadistica.ajustarNivel(150)); 
+    }
+    
+    @Test
+    public void testAjustarNivel3() throws NivelExcedidoException, NivelInvalidoException {
+        Estadistica estadistica = new Estadistica();
         
         // Prueba Colocar una estadistica mas abajo de lo permitido
         assertThrows(NivelInvalidoException.class, () -> estadistica.ajustarNivel(-70));
     }
+    
+    
 }
