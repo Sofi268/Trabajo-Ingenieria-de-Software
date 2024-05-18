@@ -20,14 +20,13 @@ public class Estadistica {
     }
 
     public void ajustarNivel(int cantidad) throws NivelExcedidoException, NivelInvalidoException {
-        int nuevoNivel = nivelActual + cantidad;
-        if (nuevoNivel > NIVEL_MAXIMO) {
+        nivelActual += cantidad;
+        if (nivelActual > NIVEL_MAXIMO) {
             throw new NivelExcedidoException();
         }
-        if (nuevoNivel < NIVEL_MINIMO) {
+        if (nivelActual < NIVEL_MINIMO) {
             throw new NivelInvalidoException();
         }
-        nivelActual = nuevoNivel;
     }
     
     public class NivelExcedidoException extends Exception {
