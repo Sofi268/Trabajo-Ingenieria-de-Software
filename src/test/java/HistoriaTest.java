@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -24,6 +25,7 @@ public class HistoriaTest {
 
 	
 	 @Test
+	 @DisplayName("DADA una instancia de Historia, ENTONCES su constructor inicializa los años en 5 y las cartas")
 	    public void testConstructor() {
 		 	// Establece los niveles esperados como el anio inicial y final
 		 	int expected_inicial = ANIO_INICIAL;
@@ -38,7 +40,9 @@ public class HistoriaTest {
 	    }
 
     @Test
+    @DisplayName("DADO una instancia de Historia, CUANDO se aumentan los años, ENTONCES el año actual se incrementa correctamente")
     public void testAumentarAnio() {
+    	
         // Crea una historia y define que los anios aumenten 5
     	final int ANIOS_AUMENTO = 5;
     	
@@ -55,6 +59,7 @@ public class HistoriaTest {
     }
     
     @Test
+    @DisplayName("DADO que se tiene una instancia de Historia, CUANDO se llenan las cartas, ENTONCES las cartas se completan correctamente con los datos del JSON")
     public void testLlenarCartas() {
     	// Llama al metodo llenar cartas de historia
     	historia.llenarCartas();
