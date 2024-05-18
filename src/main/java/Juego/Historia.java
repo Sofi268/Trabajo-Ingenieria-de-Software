@@ -1,15 +1,17 @@
 package Juego;
 
+import java.io.FileReader;
+import java.io.InputStream;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import Cartas.Carta;
 import Cartas.Opcion;
 import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
 import javafx.scene.image.Image;
-
-import com.google.gson.*;
-import com.google.gson.JsonObject;
-
-import java.io.FileReader;
 
 
 public class Historia {
@@ -32,15 +34,20 @@ public class Historia {
         	JsonArray jsonArray = gson.fromJson(reader, JsonArray.class); //array con datos del json
         	 for (int i = 0; i < jsonArray.size()-1; i++) {
         		 JsonObject jsonObject = jsonArray.get(i).getAsJsonObject(); //obj con datos de la carta
-        		 //obtengo nombre, descripción y anios de la carta
+        		 
+        		 // Obtiene nombre, descripción y anios de la carta
                  String nombre = jsonObject.get("nombre").getAsString();
                  String descripcion = jsonObject.get("descripcion").getAsString();
                  int anios = jsonObject.get("anios").getAsInt();
                  String rutaImagen = jsonObject.get("imagen").getAsString();
-                 Image fondo = new Image(rutaImagen);
+                 InputStream inputStream = getClass().getResourceAsStream(rutaImagen);
+                 if (inputStream == null) {
+                     throw new IllegalArgumentException("Recurso no encontrado: " + rutaImagen);
+                 }
+                 Image fondo = new Image(inputStream);
                
                  JsonObject opcionAJson = jsonObject.getAsJsonObject("opcionA");//obj con datos de opcion A
-                 //obtengo datos(descripcion y niveles) de opcion A
+                 // Obtiene(descripcion y niveles) de opcion A
                  String descripcionOpcionA = opcionAJson.get("descripcion").getAsString();
                  int tierraOpcionA = opcionAJson.get("tierra").getAsInt();
                  int aguaOpcionA = opcionAJson.get("agua").getAsInt();
@@ -48,28 +55,28 @@ public class Historia {
                  int aireOpcionA = opcionAJson.get("aire").getAsInt();
 
                  JsonObject opcionBJson = jsonObject.getAsJsonObject("opcionB");//obj con datos de opcion B
-                 //obtengo datos(descripcion y niveles) de opcion B
+                 // Obtiene datos(descripcion y niveles) de opcion B
                  String descripcionOpcionB = opcionBJson.get("descripcion").getAsString();
                  int tierraOpcionB = opcionBJson.get("tierra").getAsInt();
                  int aguaOpcionB = opcionBJson.get("agua").getAsInt();
                  int fuegoOpcionB = opcionBJson.get("fuego").getAsInt();
                  int aireOpcionB = opcionBJson.get("aire").getAsInt();
                  
-                 // Crear una nueva instancia de Carta y asignarla al arreglo en la posición i
+                 // Crea una nueva instancia de Carta y la asina al arreglo en la posición i
                  cartas[i] = new Carta();
-                 // Establecer la descripción y nombre del personaje de la carta
+                 // Establece la descripción y nombre del personaje de la carta
                  cartas[i].setDescripcion(descripcion);
                  cartas[i].setNombre(nombre);
                  cartas[i].setAnios(anios);
                  cartas[i].setFondoCarta(fondo);
-                 // Crear las opciones A y B
+                 // Crea las opciones A y B
                  Opcion opcionA = new Opcion();
                  opcionA.setInformacion(descripcionOpcionA);
                  opcionA.setNiveles(new int[]{tierraOpcionA, aguaOpcionA, fuegoOpcionA, aireOpcionA});
                  Opcion opcionB = new Opcion();
                  opcionB.setInformacion(descripcionOpcionB);
                  opcionB.setNiveles(new int[]{tierraOpcionB, aguaOpcionB, fuegoOpcionB, aireOpcionB});
-                 // Asignar las opciones a la carta en la posición i
+                 // Asigna las opciones a la carta en la posición i
      	         cartas[i].setOpcionA(opcionA);
      	         cartas[i].setOpcionB(opcionB);
              }

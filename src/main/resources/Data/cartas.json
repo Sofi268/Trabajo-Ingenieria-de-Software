@@ -62,7 +62,7 @@
     {
         "nombre": "Carta Decision 1",
         "descripcion": "Unos soldados de la nación del fuego están atacando a aldeanos indefensos.",
-        "imagen":"/Personajes/maestro_tierra_nornal.png",
+        "imagen":"/Personajes/maestro_tierra_normal.png",
         "anios":10,
         "opcionA": {
             "descripcion": "No revelar tu identidad y esconderte",
