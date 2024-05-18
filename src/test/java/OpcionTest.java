@@ -35,10 +35,10 @@ public class OpcionTest {
         opcion.setNiveles(niveles);
 
         // obtiene los niveles iniciales de estadisticas
-        int aguaInicial = estadisticas.getAgua();
-        int aireInicial = estadisticas.getAire();
-        int fuegoInicial = estadisticas.getFuego();
-        int tierraInicial = estadisticas.getTierra();
+        int ejercitoActual = estadisticas.getEjercito();
+        int iglesiaActual = estadisticas.getIglesia();
+        int oroActual = estadisticas.getOro();
+        int puebloActual = estadisticas.getPueblo();
 
         // intenta modificar las estadisticas
         try {
@@ -46,12 +46,17 @@ public class OpcionTest {
         } catch (NivelExcedidoException | NivelInvalidoException e) {
             fail("Excepción: " + e.getMessage());
         }
+        
+        ejercitoActual += niveles[0];
+        iglesiaActual += niveles[1];
+        oroActual += niveles[2];
+        puebloActual += niveles[3];
 
         // test
-        assertEquals(aguaInicial + niveles[0], estadisticas.getAgua()); // verifica que los niveles modificados coincidan con los teoricos
-        assertEquals(aireInicial + niveles[1], estadisticas.getAire());
-        assertEquals(fuegoInicial + niveles[2], estadisticas.getFuego());
-        assertEquals(tierraInicial + niveles[3], estadisticas.getTierra());
+        assertEquals(ejercitoActual, estadisticas.getEjercito()); // verifica que los niveles modificados coincidan con los teoricos
+        assertEquals(iglesiaActual, estadisticas.getIglesia());
+        assertEquals(oroActual, estadisticas.getOro());
+        assertEquals(puebloActual, estadisticas.getPueblo());
     }
 
 }
