@@ -4,8 +4,11 @@ import Cartas.Carta;
 import Cartas.Opcion;
 import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
+import javafx.scene.image.Image;
+
 import com.google.gson.*;
 import com.google.gson.JsonObject;
+
 import java.io.FileReader;
 
 
@@ -33,6 +36,8 @@ public class Historia {
                  String nombre = jsonObject.get("nombre").getAsString();
                  String descripcion = jsonObject.get("descripcion").getAsString();
                  int anios = jsonObject.get("anios").getAsInt();
+                 String rutaImagen = jsonObject.get("imagen").getAsString();
+                 Image fondo = new Image(rutaImagen);
                
                  JsonObject opcionAJson = jsonObject.getAsJsonObject("opcionA");//obj con datos de opcion A
                  //obtengo datos(descripcion y niveles) de opcion A
@@ -56,6 +61,7 @@ public class Historia {
                  cartas[i].setDescripcion(descripcion);
                  cartas[i].setNombre(nombre);
                  cartas[i].setAnios(anios);
+                 cartas[i].setFondoCarta(fondo);
                  // Crear las opciones A y B
                  Opcion opcionA = new Opcion();
                  opcionA.setInformacion(descripcionOpcionA);
