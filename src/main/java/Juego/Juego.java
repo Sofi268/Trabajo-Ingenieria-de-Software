@@ -7,6 +7,11 @@ import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
 import Interfaz.ConjuntoBarras;
 import Interfaz.Icono;
+import Strategy_Fondo.FondoAgua;
+import Strategy_Fondo.FondoAire;
+import Strategy_Fondo.FondoFuego;
+import Strategy_Fondo.FondoStrategy;
+import Strategy_Fondo.FondoTierra;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PauseTransition;
@@ -42,6 +47,11 @@ public class Juego extends Application{
 	private Personaje personaje;
 	private Carta cartaActual;
 	private ConjuntoBarras barrasEstadisticas;
+	private FondoStrategy fondoStrategy;
+	private FondoAire fondoAire;
+	private FondoAgua fondoAgua;
+	private FondoTierra fondoTierra;
+	private FondoFuego fondoFuego;
 	private Group root;
 	private Scene escena;
 	private Canvas lienzo;
@@ -50,9 +60,13 @@ public class Juego extends Application{
 	private GraphicsContext graficos;
 	private Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 	
-	
+	private int muertesTotales;
 	
 	public Juego(){
+		fondoAire = new FondoAire();
+        fondoAgua = new FondoAgua();
+        fondoTierra = new FondoTierra();
+        fondoFuego = new FondoFuego();
 		
 	}
 	
@@ -69,10 +83,7 @@ public class Juego extends Application{
 		
 		interfazPrincipal();
 		comenzarJuego();
-
-
-		fondoTierra();
-		fondoCartaTierra();
+		
 		ventana.setScene(escena);
 		ventana.setTitle("Avatar");
 		ventana.show();
@@ -81,16 +92,24 @@ public class Juego extends Application{
 	
 	
 	private void comenzarJuego(){
+		muertesTotales = 0;
 	    personaje = new Personaje();
 	    barrasEstadisticas = new ConjuntoBarras(screenSize.getHeight()*0.05); // barras al 50%
+	    actualizarFondo();
+	    fondo();
+        fondoCarta();
 	    historia.llenarCartas(); 
 	    generarVistaEstadisticas(interfazEstadisticasPane);
 	    continuarJugando();
 	}
 
 	private void continuarJugando() {
+		System.out.println("muertes totales: "+ muertesTotales);
 	    int anioActual = historia.getAnioActual();
 	    int anioLimite = 200;
+	    actualizarFondo();
+	    fondo();
+        fondoCarta();
 	    if(historia.getCartaActual() != null && anioActual < anioLimite) {
 	        cartaActual = historia.jugarCarta();
 	        interfazCartaPane.getChildren().clear();
@@ -101,6 +120,7 @@ public class Juego extends Application{
 
 	private void morir() {
 		historia.aumentarAnio(15);
+		muertesTotales++;
 		personaje = null;
 	    personaje = new Personaje(); 
 	    barrasEstadisticas.resetBarras();
@@ -125,62 +145,44 @@ public class Juego extends Application{
 	    verAniosPersonaje(interfazCartaPane);
 	}
 	
-	private void fondoTierra() {
-	    double anchoPantalla = screenSize.getWidth();
-	    double altoPantalla = screenSize.getHeight();
-	    
-	    Image imagen = new Image("/Fondos/tierra.png");
-	    
-	    double x = (anchoPantalla - imagen.getWidth()) / 2;
-	    double y = (altoPantalla - imagen.getHeight()) / 2;
-	    
-	    graficos.drawImage(imagen, x, y);
-	}
-
+	private void setFondoStrategy(FondoStrategy fondoStrategy) {
+        this.fondoStrategy = fondoStrategy;
+    }
 	
-	private void fondoCartaTierra() {
-	    // Configura el tamaño de la pantalla
-	    double anchoPantalla = screenSize.getWidth();
-	    double altoPantalla = screenSize.getHeight();
-	    
-	    // Crea el rectángulo central
-	    double anchoRectanguloCentral = anchoPantalla * 0.35; // Establece un ancho del 35%
-	    double altoRectanguloCentral = altoPantalla;          // Establece el alto igual al alto de la pantalla
-	    double xCentral = (anchoPantalla - anchoRectanguloCentral) / 2; // Centra el rectángulo
-	    double yCentral = 0; // Coloca el rectángulo donde inicia la pantalla
-	    
-	    // Color marrón en hexadecimal
-	    String colorHexCentral = "542f12"; 
-	    
-	    // Dibuja el rectángulo central en el lienzo
-	    graficos.setFill(Color.web(colorHexCentral));
-	    graficos.fillRect(xCentral, yCentral, anchoRectanguloCentral, altoRectanguloCentral);
-	    
-	    // Calcula el ancho de los rectángulos superior e inferior
-	    double anchoRectangulos = anchoRectanguloCentral;
-	    
-	    // Crea el rectángulo oscuro en la parte superior
-	    double altoRectanguloSuperior = altoPantalla * 0.20; // Establece un 20% del alto de la pantalla
-	    double xSuperior = (anchoPantalla - anchoRectangulos) / 2; // Centra el rectángulo
-	    double ySuperior = 0; // Comienza desde el borde superior de la pantalla
-	    
-	    // Color marrón oscuro en hexadecimal
-	    String colorHexSuperior = "48280f"; 
-	    
-	    // Dibuja el rectángulo superior en el lienzo
-	    graficos.setFill(Color.web(colorHexSuperior));
-	    graficos.fillRect(xSuperior, ySuperior, anchoRectangulos, altoRectanguloSuperior);
-	    
-	    // Crea el rectángulo oscuro en la parte inferior
-	    double altoRectanguloInferior = altoPantalla * 0.10; // Establece un 10% del alto de la pantalla
-	    double xInferior = (anchoPantalla - anchoRectangulos) / 2; // Centra el rectángulo
-	    double yInferior = altoPantalla - altoRectanguloInferior; // Comienza desde la parte inferior de la pantalla
-	    
-	    // Dibuja el rectángulo inferior en el lienzo
-	    graficos.setFill(Color.web(colorHexSuperior));
-	    graficos.fillRect(xInferior, yInferior, anchoRectangulos, altoRectanguloInferior);
+	private void fondo() {
+		fondoStrategy.dibujarFondo(graficos, screenSize);
 	}
-
+	
+	private void fondoCarta() {
+		fondoStrategy.dibujarFondoCarta(graficos, screenSize);
+	}
+	
+	private void actualizarFondo() {
+		int aux = muertesTotales % 4;
+		System.out.println("aux: " + aux);
+		switch(aux) {
+		case 0:
+			setFondoStrategy(fondoAire);
+			System.out.println("Fondo Aire");
+			break;
+		case 1:
+			setFondoStrategy(fondoAgua);
+			System.out.println("Fondo Agua");
+			break;
+		case 2:
+			setFondoStrategy(fondoTierra);
+			System.out.println("Fondo Tierra");
+			break;
+		case 3:
+			setFondoStrategy(fondoFuego);
+			System.out.println("Fondo Fuego");
+			break;
+		default:
+			setFondoStrategy(fondoAire);
+			System.out.println("Default");
+			break;
+		}
+	}
 
 	private void verAniosHistoria(Pane pane) {
         // Obtiene el año actual desde la instancia de Historia

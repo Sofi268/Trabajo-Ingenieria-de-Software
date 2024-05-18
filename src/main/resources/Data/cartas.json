@@ -68,7 +68,7 @@
             "descripcion": "No revelar tu identidad y esconderte",
             "tierra": -5,
             "agua": 0,
-            "fuego": 15,
+            "fuego": 30,
             "aire": 0
         },
         "opcionB": {
@@ -95,7 +95,7 @@
             "descripcion": "Dejar que la Tribu del norte se defienda por si sola",
             "tierra": 0,
             "agua": -10,
-            "fuego": 15,
+            "fuego": 30,
             "aire": 0
         }
     },
@@ -115,7 +115,7 @@
             "descripcion": "Hacer duelo por ellos y comenzar a sanar",
             "tierra": 10,
             "agua": 10,
-            "fuego": 10,
+            "fuego":30,
             "aire": 10
         }
     },
@@ -135,7 +135,7 @@
             "descripcion": "Deciden esperar a lidiar con esa situación más adelante",
             "tierra": 0,
             "agua": 10,
-            "fuego": 20,
+            "fuego": 30,
             "aire": 0
         }
     },
@@ -148,7 +148,7 @@
             "descripcion": "Seguir buscandolo sin importar que o cual sea el costo",
             "tierra": -5,
             "agua": -5,
-            "fuego": -5,
+            "fuego": 30,
             "aire": 10
         },
         "opcionB": {
@@ -175,7 +175,7 @@
             "descripcion": "Deciden esperar a lidiar con esa situación más adelante",
             "tierra": 0,
             "agua": 10,
-            "fuego": 20,
+            "fuego": 30,
             "aire": 0
         }
     },
@@ -195,7 +195,7 @@
             "descripcion": "Deciden que no se puede confiar en el y lo echan",
             "tierra": -5,
             "agua": -5,
-            "fuego": 20,
+            "fuego": 30,
             "aire": -5
         }
     },
@@ -215,7 +215,7 @@
             "descripcion": "Eliges ignorar a Iroh porque piensas que Zuko se lo merece",
             "tierra": -10,
             "agua": -10,
-            "fuego": 20,
+            "fuego": 30,
             "aire": -10
         }
     },
@@ -235,7 +235,7 @@
             "descripcion": "Deciden mejor esperar, seguir entrenando y planificar con más de tiempo el ataque",
             "tierra": -5,
             "agua":-5,
-            "fuego": 10,
+            "fuego": 30,
             "aire": -5
         }
     },
@@ -255,7 +255,7 @@
             "descripcion": "Eligen seguir su camino a la ciudad sin detenerse",
             "tierra": -10,
             "agua": -10,
-            "fuego": 20,
+            "fuego": 30,
             "aire": -10
         }
     },
@@ -288,7 +288,7 @@
             "descripcion": "Abandonas todo por ir a salvarla",
             "tierra": -5,
             "agua": 10,
-            "fuego": 5,
+            "fuego": 30,
             "aire": 10
         },
         "opcionB": {

@@ -1,17 +1,19 @@
 package Juego;
 
+import java.io.FileReader;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import Cartas.Carta;
 import Cartas.Opcion;
 import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
-import com.google.gson.*;
-import com.google.gson.JsonObject;
-import java.io.FileReader;
 
 
 public class Historia {
 	private static final int ANIO_INICIAL = 0;
-	private static final int ANIO_FINAL = 200; 
 
 	private int anioActual;
 	private int indiceCartaActual = 0;
