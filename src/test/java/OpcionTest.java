@@ -48,10 +48,10 @@ public class OpcionTest {
         }
 
         // test
-        assertEquals(aguaInicial + niveles[0], estadisticas.getAgua()); // verifica que los niveles modificados coincidan con los teoricos
-        assertEquals(aireInicial + niveles[1], estadisticas.getAire());
+        assertEquals(tierraInicial + niveles[0], estadisticas.getTierra()); // verifica que los niveles modificados coincidan con los teoricos
+        assertEquals(aguaInicial + niveles[1], estadisticas.getAgua());
         assertEquals(fuegoInicial + niveles[2], estadisticas.getFuego());
-        assertEquals(tierraInicial + niveles[3], estadisticas.getTierra());
+        assertEquals(aireInicial + niveles[3], estadisticas.getAire());
     }
 
 }
