@@ -22,7 +22,7 @@ public class EstadisticasTest {
     @Test
     public void testAjustarNivel1() throws NivelExcedidoException, NivelInvalidoException {
         Estadistica estadistica = new Estadistica();
-        
+        estadistica.setNivelActual(50);
         // Prueba Ajustar la estadistica en un rango normal
         estadistica.ajustarNivel(10);
         assertEquals(60, estadistica.getNivelActual()); 
@@ -31,7 +31,7 @@ public class EstadisticasTest {
     @Test
     public void testAjustarNivel2() throws NivelExcedidoException, NivelInvalidoException {
         Estadistica estadistica = new Estadistica();
-        
+        estadistica.setNivelActual(50);
         // Prueba Exceder el nivel permitido
         assertThrows(NivelExcedidoException.class, () -> estadistica.ajustarNivel(150)); 
     }
@@ -39,7 +39,7 @@ public class EstadisticasTest {
     @Test
     public void testAjustarNivel3() throws NivelExcedidoException, NivelInvalidoException {
         Estadistica estadistica = new Estadistica();
-        
+        estadistica.setNivelActual(50);
         // Prueba Colocar una estadistica mas abajo de lo permitido
         assertThrows(NivelInvalidoException.class, () -> estadistica.ajustarNivel(-70));
     }
