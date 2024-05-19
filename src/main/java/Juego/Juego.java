@@ -492,8 +492,8 @@ public class Juego extends Application{
 
 	    });
 	    
-	    texto.translateXProperty().bind(cuadrado.translateXProperty());
-	    texto.translateYProperty().bind(cuadrado.translateYProperty().subtract(ladoCuadrado * 0.1));
+	    texto.translateXProperty().bind(grupoCarta.translateXProperty());
+	    texto.translateYProperty().bind(grupoCarta.translateYProperty().subtract(ladoCuadrado * 0.1));
 	    
 	    // Texto descripcion carta
 	    TextFlow textoDescripcion = new TextFlow();
