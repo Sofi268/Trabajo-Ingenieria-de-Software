@@ -2,7 +2,7 @@ package Estadisticas;
 
 import java.util.HashMap;
 
-public class EstadisticasConjuntas extends Estadistica {
+public class EstadisticasConjuntas {
     private Estadistica agua;
     private Estadistica aire;
     private Estadistica tierra;

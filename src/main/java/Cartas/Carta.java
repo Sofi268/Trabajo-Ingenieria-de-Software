@@ -6,7 +6,7 @@ import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
 import Juego.Personaje;
 
-public class Carta extends Opcion{
+public class Carta {
 	
 	private Opcion opcionA;
 	private Opcion opcionB;
