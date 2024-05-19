@@ -25,6 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -307,12 +308,35 @@ public class Juego extends Application{
 	    // Color del cuadrado en hexadecimal
 	    String colorHexCuadradoFondo = "CBAD49";
 	    String colorHexCuadrado = "B50204";
-
+	    
 	    // Dibuja el cuadrado de fondo
 	    Rectangle cuadradoFondo = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
-	    cuadradoFondo.setFill(Color.web(colorHexCuadradoFondo));
+
+	    // Importa la imagen del reverso
+	    Image dorso = new Image("/Fondos/dorsoCarta.png");
+
+	    // Crea un ImageView con la imagen del fondo y ajusta su tamanio al cuadrado
+	    ImageView imageViewFondo = new ImageView(dorso);
+	    imageViewFondo.setFitWidth(ladoCuadrado);
+	    imageViewFondo.setFitHeight(ladoCuadrado);
+
+	    // Define el relleno del cuadrado como la imagen
+	    cuadradoFondo.setFill(new ImagePattern(dorso));
+	    
+	    // Curva las esquinas
 	    cuadradoFondo.setArcWidth(radioEsquinas);
 	    cuadradoFondo.setArcHeight(radioEsquinas);
+	    
+	    // Crea un borde para el fondo
+	    double borde = anchoPantalla * 0.0015; // Tamanio del borde
+	    // Crea el cuadrado del borde 
+	    Rectangle bordeCarta = new Rectangle(xCuadrado - borde, yCuadrado - borde, ladoCuadrado + 2 * borde, ladoCuadrado + 2 * borde);
+	    bordeCarta.setFill(Color.web("786752"));
+	    bordeCarta.setArcWidth(radioEsquinas);
+	    bordeCarta.setArcHeight(radioEsquinas);
+	    
+	    // Crea un Group para agrupar el cuadrado de fondo y el borde dorado
+	    Group reversoCarta = new Group(bordeCarta, cuadradoFondo);
 
 	    // Dibuja el cuadrado de la carta
 	    Rectangle cuadrado = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
@@ -321,7 +345,7 @@ public class Juego extends Application{
 	    cuadrado.setArcHeight(radioEsquinas);
 
 	    Rectangle cuadradoAtras = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
-	    cuadradoAtras.setFill(Color.web("000000"));
+	    cuadradoAtras.setFill(new ImagePattern(dorso));
 	    cuadradoAtras.setArcWidth(radioEsquinas);
 	    cuadradoAtras.setArcHeight(radioEsquinas);
 	    
@@ -357,7 +381,7 @@ public class Juego extends Application{
 
 	    
 	    // Flip animación al inicio
-	    RotateTransition rotarDeAtrasHaciaAdelante = new RotateTransition(Duration.seconds(0.3), cuadradoAtras);
+	    RotateTransition rotarDeAtrasHaciaAdelante = new RotateTransition(Duration.seconds(0.15), cuadradoAtras);
 	    rotarDeAtrasHaciaAdelante.setAxis(Rotate.Y_AXIS);
 	    rotarDeAtrasHaciaAdelante.setFromAngle(0); // Gira desde la posición normal
 	    rotarDeAtrasHaciaAdelante.setToAngle(-90); // Gira hacia adelante
@@ -366,7 +390,7 @@ public class Juego extends Application{
 	    });
 	    
 
-	    RotateTransition rotarDeAdelanteHaciaAtras = new RotateTransition(Duration.seconds(0.3), grupoCarta);
+	    RotateTransition rotarDeAdelanteHaciaAtras = new RotateTransition(Duration.seconds(0.15), grupoCarta);
 	    rotarDeAdelanteHaciaAtras.setAxis(Rotate.Y_AXIS);
 	    rotarDeAdelanteHaciaAtras.setFromAngle(90); // Gira desde la posición invertida
 	    rotarDeAdelanteHaciaAtras.setToAngle(0); // Gira hacia atrás
@@ -375,9 +399,9 @@ public class Juego extends Application{
 	    });
 
 	    SequentialTransition flipAnimation = new SequentialTransition(
-	            new PauseTransition(Duration.seconds(0.3)),
-	            rotarDeAtrasHaciaAdelante,
-	            rotarDeAdelanteHaciaAtras
+	    	new PauseTransition(Duration.seconds(0.15)),
+	        rotarDeAtrasHaciaAdelante,
+	        rotarDeAdelanteHaciaAtras
 	    );
 	    flipAnimation.play();
 	    
@@ -467,8 +491,6 @@ public class Juego extends Application{
 	        }
 
 	    });
-
-
 	    
 	    texto.translateXProperty().bind(cuadrado.translateXProperty());
 	    texto.translateYProperty().bind(cuadrado.translateYProperty().subtract(ladoCuadrado * 0.1));
@@ -509,7 +531,7 @@ public class Juego extends Application{
         textoNombrePersonaje.setTextAlignment(TextAlignment.CENTER);
         
 	    // Agrega los elementos de la interfaz de la carta al Pane
-	    interfazCartaPane.getChildren().add(cuadradoFondo);
+	    interfazCartaPane.getChildren().add(reversoCarta);
 	    interfazCartaPane.getChildren().add(grupoCarta);
 	    interfazCartaPane.getChildren().add(cuadradoAtras);
 	    interfazCartaPane.getChildren().add(texto);
