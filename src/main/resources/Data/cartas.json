@@ -2,7 +2,7 @@
     {
         "nombre": "Carta Contexto 1: Inicio parte 1",
         "descripcion": "Antiguamente, las cuatro naciones vivían en armonía: Agua, Tierra, Fuego y Aire. Pero todo cambió cuando la Nación del Fuego atacó.",
-        "imagen":"",
+        "imagen":"/Personajes/monje_aire.png",
         "anios":0,
         "opcionA": {
             "descripcion": "",
@@ -22,7 +22,7 @@
     {
         "nombre": "Carta Contexto 1: Inicio parte 2",
         "descripcion": "Solo el Avatar, maestro de los cuatro elementos, podía detenerlos. Pero cuando el mundo más lo necesitaba, desapareció.",
-        "imagen":"",
+        "imagen":"/Personajes/monje_aire.png",
         "anios":0,
         "opcionA": {
             "descripcion": "",
@@ -42,7 +42,7 @@
     {
         "nombre": "Carta Contexto 2: Inicio parte 3",
         "descripcion": "Has estado congelado por 100 años en un iceberg luego de que una tormenta te azotara. Te han despertado y es tu momento de salvar al mundo.",
-        "imagen":"",
+        "imagen":"/Personajes/maestra_agua_joven.png",
         "anios":0,
         "opcionA": {
             "descripcion": "",
@@ -62,13 +62,13 @@
     {
         "nombre": "Carta Decision 1",
         "descripcion": "Unos soldados de la nación del fuego están atacando a aldeanos indefensos.",
-        "imagen":"",
+        "imagen":"/Personajes/maestro_tierra_normal.png",
         "anios":10,
         "opcionA": {
             "descripcion": "No revelar tu identidad y esconderte",
             "tierra": -5,
             "agua": 0,
-            "fuego": 30,
+            "fuego": 15,
             "aire": 0
         },
         "opcionB": {
@@ -82,7 +82,7 @@
     {
         "nombre": "Carta Decision 2",
         "descripcion": "Se encuentran en la Tribu Agua del Norte aprendiendo agua control pero aparecen en el horizonte buques de guerra de la nación del fuego",
-        "imagen":"",
+        "imagen":"/Personajes/maestra_agua_3.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Destruir las naves y arrasar con todo ",
@@ -95,14 +95,14 @@
             "descripcion": "Dejar que la Tribu del norte se defienda por si sola",
             "tierra": 0,
             "agua": -10,
-            "fuego": 30,
+            "fuego": 15,
             "aire": 0
         }
     },
     {
         "nombre": "Carta Decision 3",
         "descripcion": "Arriban al templo Aire del Sur y descubres la masacre de los nomades del aire, que alguna vez fueron tus amigos",
-        "imagen":"",
+        "imagen":"/Personajes/maestro_aire_niño.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Perder el control y buscar venganza",
@@ -115,14 +115,14 @@
             "descripcion": "Hacer duelo por ellos y comenzar a sanar",
             "tierra": 10,
             "agua": 10,
-            "fuego":30,
+            "fuego": 10,
             "aire": 10
         }
     },
     {
         "nombre": "Carta Decision 4",
         "descripcion": "Descubren que el Rey Tierra está siendo engañado por Long Feng para creer que la guerra no existe",
-        "imagen":"",
+        "imagen":"/Personajes/maestro_tierra_moderno.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Atacan el palacio para buscarlo y enfrentar a Long Feng y revelar la verdad",
@@ -135,20 +135,20 @@
             "descripcion": "Deciden esperar a lidiar con esa situación más adelante",
             "tierra": 0,
             "agua": 10,
-            "fuego": 30,
+            "fuego": 20,
             "aire": 0
         }
     },
     {
         "nombre": "Carta Decision 5",
         "descripcion": "Appa ha sido secuestrado pero llevan mucho tiempo buscandolo y no hay señales de él",
-        "imagen":"",
+        "imagen":"/Personajes/avatar_adulto.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Seguir buscandolo sin importar que o cual sea el costo",
             "tierra": -5,
             "agua": -5,
-            "fuego": 30,
+            "fuego": -5,
             "aire": 10
         },
         "opcionB": {
@@ -161,28 +161,28 @@
     },
     {
         "nombre": "Carta Decision 6",
-        "descripcion": "Descubren que el Rey Tierra está siendo engañado por Long Feng para creer que la guerra no existe",
+        "descripcion": "Llegan a la isla Kioshi pero la nacion del fuego los persigue de cerca",
         "imagen":"",
         "anios":10,
         "opcionA": {
-            "descripcion": "Atacan el palacio para buscarlo y enfrentar a Long Feng y revelar la verdad",
-            "tierra": -5,
-            "agua": 0,
+            "descripcion": "Escapar de la isla lo mas rapido posible",
+            "tierra": 5,
+            "agua": 5,
             "fuego": 5,
-            "aire": 0
+            "aire": -5
         },
         "opcionB": {
-            "descripcion": "Deciden esperar a lidiar con esa situación más adelante",
-            "tierra": 0,
-            "agua": 10,
-            "fuego": 30,
-            "aire": 0
+            "descripcion": "Intentar descubrir algo util lo mas rapido posible",
+            "tierra": -5,
+            "agua": -5,
+            "fuego": 5,
+            "aire": 10
         }
     },
     {
         "nombre": "Carta Decision 7",
         "descripcion": "El príncipe Zuko los encuentra para decirles que cambió y que quiere unirse a su equipo para derrotar a su padre",
-        "imagen":"",
+        "imagen":"/Personajes/maestra_fuego_joven.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Lo perdonan y dejan que se una al equipo",
@@ -195,14 +195,14 @@
             "descripcion": "Deciden que no se puede confiar en el y lo echan",
             "tierra": -5,
             "agua": -5,
-            "fuego": 30,
+            "fuego": 20,
             "aire": -5
         }
     },
     {
         "nombre": "Carta Decision 8",
-        "descripcion": "Iroh les ha informado que su sobrino ha sido capturado por Azula y se lo está llevando cautivo a la nación del fuego como prisionero. Les pide ayuda para liberarlo antes antes de que salgan del Reino Tierra cuando ya sea demasiado tarde.",
-        "imagen":"",
+        "descripcion": "Iroh informa que su sobrino ha sido capturado por Azula y se lo está llevando cautivo a la nación del fuego como prisionero. Les pide ayuda para liberarlo antes antes de que sea demasiado tarde.",
+        "imagen":"/Personajes/maestro_fuego_anciano.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Decides dejar tus diferencias en el pasado y ayudarlo",
@@ -215,14 +215,14 @@
             "descripcion": "Eliges ignorar a Iroh porque piensas que Zuko se lo merece",
             "tierra": -10,
             "agua": -10,
-            "fuego": 30,
+            "fuego": 20,
             "aire": -10
         }
     },
     {
         "nombre": "Carta Decision 9",
         "descripcion": "Zuko les informa que su padre, el Señor del Fuego Ozai, planea utilizar el poder del cometa para destruir el Reino Tierra al igual que lo hicieron con los nómadas Aire.",
-        "imagen":"",
+        "imagen":"/Personajes/maestro_fuego.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Deciden actuar inmediatamente y empezar a orquestrar un contraataque",
@@ -235,14 +235,14 @@
             "descripcion": "Deciden mejor esperar, seguir entrenando y planificar con más de tiempo el ataque",
             "tierra": -5,
             "agua":-5,
-            "fuego": 30,
+            "fuego": 10,
             "aire": -5
         }
     },
     {
         "nombre": "Carta Decision 10",
         "descripcion": "Están camino al Reino Tierra secretamente y solo consiguen hacerlo con un grupo de personas desconocidos que quedan atrapadas intentando llegar a la ciudad",
-        "imagen":"",
+        "imagen":"/Personajes/maestro_tierra_joven.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Se detienen y los ayudan, arriesgandose a ser descubiertos y atrapados",
@@ -255,14 +255,14 @@
             "descripcion": "Eligen seguir su camino a la ciudad sin detenerse",
             "tierra": -10,
             "agua": -10,
-            "fuego": 30,
+            "fuego": 20,
             "aire": -10
         }
     },
     {
         "nombre": "Carta Decision 11",
         "descripcion": "Descubren que Azula está planificando su ataque a Ba Sing Se con una máquina de guerra indestructible pero también oyen que están atacando a una aldea a las afueras de la ciudad",
-        "imagen":"",
+        "imagen":"/Personajes/maestra_fuego.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Se separan en grupos sabiendo que es casi imposible ganarles divididos",
@@ -282,13 +282,13 @@
     {
         "nombre": "Carta Decision 12",
         "descripcion": "Katara fue capturada por soldados de la Nación del Fuego pero estás intentando finaliizar tu entrenamiento espiritual sin el cual no podras vencer al Señor del Fuego ",
-        "imagen":"",
+        "imagen":"/Personajes/maestra_agua_joven.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Abandonas todo por ir a salvarla",
             "tierra": -5,
             "agua": 10,
-            "fuego": 30,
+            "fuego": 5,
             "aire": 10
         },
         "opcionB": {
@@ -302,7 +302,7 @@
     {
         "nombre": "Carta Decision 13",
         "descripcion": "Sokka tiene un plan para acabar con un grupo de rebeldes en el Reino Tierra pero es muy arriesgado y podrian llamar la atención de soldados enemigos.",
-        "imagen":"",
+        "imagen":"/Personajes/maestro_agua_joven.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Confias en su plan y lo ayudas",
@@ -322,7 +322,7 @@
     {
         "nombre": "Carta Decision 14",
         "descripcion": "Toph te confiesa que extraña a su padre y quiere ir a buscarlo para arreglar las cosas con él.",
-        "imagen":"",
+        "imagen":"/Personajes/maestro_tierra_joven.png",
         "anios":10,
         "opcionA": {
             "descripcion": "La animas a encontrarlo y le deseas suerte aunque implique una baja importante para el equipo",

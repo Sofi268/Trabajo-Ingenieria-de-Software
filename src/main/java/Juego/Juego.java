@@ -1,6 +1,7 @@
 package Juego;
 
 import java.util.HashMap;
+
 import Cartas.Carta;
 import Cartas.Opcion;
 import Estadisticas.Estadistica.NivelExcedidoException;
@@ -20,16 +21,16 @@ import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -302,12 +303,35 @@ public class Juego extends Application{
 	    // Color del cuadrado en hexadecimal
 	    String colorHexCuadradoFondo = "CBAD49";
 	    String colorHexCuadrado = "B50204";
-
+	    
 	    // Dibuja el cuadrado de fondo
 	    Rectangle cuadradoFondo = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
-	    cuadradoFondo.setFill(Color.web(colorHexCuadradoFondo));
+
+	    // Importa la imagen del reverso
+	    Image dorso = new Image("/Fondos/dorsoCarta.png");
+
+	    // Crea un ImageView con la imagen del fondo y ajusta su tamanio al cuadrado
+	    ImageView imageViewFondo = new ImageView(dorso);
+	    imageViewFondo.setFitWidth(ladoCuadrado);
+	    imageViewFondo.setFitHeight(ladoCuadrado);
+
+	    // Define el relleno del cuadrado como la imagen
+	    cuadradoFondo.setFill(new ImagePattern(dorso));
+	    
+	    // Curva las esquinas
 	    cuadradoFondo.setArcWidth(radioEsquinas);
 	    cuadradoFondo.setArcHeight(radioEsquinas);
+	    
+	    // Crea un borde para el fondo
+	    double borde = anchoPantalla * 0.0015; // Tamanio del borde
+	    // Crea el cuadrado del borde 
+	    Rectangle bordeCarta = new Rectangle(xCuadrado - borde, yCuadrado - borde, ladoCuadrado + 2 * borde, ladoCuadrado + 2 * borde);
+	    bordeCarta.setFill(Color.web("786752"));
+	    bordeCarta.setArcWidth(radioEsquinas);
+	    bordeCarta.setArcHeight(radioEsquinas);
+	    
+	    // Crea un Group para agrupar el cuadrado de fondo y el borde dorado
+	    Group reversoCarta = new Group(bordeCarta, cuadradoFondo);
 
 	    // Dibuja el cuadrado de la carta
 	    Rectangle cuadrado = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
@@ -316,9 +340,27 @@ public class Juego extends Application{
 	    cuadrado.setArcHeight(radioEsquinas);
 
 	    Rectangle cuadradoAtras = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
-	    cuadradoAtras.setFill(Color.web("000000"));
+	    cuadradoAtras.setFill(new ImagePattern(dorso));
 	    cuadradoAtras.setArcWidth(radioEsquinas);
 	    cuadradoAtras.setArcHeight(radioEsquinas);
+	    
+	    // Crea un ImageView para la imagen de la carta
+        Image imagenCarta = cartaActual.getFondo();
+        ImageView imageView = new ImageView(imagenCarta);
+
+        // Establece el tamaño y la posición de la imagen
+        double anchoImagen = ladoCuadrado * 1.2;
+        double altoImagen = ladoCuadrado * 1.2;
+        double xImagen = (anchoPantalla - anchoImagen) / 2;
+        double yImagen = ((altoPantalla - altoImagen) / 2) * 1.13;
+
+        imageView.setFitWidth(anchoImagen);
+        imageView.setFitHeight(altoImagen);
+        imageView.setLayoutX(xImagen);
+        imageView.setLayoutY(yImagen);
+        
+        // Agrupa la imagen y el fondo
+        Group grupoCarta = new Group(cuadrado, imageView);
 
 	    Text texto = new Text();
 	    texto.setFill(Color.WHITE); // Color del texto
@@ -334,39 +376,44 @@ public class Juego extends Application{
 
 	    
 	    // Flip animación al inicio
-	    RotateTransition rotarDeAtrasHaciaAdelante = new RotateTransition(Duration.seconds(0.3), cuadradoAtras);
+	    RotateTransition rotarDeAtrasHaciaAdelante = new RotateTransition(Duration.seconds(0.15), cuadradoAtras);
 	    rotarDeAtrasHaciaAdelante.setAxis(Rotate.Y_AXIS);
 	    rotarDeAtrasHaciaAdelante.setFromAngle(0); // Gira desde la posición normal
 	    rotarDeAtrasHaciaAdelante.setToAngle(-90); // Gira hacia adelante
-	    rotarDeAtrasHaciaAdelante.setOnFinished(event -> cuadradoAtras.setVisible(false));
+	    rotarDeAtrasHaciaAdelante.setOnFinished(event -> {
+	        cuadradoAtras.setVisible(false);
+	    });
+	    
 
-	    RotateTransition rotarDeAdelanteHaciaAtras = new RotateTransition(Duration.seconds(0.3), cuadrado);
+	    RotateTransition rotarDeAdelanteHaciaAtras = new RotateTransition(Duration.seconds(0.15), grupoCarta);
 	    rotarDeAdelanteHaciaAtras.setAxis(Rotate.Y_AXIS);
 	    rotarDeAdelanteHaciaAtras.setFromAngle(90); // Gira desde la posición invertida
 	    rotarDeAdelanteHaciaAtras.setToAngle(0); // Gira hacia atrás
-	    rotarDeAdelanteHaciaAtras.setOnFinished(event -> cuadrado.setVisible(true));
+	    rotarDeAdelanteHaciaAtras.setOnFinished(event -> {
+	        grupoCarta.setVisible(true);
+	    });
 
 	    SequentialTransition flipAnimation = new SequentialTransition(
-	            new PauseTransition(Duration.seconds(0.3)),
-	            rotarDeAtrasHaciaAdelante,
-	            rotarDeAdelanteHaciaAtras
+	    	new PauseTransition(Duration.seconds(0.15)),
+	        rotarDeAtrasHaciaAdelante,
+	        rotarDeAdelanteHaciaAtras
 	    );
 	    flipAnimation.play();
 	    
 	    
-	    // Aplica la rotación al cuadrado
-	    Rotate rotacion = new Rotate();
-	    rotacion.setPivotX(xCuadrado + ladoCuadrado / 2); // Establece el punto de rotación X en la mitad del ancho del cuadrado
-	    rotacion.setPivotY(yCuadrado + ladoCuadrado); // Establece el punto de rotación Y en la parte inferior del cuadrado
-	    cuadrado.getTransforms().add(rotacion);
+	    // Aplica la rotación al grupo que contiene el cuadrado y la imagen
+	    Rotate rotacionGrupo = new Rotate();
+	    rotacionGrupo.setPivotX(xCuadrado + ladoCuadrado / 2);
+	    rotacionGrupo.setPivotY(yCuadrado + ladoCuadrado);
+	    grupoCarta.getTransforms().add(rotacionGrupo);
 
-	    // Eventos según el mouse
-	    cuadrado.setOnMousePressed(event -> {
-	        cuadrado.setUserData(event.getSceneX());
+	    // Aplica las transiciones al grupo
+	    grupoCarta.setOnMousePressed(event -> {
+	        grupoCarta.setUserData(event.getSceneX());
 	    });
 
-	    cuadrado.setOnMouseDragged(event -> {
-	        double posicionAnteriorMouseX = (double) cuadrado.getUserData();
+	    grupoCarta.setOnMouseDragged(event -> {
+	        double posicionAnteriorMouseX = (double) grupoCarta.getUserData();
 	        double mouseX = event.getSceneX();
 
 	        // Calcula la diferencia entre la posición anterior y la posición actual del mouse
@@ -376,22 +423,22 @@ public class Juego extends Application{
 	        double angulo = difX / 10; // Aumenta el ángulo según la distancia
 
 	        // Comprobación para que el ángulo no sea mayor a 20°
-	        double rotacionTotal = rotacion.getAngle() + angulo;
+	        double rotacionTotal = rotacionGrupo.getAngle() + angulo;
 	        if (rotacionTotal > 20) {
-	            angulo = 20 - rotacion.getAngle();
+	            angulo = 20 - rotacionGrupo.getAngle();
 	        } else if (rotacionTotal < -20) {
-	            angulo = -20 - rotacion.getAngle();
+	            angulo = -20 - rotacionGrupo.getAngle();
 	        }
 
 	        // Ajusta el ángulo según el ángulo calculado
-	        rotacion.setAngle(rotacion.getAngle() + angulo);
+	        rotacionGrupo.setAngle(rotacionGrupo.getAngle() + angulo);
 
 	        // Agrega un desplazamiento según la rotación
 	        double desplazamiento = angulo * 2.5;
-	        cuadrado.setTranslateX(cuadrado.getTranslateX() + desplazamiento);
+	        grupoCarta.setTranslateX(grupoCarta.getTranslateX() + desplazamiento);
 
 	        // Actualiza la posición del mouse 
-	        cuadrado.setUserData(mouseX);
+	        grupoCarta.setUserData(mouseX);
 	        
 	        // Elige el texto segun la rotacion
 	        if (angulo >= 1) {
@@ -401,39 +448,47 @@ public class Juego extends Application{
 	        }
 	    });
 
-	    cuadrado.setOnMouseReleased(event -> {
-	        double angulo = rotacion.getAngle();
+	    grupoCarta.setOnMouseReleased(event -> {
+	        double angulo = rotacionGrupo.getAngle();
 	        // Si la rotación no es de ±20 grados, vuelve a 0
 	        if (angulo != 20 && angulo != -20) {
+	            // Crea una animación para restablecer la rotación y el desplazamiento del grupo
 	            Timeline timeline = new Timeline(
-	                    new KeyFrame(Duration.seconds(0.1), new KeyValue(rotacion.angleProperty(), 0)),
-	                    new KeyFrame(Duration.seconds(0.1), new KeyValue(cuadrado.translateXProperty(), 0))
-	                    
+	                new KeyFrame(Duration.seconds(0.1), new KeyValue(rotacionGrupo.angleProperty(), 0)),
+	                new KeyFrame(Duration.seconds(0.1), new KeyValue(grupoCarta.translateXProperty(), 0))
 	            );
 	            texto.setText("");
 	            timeline.play();
 	        }
 	        // Si la rotación está en ±20 grados, cae hacia afuera
 	        else if (angulo == 20) {
-	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), cuadrado);
-	            transicion.setToY(screenSize.getHeight() + cuadrado.getHeight());
+	            // Crea una transición de desplazamiento para el grupo
+	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
+
+	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
+
 	            transicion.setOnFinished(finishedEvent -> {
 	                elegirOpcion(cartaActual.getOpcionA());
 	            });
+
 	            transicion.play();
 	        } else if (angulo == -20) {
-	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), cuadrado);
-	            transicion.setToY(screenSize.getHeight() + cuadrado.getHeight());
+	            // Crea una transición de desplazamiento para el grupo
+	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
+
+	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
+
 	            transicion.setOnFinished(finishedEvent -> {
 	                elegirOpcion(cartaActual.getOpcionB());
 	            });
+
 	            transicion.play();
 	        }
+
 	    });
 	    
-	    texto.translateXProperty().bind(cuadrado.translateXProperty());
-	    texto.translateYProperty().bind(cuadrado.translateYProperty().subtract(ladoCuadrado * 0.1));
-	    
+	    texto.translateXProperty().bind(grupoCarta.translateXProperty());
+	    texto.translateYProperty().bind(grupoCarta.translateYProperty().subtract(ladoCuadrado * 0.1));
 	    
 	    // Texto descripcion carta
 	    TextFlow textoDescripcion = new TextFlow();
@@ -471,8 +526,8 @@ public class Juego extends Application{
         textoNombrePersonaje.setTextAlignment(TextAlignment.CENTER);
         
 	    // Agrega los elementos de la interfaz de la carta al Pane
-	    interfazCartaPane.getChildren().add(cuadradoFondo);
-	    interfazCartaPane.getChildren().add(cuadrado);
+	    interfazCartaPane.getChildren().add(reversoCarta);
+	    interfazCartaPane.getChildren().add(grupoCarta);
 	    interfazCartaPane.getChildren().add(cuadradoAtras);
 	    interfazCartaPane.getChildren().add(texto);
 	    interfazCartaPane.getChildren().add(textoNombrePersonaje);
