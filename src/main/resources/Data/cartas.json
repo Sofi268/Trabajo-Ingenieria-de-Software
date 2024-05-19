@@ -162,7 +162,7 @@
     {
         "nombre": "Carta Decision 6",
         "descripcion": "Llegan a la isla Kioshi pero la nacion del fuego los persigue de cerca",
-        "imagen":"",
+        "imagen":"/Personajes/guerrara_kyoshi_joven.png",
         "anios":10,
         "opcionA": {
             "descripcion": "Escapar de la isla lo mas rapido posible",

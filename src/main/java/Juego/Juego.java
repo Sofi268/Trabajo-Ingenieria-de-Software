@@ -1,6 +1,7 @@
 package Juego;
 
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import Cartas.Carta;
 import Cartas.Opcion;
@@ -406,65 +407,102 @@ public class Juego extends Application{
 	    rotacionGrupo.setPivotX(xCuadrado + ladoCuadrado / 2);
 	    rotacionGrupo.setPivotY(yCuadrado + ladoCuadrado);
 	    grupoCarta.getTransforms().add(rotacionGrupo);
+	    
+	    // Condiciones para activar el movimiento
+	    AtomicBoolean movimientoHabilitado = new AtomicBoolean(false);
+	    AtomicBoolean movimientoActivado = new AtomicBoolean(false); // 
 
-	    // Aplica las transiciones al grupo
-	    grupoCarta.setOnMousePressed(event -> {
-	        grupoCarta.setUserData(event.getSceneX());
-	    });
+	    // Temporizador para habilitar el movimiento después de medio segundo de aparicion de la carta
+	    Timeline temporizador = new Timeline(new KeyFrame(Duration.seconds(0.5), e -> movimientoHabilitado.set(true)));
 
-	    grupoCarta.setOnMouseDragged(event -> {
-	        double posicionAnteriorMouseX = (double) grupoCarta.getUserData();
+	    // Configura el temporizador para que comience a contar después de medio segundo
+	    temporizador.setDelay(Duration.seconds(0.5));
+	    temporizador.setCycleCount(1); // Lo ejecuta solo la primera vez
+
+	    // Inicializa la posición inicial del mouse en el centro de la pantalla
+	    double centroX = escena.getWidth() / 2; // Centro de la pantalla
+	    double centroY = escena.getHeight() / 2; // Centro de la pantalla
+
+	    // Rota y mueve la carta según movimiento del mouse
+	    escena.setOnMouseMoved(event -> {
 	        double mouseX = event.getSceneX();
+	        double mouseY = event.getSceneY();
+	        
+	        // Calcula la distancia del mouse al centro
+	        double difX = mouseX - centroX;
+            double difY = mouseY - centroY;
 
-	        // Calcula la diferencia entre la posición anterior y la posición actual del mouse
-	        double difX = mouseX - posicionAnteriorMouseX;
-
-	        // Calcula el ángulo de rotación usando la diferencia
-	        double angulo = difX / 10; // Aumenta el ángulo según la distancia
-
-	        // Comprobación para que el ángulo no sea mayor a 20°
-	        double rotacionTotal = rotacionGrupo.getAngle() + angulo;
-	        if (rotacionTotal > 20) {
-	            angulo = 20 - rotacionGrupo.getAngle();
-	        } else if (rotacionTotal < -20) {
-	            angulo = -20 - rotacionGrupo.getAngle();
+	        // Verifica si el mouse está sobre el cuadrado
+	        boolean mouseSobreCuadrado = Math.abs(difX) < Math.abs(ladoCuadrado/2) && Math.abs(difY) < Math.abs(ladoCuadrado/2);
+	        
+	        // Si el cuadrado está en el centro y mouse sobre él habilita movimiento
+	        if ((rotacionGrupo.getAngle() == 0) && mouseSobreCuadrado && movimientoHabilitado.get()) {
+	            movimientoActivado.set(true);
+	        }
+	        
+	        // Si el cuadrado está en el centro y no está el mouse sobre él deshabilita movimiento
+	        if ((rotacionGrupo.getAngle() == 0) && !(mouseSobreCuadrado) && movimientoHabilitado.get()) {
+	            movimientoActivado.set(false);
 	        }
 
-	        // Ajusta el ángulo según el ángulo calculado
-	        rotacionGrupo.setAngle(rotacionGrupo.getAngle() + angulo);
+	        // Aplica el movimiento luego de que este sea habilitado
+	        if (movimientoActivado.get()) {
+	            // Verifica si el mouse fuera del umbral de los bordes
+	            if (Math.abs(difX) >= (Math.abs(anchoPantalla - centroX) * 0.95) || Math.abs(difY) >= (Math.abs(altoPantalla - centroY) * 0.95)) {
+	                // Vuelve a la posición inicial de forma gradual
+	                KeyValue rotacionKeyValue = new KeyValue(rotacionGrupo.angleProperty(), 0);
+	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), 0);
+	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), 0);
 
-	        // Agrega un desplazamiento según la rotación
-	        double desplazamiento = angulo * 2.5;
-	        grupoCarta.setTranslateX(grupoCarta.getTranslateX() + desplazamiento);
+	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
 
-	        // Actualiza la posición del mouse 
-	        grupoCarta.setUserData(mouseX);
-	        
-	        // Elige el texto segun la rotacion
-	        if (angulo >= 1) {
-	            texto.setText("         " + cartaActual.getOpciones()[0].getInformacion());
-	        } else if (angulo < -1) {
-	            texto.setText(cartaActual.getOpciones()[1].getInformacion() + "         ");
+	                Timeline timeline = new Timeline(keyFrame);
+	                timeline.play();
+	            } else {
+	                // Calcula el ángulo de rotación usando la diferencia en X
+	                double angulo = difX / 10; // Aumenta el ángulo según la distancia
+	                // Calcula el desplazamiento en Y basado en la diferencia en Y
+	                double desplazamientoY = difY * 0.03; // Máximo 3% de la altura de la pantalla
+
+	                // Comprobación para que el ángulo no sea mayor a 20°
+	                if (angulo > 20) {
+	                    angulo = 20;
+	                } else if (angulo < -20) {
+	                    angulo = -20;
+	                }
+
+	                // Realizza el movimiento de forma gradual
+	                KeyValue rotacionKeyValue = new KeyValue(rotacionGrupo.angleProperty(), angulo);
+	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), angulo * 2.5);
+	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), desplazamientoY);
+
+	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.025), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
+
+	                Timeline timeline = new Timeline(keyFrame);
+	                timeline.play();
+
+	                // Elige el texto según la rotación
+	                if (angulo >= 1) {
+	                    texto.setText(cartaActual.getOpciones()[0].getInformacion());
+	                } else if (angulo < -1) {
+	                    texto.setText(cartaActual.getOpciones()[1].getInformacion());
+	                }
+	            }
 	        }
 	    });
 
-	    grupoCarta.setOnMouseReleased(event -> {
-	        double angulo = rotacionGrupo.getAngle();
-	        // Si la rotación no es de ±20 grados, vuelve a 0
-	        if (angulo != 20 && angulo != -20) {
-	            // Crea una animación para restablecer la rotación y el desplazamiento del grupo
-	            Timeline timeline = new Timeline(
-	                new KeyFrame(Duration.seconds(0.1), new KeyValue(rotacionGrupo.angleProperty(), 0)),
-	                new KeyFrame(Duration.seconds(0.1), new KeyValue(grupoCarta.translateXProperty(), 0))
-	            );
-	            texto.setText("");
-	            timeline.play();
-	        }
-	        // Si la rotación está en ±20 grados, cae hacia afuera
-	        else if (angulo == 20) {
-	            // Crea una transición de desplazamiento para el grupo
-	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
+	    // Inicia el temporizador para habilitar el movimiento después de medio segundo (para evitar movimiento en el flip)
+	    temporizador.play();
 
+	    // Elije opcion cuando se da clip
+	    escena.setOnMouseClicked(event -> {
+	    	movimientoActivado.set(false);
+	        double angulo = rotacionGrupo.getAngle();
+	        // Si el ángulo es mayor a 1 grado, selecciona la opción A
+	        if (angulo >= 1) {
+	            // Crea una transición de desplazamiento para el grupo (cae afuera de la pantalla)
+	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
+	            
 	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
 
 	            transicion.setOnFinished(finishedEvent -> {
@@ -472,7 +510,8 @@ public class Juego extends Application{
 	            });
 
 	            transicion.play();
-	        } else if (angulo == -20) {
+	        // Si el ángulo es menor a -1 grado, selecciona la opción B
+	        } else if (angulo < -1) {
 	            // Crea una transición de desplazamiento para el grupo
 	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
 
@@ -484,9 +523,10 @@ public class Juego extends Application{
 
 	            transicion.play();
 	        }
-
 	    });
-	    
+
+
+	    // Coloca las propiedades de desplazamiento en el texto de las opciones
 	    texto.translateXProperty().bind(grupoCarta.translateXProperty());
 	    texto.translateYProperty().bind(grupoCarta.translateYProperty().subtract(ladoCuadrado * 0.1));
 	    
