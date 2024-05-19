@@ -29,18 +29,18 @@ public class Estadistica {
         }
     }
     
-    public class NivelExcedidoException extends Exception {
-		private static final long serialVersionUID = 1L;
+    public static class NivelExcedidoException extends Exception {
+        private static final long serialVersionUID = 1L;
 
-		public NivelExcedidoException() {
+        public NivelExcedidoException() {
             super();
         }
     }
     
-    public class NivelInvalidoException extends Exception {
-		private static final long serialVersionUID = 1L;
+    public static class NivelInvalidoException extends Exception {
+        private static final long serialVersionUID = 1L;
 
-		public NivelInvalidoException() {
+        public NivelInvalidoException() {
             super();
         }
     }

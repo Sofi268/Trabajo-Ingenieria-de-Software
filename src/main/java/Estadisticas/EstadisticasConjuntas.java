@@ -2,6 +2,9 @@ package Estadisticas;
 
 import java.util.HashMap;
 
+import Estadisticas.Estadistica.NivelExcedidoException;
+import Estadisticas.Estadistica.NivelInvalidoException;
+
 public class EstadisticasConjuntas {
     private Estadistica agua;
     private Estadistica aire;
