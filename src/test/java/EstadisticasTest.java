@@ -59,13 +59,13 @@ public class EstadisticasTest {
     @DisplayName("DADA una estadistica, CUANDO se llama a ajustarNivel excediendo el límite, ENTONCES lanza NivelExcedidoException")
     public void testAjustarNivel2() throws NivelExcedidoException, NivelInvalidoException {
         // Verifica que el método lance la excepción esperada
-        Assertions.assertThrows(NivelExcedidoException.class, () -> estadistica.ajustarNivel(150));
+        Assertions.assertThrows(NivelExcedidoException.class, () -> estadistica.ajustarNivel(70));
     }
 
     @Test
     @DisplayName("DADA una estadistica, CUANDO se llama ajusta el nivel abajo de cero, ENTONCES lanza NivelInvalidoException")
     public void testAjustarNivel3() throws NivelExcedidoException, NivelInvalidoException {
         // Verifica que el método lance la excepción esperada
-        Assertions.assertThrows(NivelInvalidoException.class, () -> estadistica.ajustarNivel(-70));
+        Assertions.assertThrows(NivelInvalidoException.class, () -> estadistica.ajustarNivel(-150));
     }
 }
