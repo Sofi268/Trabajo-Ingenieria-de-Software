@@ -1,3 +1,5 @@
+import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -5,9 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.mockito.Mockito.*;
 
 import Cartas.Carta;
 import Cartas.Opcion;
@@ -18,30 +19,34 @@ import Juego.Personaje;
 @ExtendWith(MockitoExtension.class)
 public class CartaTest {
 
+    @Spy
+    private Carta carta = new Carta();
+
     @Mock
-    private Carta carta;
-	private Opcion opcionA;
-	private Opcion opcionB;
-	
-	@BeforeEach
-	void setup() {
-		carta = Mockito.spy(new Carta()); // Crea una instancia de la clase carta
-		opcionA = mock(Opcion.class); // Crea un mock de la opcionA
-	    opcionB = mock(Opcion.class); // Crea un mock de la opcionB
-	}
+    private Opcion opcionA;
+    
+    @Mock
+    private Opcion opcionB;
+
+    @BeforeEach
+    void setup() {
+        carta = Mockito.spy(new Carta()); // Crea una instancia de Carta y espiar
+        opcionA = mock(Opcion.class); // Crea un mock para OpcionA
+        opcionB = mock(Opcion.class); // Crea un mock para OpcionB
+    }
 
     @Test
     @DisplayName("DADA la llamada al constructor de carta, ENTONCES se crean las opciones A y B no nulas y la descripción es nula")
     public void testConstructor() {
-        Assertions.assertNotNull(carta.getOpcionA()); // Verifica que se cree la opcionA no nula
-        Assertions.assertNotNull(carta.getOpcionB()); // Verifica que se cree la opcionB no nula
-        Assertions.assertNull(carta.getDescripcion()); // Verifica que la descripcion no sea nula
+        Assertions.assertNotNull(carta.getOpcionA()); // Verificar que la opcionA no es nula
+        Assertions.assertNotNull(carta.getOpcionB()); // Verificar que la opcionB no es nula
+        Assertions.assertNull(carta.getDescripcion()); // Verificar que la descripción es nula
     }
 
     @Test
     @DisplayName("DADO un objeto Carta con opciones A y B, CUANDO se llama al método verOpcion, ENTONCES retorna la opción correspondiente")
     public void testVerOpcion() {
-    	// Establece los valores esperados para las opciones A y B
+        // Establece los valores esperados para las opciones A y B
         String expected_opcionA = "Opcion A";
         String expected_opcionB = "Opcion B";
 
@@ -57,21 +62,21 @@ public class CartaTest {
         String result_opcionA = carta.verOpcion(opcionA);
         String result_opcionB = carta.verOpcion(opcionB);
 
-        // test
+        // Test
         Assertions.assertEquals(expected_opcionA, result_opcionA); // Verifica que verOpcion() retorna la opción A
         Assertions.assertEquals(expected_opcionB, result_opcionB); // Verifica que verOpcion() retorna la opción B
     }
 
     @Test
-    @DisplayName("DADO un objeto Carta y valores de opciones A y B, ENTONCES la llamada al metodo elegirOpcion se realiza con los argumentos corrspondientes")
+    @DisplayName("DADO un objeto Carta y valores de opciones A y B, ENTONCES la llamada al método elegirOpcion se realiza con los argumentos correspondientes")
     public void testElegirOpcion() throws NivelExcedidoException, NivelInvalidoException {
-    	Personaje personaje = new Personaje(); // Crea el personaje
+        Personaje personaje = new Personaje(); // Crear el personaje
         
-        // Establece que valores de niveles retornan las opciones A y B
+        // Establece qué valores de niveles retornan las opciones A y B
         when(opcionA.getNiveles()).thenReturn(new int[]{10, 20, 0, 0});
         when(opcionB.getNiveles()).thenReturn(new int[]{0, 10, -10, 0});
 
-        // LLama al metodo elegir opcion
+        // Llama al método elegir opcion
         carta.elegirOpcion(personaje, opcionA.getNiveles(), opcionB.getNiveles(), "A");
 
         // Verifica que el método elegirOpcion se haya llamado con los argumentos correctos

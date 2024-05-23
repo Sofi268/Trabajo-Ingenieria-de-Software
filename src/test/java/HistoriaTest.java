@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import Cartas.Carta;
@@ -13,11 +14,12 @@ import Juego.Historia;
 @ExtendWith(MockitoExtension.class)
 public class HistoriaTest {
 	
-	@Mock
-	private Historia historia;
-	private final int ANIO_INICIAL = 0;
+	@Spy
+    private Historia historia = new Historia();
+
+    private final int ANIO_INICIAL = 0;
     private final int ANIO_FINAL = 200;
-    
+
     @BeforeEach
     void setup() {
         historia = Mockito.spy(new Historia());

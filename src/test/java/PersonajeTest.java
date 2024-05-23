@@ -1,21 +1,21 @@
+import static org.mockito.Mockito.verify;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.mockito.Mockito.*;
 
 import Juego.Personaje;
 
 @ExtendWith(MockitoExtension.class)
 public class PersonajeTest {
 	
-	@Mock
-	Personaje personaje;
+	@Spy
+	Personaje personaje = new Personaje();
 	
 	@BeforeEach
 	void setup() {

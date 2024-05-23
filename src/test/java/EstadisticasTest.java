@@ -3,44 +3,45 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.mockito.Mockito.*;
 
 import Estadisticas.Estadistica;
 import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
 
+import static org.mockito.Mockito.*;
+
 @ExtendWith(MockitoExtension.class)
 public class EstadisticasTest {
 
-    @Mock
-    private Estadistica estadistica;
+    @Spy
+    private Estadistica estadistica = new Estadistica(); // Crea una instancia real de Estadistica
+
     private final int NIVEL_INICIAL = 50;
 
     @BeforeEach
     void setup() {
-        estadistica = Mockito.spy(new Estadistica()); // Crea una instancia de la clase estadistica
+        estadistica = Mockito.spy(new Estadistica()); // Crea una instancia de la clase Estadistica
     }
 
     @Test
-    @DisplayName("DADA la construccion de la estadistica, ENTONCES inicializa con el nivel inicial en 50")
+    @DisplayName("DADA la construcción de la estadistica, ENTONCES inicializa con el nivel inicial en 50")
     public void testConstructor() {
-    	// Establece el nivel esperado como el nivel inicial
+        // Establece el nivel esperado como el nivel inicial
         int expected = NIVEL_INICIAL;
 
         // Establece el valor resultante como el nivelActual de estadistica
         int result = estadistica.getNivelActual();
 
-        Assertions.assertEquals(expected, result); // Verifica que el constructor de esstadistica asigne el valor esperado
+        Assertions.assertEquals(expected, result); // Verifica que el constructor de Estadistica asigne el valor esperado
     }
 
     @Test
-    @DisplayName("DADA una estadistica, CUANDO se llama a ajustarNivel con los limites normales, ENTONCES ajusta el nivel correctamente")
+    @DisplayName("DADA una estadistica, CUANDO se llama a ajustarNivel con los límites normales, ENTONCES ajusta el nivel correctamente")
     public void testAjustarNivel1() throws NivelExcedidoException, NivelInvalidoException {
-    	// Establece el valor esperado en 60
+        // Establece el valor esperado en 60
         int expected = 60;
 
         // Ajusta el nivel de la estadistica en 10
@@ -55,7 +56,7 @@ public class EstadisticasTest {
     }
 
     @Test
-    @DisplayName("DADA una estadistica, CUANDO se llama a ajustarNivel excediendo el limite, ENTONCES lanza NivelExcedidoException")
+    @DisplayName("DADA una estadistica, CUANDO se llama a ajustarNivel excediendo el límite, ENTONCES lanza NivelExcedidoException")
     public void testAjustarNivel2() throws NivelExcedidoException, NivelInvalidoException {
         // Verifica que el método lance la excepción esperada
         Assertions.assertThrows(NivelExcedidoException.class, () -> estadistica.ajustarNivel(150));

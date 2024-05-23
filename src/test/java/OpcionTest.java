@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -17,25 +17,24 @@ import Juego.Personaje;
 
 @ExtendWith(MockitoExtension.class)
 public class OpcionTest {
-	
-	@Mock
-	private Opcion opcion;
-	
-	@BeforeEach
-	void setup() {
-		opcion = Mockito.spy(new Opcion());
-	}
-	
-	
-	@Test
-	@DisplayName("DADO un objeto Opcion, ENTONCES su constructor inicializa los niveles en [0, 0, 0, 0] y la información nula")
-	public void testConstructor() {
-		// Establece los niveles esperados
-		int[] expected = {0, 0, 0, 0};
-		
-		// Establece los niveles resultantes
-		int[] result = opcion.getNiveles();
-		
+
+    @Spy
+    private Opcion opcion = new Opcion(); // Crea una instancia real y luego espiarla
+
+    @BeforeEach
+    void setup() {
+        opcion = Mockito.spy(new Opcion()); // Espia una instancia real de Opcion
+    }
+
+    @Test
+    @DisplayName("DADO un objeto Opcion, ENTONCES su constructor inicializa los niveles en [0, 0, 0, 0] y la información nula")
+    public void testConstructor() {
+        // Establece los niveles esperados
+        int[] expected = {0, 0, 0, 0};
+        
+        // Establece los niveles resultantes
+        int[] result = opcion.getNiveles();
+        
         Assertions.assertNull(opcion.getInformacion()); // Verifica que la información sea nula
         Assertions.assertArrayEquals(expected, result); // Verifica que los niveles esperados coincidan con los resultantes
     }
