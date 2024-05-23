@@ -27,12 +27,7 @@ public class CartaTest {
 
     @BeforeEach
     void setUp() {
-    	opcionA = mock(Opcion.class);
-    	opcionB = mock(Opcion.class);
         carta = new Carta(opcionA, opcionB);
-        System.out.println("Mock opcionA: " + opcionA);
-        System.out.println("Mock opcionB: " + opcionB);
-        System.out.println("Carta: " + carta);
     }
 
     @Test
