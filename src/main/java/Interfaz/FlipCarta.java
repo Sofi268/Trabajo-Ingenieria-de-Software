@@ -30,7 +30,7 @@ public class FlipCarta extends StackPane {
     }
 
     public void flip() {
-        RotateTransition rotar = new RotateTransition(Duration.millis(500), carta);
+        RotateTransition rotar = new RotateTransition(Duration.millis(250), carta);
         rotar.setAxis(Rotate.Y_AXIS);
         rotar.setInterpolator(Interpolator.LINEAR);
         rotar.setCycleCount(1);
@@ -41,7 +41,7 @@ public class FlipCarta extends StackPane {
             rotar.setOnFinished(event -> {
                 frenteCarta.setVisible(true);
                 reversoCarta.setVisible(false);
-                RotateTransition rotar2 = new RotateTransition(Duration.millis(500), carta);
+                RotateTransition rotar2 = new RotateTransition(Duration.millis(250), carta);
                 rotar2.setAxis(Rotate.Y_AXIS);
                 rotar2.setFromAngle(270);
                 rotar2.setToAngle(360);
@@ -59,7 +59,7 @@ public class FlipCarta extends StackPane {
             rotar.setOnFinished(event -> {
                 reversoCarta.setVisible(true);
                 frenteCarta.setVisible(false);
-                RotateTransition rotar2 = new RotateTransition(Duration.millis(500), carta);
+                RotateTransition rotar2 = new RotateTransition(Duration.millis(250), carta);
                 rotar2.setAxis(Rotate.Y_AXIS);
                 rotar2.setFromAngle(-270);
                 rotar2.setToAngle(-360);

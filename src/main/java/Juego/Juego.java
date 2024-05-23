@@ -32,6 +32,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -373,143 +374,43 @@ public class Juego extends Application{
 
 	    // Establece un ancho fijo
 	    texto.setWrappingWidth(ladoCuadrado * 0.7);
-	    
+
+	    // Calcula la posición horizontal para centrar el rectángulo en la carta
+	    double xRectangulo = (anchoPantalla - ladoCuadrado) / 2;
+
 	    // Crea una carta con su frente y atrás
 	    Group carta = new Group(reversoCarta, grupoCarta);
-	    
+
 	    // Realiza un flip de la carta
 	    FlipCarta flipCarta = new FlipCarta(carta, reversoCarta, grupoCarta);
 	    flipCarta.flip();
 
-   
 	    // Aplica la rotación al grupo que contiene el cuadrado y la imagen
 	    Rotate rotacionGrupo = new Rotate();
 	    rotacionGrupo.setPivotX(xCuadrado + ladoCuadrado / 2);
 	    rotacionGrupo.setPivotY(yCuadrado + ladoCuadrado);
 	    grupoCarta.getTransforms().add(rotacionGrupo);
-	    
+
 	    // Condiciones para activar el movimiento
 	    AtomicBoolean movimientoHabilitado = new AtomicBoolean(false);
-	    AtomicBoolean movimientoActivado = new AtomicBoolean(false); // 
+	    AtomicBoolean movimientoActivado = new AtomicBoolean(false);
 
-	    // Temporizador para habilitar el movimiento después de medio segundo de aparicion de la carta
+	    // Temporizador para habilitar el movimiento después de medio segundo de aparición de la carta
 	    Timeline temporizador = new Timeline(new KeyFrame(Duration.seconds(0.5), e -> movimientoHabilitado.set(true)));
-
-	    // Configura el temporizador para que comience a contar después de medio segundo
 	    temporizador.setDelay(Duration.seconds(0.5));
 	    temporizador.setCycleCount(1); // Lo ejecuta solo la primera vez
 
 	    // Inicializa la posición inicial del mouse en el centro de la pantalla
-	    double centroX = escena.getWidth() / 2; // Centro de la pantalla
-	    double centroY = escena.getHeight() / 2; // Centro de la pantalla
+	    double centroX = escena.getWidth() / 2;
+	    double centroY = escena.getHeight() / 2;
 
-	    // Rota y mueve la carta según movimiento del mouse
-	    escena.setOnMouseMoved(event -> {
-	        double mouseX = event.getSceneX();
-	        double mouseY = event.getSceneY();
-	        
-	        // Calcula la distancia del mouse al centro
-	        double difX = mouseX - centroX;
-            double difY = mouseY - centroY;
-
-	        // Verifica si el mouse está sobre el cuadrado
-	        boolean mouseSobreCuadrado = Math.abs(difX) < Math.abs(ladoCuadrado/2) && Math.abs(difY) < Math.abs(ladoCuadrado/2);
-	        
-	        // Si el cuadrado está en el centro y mouse sobre él habilita movimiento
-	        if ((rotacionGrupo.getAngle() == 0) && mouseSobreCuadrado && movimientoHabilitado.get()) {
-	            movimientoActivado.set(true);
-	        }
-	        
-	        // Si el cuadrado está en el centro y no está el mouse sobre él deshabilita movimiento
-	        if ((rotacionGrupo.getAngle() == 0) && !(mouseSobreCuadrado) && movimientoHabilitado.get()) {
-	            movimientoActivado.set(false);
-	        }
-
-	        // Aplica el movimiento luego de que este sea habilitado
-	        if (movimientoActivado.get()) {
-	            // Verifica si el mouse fuera del umbral de los bordes
-	            if (Math.abs(difX) >= (Math.abs(anchoPantalla - centroX) * 0.95) || Math.abs(difY) >= (Math.abs(altoPantalla - centroY) * 0.95)) {
-	                // Vuelve a la posición inicial de forma gradual
-	                KeyValue rotacionKeyValue = new KeyValue(rotacionGrupo.angleProperty(), 0);
-	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), 0);
-	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), 0);
-
-	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
-
-	                Timeline timeline = new Timeline(keyFrame);
-	                timeline.play();
-	            } else {
-	                // Calcula el ángulo de rotación usando la diferencia en X
-	                double angulo = difX / 10; // Aumenta el ángulo según la distancia
-	                // Calcula el desplazamiento en Y basado en la diferencia en Y
-	                double desplazamientoY = difY * 0.03; // Máximo 3% de la altura de la pantalla
-
-	                // Comprobación para que el ángulo no sea mayor a 20°
-	                if (angulo > 20) {
-	                    angulo = 20;
-	                } else if (angulo < -20) {
-	                    angulo = -20;
-	                }
-
-	                // Realizza el movimiento de forma gradual
-	                KeyValue rotacionKeyValue = new KeyValue(rotacionGrupo.angleProperty(), angulo);
-	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), angulo * 2.5);
-	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), desplazamientoY);
-
-	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.025), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
-
-	                Timeline timeline = new Timeline(keyFrame);
-	                timeline.play();
-
-	                // Elige el texto según la rotación
-	                if (angulo >= 1) {
-	                    texto.setText(cartaActual.getOpciones()[0].getInformacion());
-	                } else if (angulo < -1) {
-	                    texto.setText(cartaActual.getOpciones()[1].getInformacion());
-	                }
-	            }
-	        }
-	    });
-
-	    // Inicia el temporizador para habilitar el movimiento después de medio segundo (para evitar movimiento en el flip)
-	    temporizador.play();
-
-	    // Elije opcion cuando se da clip
-	    escena.setOnMouseClicked(event -> {
-	    	movimientoActivado.set(false);
-	        double angulo = rotacionGrupo.getAngle();
-	        // Si el ángulo es mayor a 1 grado, selecciona la opción A
-	        if (angulo >= 1) {
-	            // Crea una transición de desplazamiento para el grupo (cae afuera de la pantalla)
-	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
-	            
-	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
-
-	            transicion.setOnFinished(finishedEvent -> {
-	                elegirOpcion(cartaActual.getOpcionA());
-	            });
-
-	            transicion.play();
-	        // Si el ángulo es menor a -1 grado, selecciona la opción B
-	        } else if (angulo < -1) {
-	            // Crea una transición de desplazamiento para el grupo
-	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
-
-	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
-
-	            transicion.setOnFinished(finishedEvent -> {
-	                elegirOpcion(cartaActual.getOpcionB());
-	            });
-
-	            transicion.play();
-	        }
-	    });
-
+	    // Maneja los eventos con el mouse
+	    manejarEventosMouse(grupoCarta, rotacionGrupo, escena, cartaActual, centroX, centroY, ladoCuadrado, anchoPantalla, altoPantalla, movimientoHabilitado, movimientoActivado, temporizador, texto);
 
 	    // Coloca las propiedades de desplazamiento en el texto de las opciones
 	    texto.translateXProperty().bind(grupoCarta.translateXProperty());
 	    texto.translateYProperty().bind(grupoCarta.translateYProperty().subtract(ladoCuadrado * 0.1));
-	    
+
 	    // Texto descripcion carta
 	    TextFlow textoDescripcion = new TextFlow();
 	    textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Centra el texto horizontalmente
@@ -545,15 +446,99 @@ public class Juego extends Application{
         textoNombrePersonaje.setTextAlignment(TextAlignment.CENTER);
         
 	    // Agrega los elementos de la interfaz de la carta al Pane
-        interfazCartaPane.getChildren().add(mazo);
-        interfazCartaPane.getChildren().add(carta);
-	    interfazCartaPane.getChildren().add(texto);
 	    interfazCartaPane.getChildren().add(textoNombrePersonaje);
 	    interfazCartaPane.getChildren().add(textoDescripcion);
+	    interfazCartaPane.getChildren().add(mazo);
+        interfazCartaPane.getChildren().add(carta);
+        interfazCartaPane.getChildren().add(texto);
+        
 	    verAnios();
 	}
+	
+	private void manejarEventosMouse(Group grupoCarta, Rotate rotacionGrupo, Scene escena, Carta cartaActual, double centroX, double centroY, double ladoCuadrado, double anchoPantalla, double altoPantalla, AtomicBoolean movimientoHabilitado, AtomicBoolean movimientoActivado, Timeline temporizador, Text texto) {
+	    escena.setOnMouseMoved(event -> {
+	        double mouseX = event.getSceneX();
+	        double mouseY = event.getSceneY();
 
+	        double difX = mouseX - centroX;
+	        double difY = mouseY - centroY;
 
+	        boolean mouseSobreCuadrado = Math.abs(difX) < Math.abs(ladoCuadrado/2) && Math.abs(difY) < Math.abs(ladoCuadrado/2);
+
+	        if ((rotacionGrupo.getAngle() == 0) && mouseSobreCuadrado && movimientoHabilitado.get()) {
+	            movimientoActivado.set(true);
+	        }
+
+	        if ((rotacionGrupo.getAngle() == 0) && !(mouseSobreCuadrado) && movimientoHabilitado.get()) {
+	            movimientoActivado.set(false);
+	        }
+
+	        if (movimientoActivado.get()) {
+	            if (Math.abs(difX) >= (Math.abs(anchoPantalla - centroX) * 0.95) || Math.abs(difY) >= (Math.abs(altoPantalla - centroY) * 0.95)) {
+	                KeyValue rotacionKeyValue = new KeyValue(rotacionGrupo.angleProperty(), 0);
+	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), 0);
+	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), 0);
+
+	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
+
+	                Timeline timeline = new Timeline(keyFrame);
+	                timeline.play();
+	            } else {
+	                double angulo = difX / 10;
+	                double desplazamientoY = difY * 0.03;
+
+	                if (angulo > 20) {
+	                    angulo = 20;
+	                } else if (angulo < -20) {
+	                    angulo = -20;
+	                }
+
+	                KeyValue rotacionKeyValue = new KeyValue(rotacionGrupo.angleProperty(), angulo);
+	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), angulo * 2.5);
+	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), desplazamientoY);
+
+	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.025), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
+
+	                Timeline timeline = new Timeline(keyFrame);
+	                timeline.play();
+
+	                if (angulo >= 1) {
+	                    texto.setText(cartaActual.getOpciones()[0].getInformacion());
+	                } else if (angulo < -1) {
+	                    texto.setText(cartaActual.getOpciones()[1].getInformacion());
+	                }
+	            }
+	        }
+	    });
+
+	    temporizador.play();
+
+	    escena.setOnMouseClicked(event -> {
+	        movimientoActivado.set(false);
+	        double angulo = rotacionGrupo.getAngle();
+	        if (angulo >= 1) {
+	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
+
+	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
+
+	            transicion.setOnFinished(finishedEvent -> {
+	                elegirOpcion(cartaActual.getOpcionA());
+	            });
+
+	            transicion.play();
+	        } else if (angulo < -1) {
+	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
+
+	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
+
+	            transicion.setOnFinished(finishedEvent -> {
+	                elegirOpcion(cartaActual.getOpcionB());
+	            });
+
+	            transicion.play();
+	        }
+	    });
+	}
+
+	
 }
-
-
