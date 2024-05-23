@@ -35,8 +35,8 @@ public class CartaTest {
     @Test
     @DisplayName("DADA la llamada al constructor de carta, ENTONCES se crean las opciones A y B no nulas y la descripción es nula")
     public void testConstructor() {
-        Assertions.assertNotNull(carta.getOpcionA()); // Verificar que la opcionA no es nula
-        Assertions.assertNotNull(carta.getOpcionB()); // Verificar que la opcionB no es nula
+        Assertions.assertEquals(carta.getOpcionA(), opcionA); // Verificar que la opcionA se creo correctamente
+        Assertions.assertEquals(carta.getOpcionB(), opcionB); // Verificar que la opcionB se creo correctamente
         Assertions.assertNull(carta.getDescripcion()); // Verificar que la descripción es nula
     }
 
@@ -51,10 +51,6 @@ public class CartaTest {
         when(opcionA.getInformacion()).thenReturn("Opcion A");
         when(opcionB.getInformacion()).thenReturn("Opcion B");
         
-        // Setea las opciones A y B en las cartas
-        carta.setOpcionA(opcionA);
-        carta.setOpcionB(opcionB);
-
         // Establece los valores resultantes, siendo estos las descripciones de las opciones mostradas por las cartas
         String result_opcionA = carta.verOpcion(opcionA);
         String result_opcionB = carta.verOpcion(opcionB);
