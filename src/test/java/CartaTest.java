@@ -29,16 +29,16 @@ public class CartaTest {
 
     @BeforeEach
     void setUp() {
-    	opcionA = mock(Opcion.class);
-    	opcionB = mock(Opcion.class);
+        opcionA = new Opcion();
+        opcionB = new Opcion();
         carta = new Carta(opcionA, opcionB);
     }
 
     @Test
     @DisplayName("DADA la llamada al constructor de carta, ENTONCES se crean las opciones A y B no nulas y la descripción es nula")
     public void testConstructor() {
-        Assertions.assertEquals(carta.getOpcionA(), opcionA); // Verificar que la opcionA se creo correctamente
-        Assertions.assertEquals(carta.getOpcionB(), opcionB); // Verificar que la opcionB se creo correctamente
+        Assertions.assertEquals(opcionA, carta.getOpcionA()); // Verificar que la opcionA se creo correctamente
+        Assertions.assertEquals(opcionB, carta.getOpcionB()); // Verificar que la opcionB se creo correctamente
         Assertions.assertNull(carta.getDescripcion()); // Verificar que la descripción es nula
     }
 
@@ -50,8 +50,8 @@ public class CartaTest {
         String expected_opcionB = "Opcion B";
 
         // Establece que informacion retornan las opciones A y B
-        when(opcionA.getInformacion()).thenReturn("Opcion A");
-        when(opcionB.getInformacion()).thenReturn("Opcion B");
+        opcionA.setInformacion("Opcion A");
+        opcionB.setInformacion("Opcion B");
         
         // Establece los valores resultantes, siendo estos las descripciones de las opciones mostradas por las cartas
         String result_opcionA = carta.verOpcion(opcionA);
@@ -68,8 +68,8 @@ public class CartaTest {
         Personaje personaje = new Personaje(); // Crear el personaje
         
         // Establece qué valores de niveles retornan las opciones A y B
-        when(opcionA.getNiveles()).thenReturn(new int[]{10, 20, 0, 0});
-        when(opcionB.getNiveles()).thenReturn(new int[]{0, 10, -10, 0});
+        opcionA.setNiveles(new int[]{10, 20, 0, 0});
+        opcionB.setNiveles(new int[]{0, 10, -10, 0});
 
         // Llama al método elegir opcion
         carta.elegirOpcion(personaje, opcionA.getNiveles(), opcionB.getNiveles(), "A");
@@ -77,5 +77,4 @@ public class CartaTest {
         // Verifica que el método elegirOpcion se haya llamado con los argumentos correctos
         //verify(carta).elegirOpcion(personaje, opcionA.getNiveles(), opcionB.getNiveles(), "A");
     }
-    
 }
