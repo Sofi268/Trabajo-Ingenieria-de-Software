@@ -25,6 +25,15 @@ public class Carta {
 		colorFondo = null;
 	}
 	
+	public Carta(Opcion opcionA, Opcion opcionB) {
+        this.opcionA = opcionA;
+        this.opcionB = opcionB;
+        descripcion = null;
+        nombre = null;
+        fondo = null;
+        colorFondo = null;
+    }
+	
 	public void elegirOpcion(Personaje personaje, int[] opcionA, int[] opcionB, String opcion) throws NivelExcedidoException, NivelInvalidoException {
 		if(opcion.equals("A")) {
 			this.opcionA.modificarEstadisticas(personaje);

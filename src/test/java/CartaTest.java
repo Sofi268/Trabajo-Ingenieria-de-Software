@@ -28,7 +28,7 @@ public class CartaTest {
     void setup() {
     	opcionA = mock(Opcion.class);
     	opcionB = mock(Opcion.class);
-        carta = new Carta();
+        carta = new Carta(opcionA, opcionB);
         
     }
 
@@ -50,7 +50,7 @@ public class CartaTest {
         // Establece que informacion retornan las opciones A y B
         when(opcionA.getInformacion()).thenReturn("Opcion A");
         when(opcionB.getInformacion()).thenReturn("Opcion B");
-
+        
         // Setea las opciones A y B en las cartas
         carta.setOpcionA(opcionA);
         carta.setOpcionB(opcionB);
