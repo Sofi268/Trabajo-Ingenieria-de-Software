@@ -14,6 +14,7 @@ public class Carta {
 	private String nombre;
 	private int anios;
 	private Image fondo;
+	private String colorFondo;
 
 	public Carta() {
 		opcionA = new Opcion();
@@ -21,6 +22,7 @@ public class Carta {
 		descripcion = null;
 		nombre = null;
 		fondo = null;
+		colorFondo = null;
 	}
 	
 	public void elegirOpcion(Personaje personaje, int[] opcionA, int[] opcionB, String opcion) throws NivelExcedidoException, NivelInvalidoException {
@@ -97,4 +99,12 @@ public class Carta {
     public Opcion getOpcionB() {
         return opcionB;
     }
+
+	public String getColorFondo() {
+		return colorFondo;
+	}
+
+	public void setColorFondo(String colorFondo) {
+		this.colorFondo = colorFondo;
+	}
 }

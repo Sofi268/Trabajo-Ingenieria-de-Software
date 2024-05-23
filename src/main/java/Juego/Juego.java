@@ -302,8 +302,8 @@ public class Juego extends Application{
 	    // Redondea las esquinas un 15%
 	    double radioEsquinas = ladoCuadrado * 0.15;
 
-	    // Color del cuadrado en hexadecimal
-	    String colorHexCuadrado = "B50204";
+	    // Obtiene el color del cuadrado del fondo
+	    String colorFondo = cartaActual.getColorFondo();
 	    
 	    // Dibuja el cuadrado de fondo
 	    Rectangle cuadradoFondo = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
@@ -336,7 +336,7 @@ public class Juego extends Application{
 
 	    // Dibuja el cuadrado de la carta
 	    Rectangle cuadrado = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
-	    cuadrado.setFill(Color.web(colorHexCuadrado));
+	    cuadrado.setFill(Color.web(colorFondo));
 	    cuadrado.setArcWidth(radioEsquinas);
 	    cuadrado.setArcHeight(radioEsquinas);
 

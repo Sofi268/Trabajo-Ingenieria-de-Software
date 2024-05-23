@@ -45,6 +45,8 @@ public class Historia {
                  }
                  Image fondo = new Image(inputStream);
                
+                 String colorFondo = jsonObject.get("color").getAsString();
+                 
                  JsonObject opcionAJson = jsonObject.getAsJsonObject("opcionA");//obj con datos de opcion A
                  // Obtiene(descripcion y niveles) de opcion A
                  String descripcionOpcionA = opcionAJson.get("descripcion").getAsString();
@@ -68,6 +70,7 @@ public class Historia {
                  cartas[i].setNombre(nombre);
                  cartas[i].setAnios(anios);
                  cartas[i].setFondoCarta(fondo);
+                 cartas[i].setColorFondo(colorFondo);
                  // Crea las opciones A y B
                  Opcion opcionA = new Opcion();
                  opcionA.setInformacion(descripcionOpcionA);
