@@ -1,12 +1,10 @@
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import Cartas.Carta;
@@ -15,23 +13,21 @@ import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
 import Juego.Personaje;
 
-import static org.mockito.Mockito.*;
-
 @ExtendWith(MockitoExtension.class)
 public class CartaTest {
 
-    @Mock
-    private Opcion opcionA;  
-    @Mock
-    private Opcion opcionB;
-    
-    private Carta carta;
+    @Spy
+    private Opcion opcionA = new Opcion();
+    @Spy
+    private Opcion opcionB = new Opcion();
+    @Spy
+    private Carta carta = new Carta(opcionA, opcionB);
 
     @BeforeEach
     void setUp() {
-        opcionA = new Opcion();
-        opcionB = new Opcion();
-        carta = new Carta(opcionA, opcionB);
+        opcionA = Mockito.spy(new Opcion());
+        opcionB = Mockito.spy(new Opcion());
+        carta = Mockito.spy(new Carta(opcionA, opcionB));
     }
 
     @Test
