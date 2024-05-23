@@ -1,7 +1,13 @@
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import Cartas.Carta;
 import Cartas.Opcion;
@@ -9,25 +15,28 @@ import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
 import Juego.Personaje;
 
-class CartaTest {
+@ExtendWith(MockitoExtension.class)
+public class CartaTest {
 
-    private Opcion opcionA;
+    @Mock
+    private Opcion opcionA;  
+    @Mock
     private Opcion opcionB;
+    
     private Carta carta;
 
     @BeforeEach
     void setUp() {
-        opcionA = new Opcion();
-        opcionB = new Opcion();
+    	opcionA = mock(Opcion.class);
+    	opcionB = mock(Opcion.class);
         carta = new Carta(opcionA, opcionB);
-
     }
 
     @Test
     @DisplayName("DADA la llamada al constructor de carta, ENTONCES se crean las opciones A y B no nulas y la descripción es nula")
     public void testConstructor() {
-        Assertions.assertEquals(opcionA, carta.getOpcionA()); // Verificar que la opcionA se creo correctamente
-        Assertions.assertEquals(opcionB, carta.getOpcionB()); // Verificar que la opcionB se creo correctamente
+        Assertions.assertEquals(carta.getOpcionA(), opcionA); // Verificar que la opcionA se creo correctamente
+        Assertions.assertEquals(carta.getOpcionB(), opcionB); // Verificar que la opcionB se creo correctamente
         Assertions.assertNull(carta.getDescripcion()); // Verificar que la descripción es nula
     }
 
@@ -39,8 +48,8 @@ class CartaTest {
         String expected_opcionB = "Opcion B";
 
         // Establece que informacion retornan las opciones A y B
-        opcionA.setInformacion("Opcion A");
-        opcionB.setInformacion("Opcion B");
+        when(opcionA.getInformacion()).thenReturn("Opcion A");
+        when(opcionB.getInformacion()).thenReturn("Opcion B");
         
         // Establece los valores resultantes, siendo estos las descripciones de las opciones mostradas por las cartas
         String result_opcionA = carta.verOpcion(opcionA);
@@ -57,8 +66,8 @@ class CartaTest {
         Personaje personaje = new Personaje(); // Crear el personaje
         
         // Establece qué valores de niveles retornan las opciones A y B
-        opcionA.setNiveles(new int[]{10, 20, 0, 0});
-        opcionB.setNiveles(new int[]{0, 10, -10, 0});
+        when(opcionA.getNiveles()).thenReturn(new int[]{10, 20, 0, 0});
+        when(opcionB.getNiveles()).thenReturn(new int[]{0, 10, -10, 0});
 
         // Llama al método elegir opcion
         carta.elegirOpcion(personaje, opcionA.getNiveles(), opcionB.getNiveles(), "A");
@@ -66,4 +75,3 @@ class CartaTest {
         // Verifica que el método elegirOpcion se haya llamado con los argumentos correctos
         //verify(carta).elegirOpcion(personaje, opcionA.getNiveles(), opcionB.getNiveles(), "A");
     }
-}
