@@ -77,3 +77,5 @@ public class CartaTest {
         // Verifica que el método elegirOpcion se haya llamado con los argumentos correctos
         //verify(carta).elegirOpcion(personaje, opcionA.getNiveles(), opcionB.getNiveles(), "A");
     }
+    
+}
