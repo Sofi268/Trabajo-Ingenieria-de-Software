@@ -1,3 +1,4 @@
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Assertions;
@@ -5,9 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import Cartas.Carta;
@@ -19,18 +18,18 @@ import Juego.Personaje;
 @ExtendWith(MockitoExtension.class)
 public class CartaTest {
 
-    @InjectMocks
     private Carta carta;
-
     @Mock
-    private Opcion opcionA;
-    
+    private Opcion opcionA;  
     @Mock
     private Opcion opcionB;
 
     @BeforeEach
     void setup() {
-        MockitoAnnotations.openMocks(this);
+    	opcionA = mock(Opcion.class);
+    	opcionB = mock(Opcion.class);
+        carta = new Carta();
+        
     }
 
     @Test
