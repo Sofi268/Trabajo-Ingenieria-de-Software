@@ -16,7 +16,6 @@ import javafx.scene.image.Image;
 
 public class Historia {
 	private static final int ANIO_INICIAL = 0;
-	private static final int ANIO_FINAL = 200; 
 
 	private int anioActual;
 	private int indiceCartaActual = 0;
@@ -46,6 +45,8 @@ public class Historia {
                  }
                  Image fondo = new Image(inputStream);
                
+                 String colorFondo = jsonObject.get("color").getAsString();
+                 
                  JsonObject opcionAJson = jsonObject.getAsJsonObject("opcionA");//obj con datos de opcion A
                  // Obtiene(descripcion y niveles) de opcion A
                  String descripcionOpcionA = opcionAJson.get("descripcion").getAsString();
@@ -69,6 +70,7 @@ public class Historia {
                  cartas[i].setNombre(nombre);
                  cartas[i].setAnios(anios);
                  cartas[i].setFondoCarta(fondo);
+                 cartas[i].setColorFondo(colorFondo);
                  // Crea las opciones A y B
                  Opcion opcionA = new Opcion();
                  opcionA.setInformacion(descripcionOpcionA);
