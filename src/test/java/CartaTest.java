@@ -1,5 +1,3 @@
-package edu.unc.mi.testing;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -22,6 +20,7 @@ class CartaTest {
         opcionA = new Opcion();
         opcionB = new Opcion();
         carta = new Carta(opcionA, opcionB);
+
     }
 
     @Test
