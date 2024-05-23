@@ -18,18 +18,18 @@ import Juego.Personaje;
 @ExtendWith(MockitoExtension.class)
 public class CartaTest {
 
-    private Carta carta;
     @Mock
     private Opcion opcionA;  
     @Mock
     private Opcion opcionB;
+    
+    private Carta carta;
 
     @BeforeEach
-    void setup() {
+    void setUp() {
     	opcionA = mock(Opcion.class);
     	opcionB = mock(Opcion.class);
         carta = new Carta(opcionA, opcionB);
-        
     }
 
     @Test
