@@ -15,6 +15,8 @@ import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
 import Juego.Personaje;
 
+import static org.mockito.Mockito.*;
+
 @ExtendWith(MockitoExtension.class)
 public class CartaTest {
 
