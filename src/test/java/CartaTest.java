@@ -1,4 +1,4 @@
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -30,9 +30,7 @@ public class CartaTest {
 
     @BeforeEach
     void setup() {
-        carta = Mockito.spy(new Carta()); // Crea una instancia de Carta y espiar
-        opcionA = mock(Opcion.class); // Crea un mock para OpcionA
-        opcionB = mock(Opcion.class); // Crea un mock para OpcionB
+    	MockitoAnnotations.openMocks(this);
     }
 
     @Test
