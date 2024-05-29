@@ -173,24 +173,19 @@ public class Juego extends Application{
 	}
 	
 	private void actualizarFondo() {
-		int aux = muertesTotales % 4;
-		switch(aux) {
-		case 0:
+		String elemento = personaje.getElemento();
+		if (elemento.equals("Aire")) {
 			setFondoStrategy(fondoAire);
-			break;
-		case 1:
+		} else if (elemento.equals("Agua")) {
 			setFondoStrategy(fondoAgua);
-			break;
-		case 2:
+		} else if (elemento.equals("Tierra")) {
 			setFondoStrategy(fondoTierra);
-			break;
-		case 3:
+		} else if (elemento.equals("Fuego")) {
 			setFondoStrategy(fondoFuego);
-			break;
-		default:
+		} else {
 			setFondoStrategy(fondoAire);
-			break;
 		}
+	
 	}
 
 	private void verAniosHistoria(Pane pane) {
@@ -288,7 +283,7 @@ public class Juego extends Application{
 	            } else if (opcion.equals(historia.getCartaActual().getOpciones()[1])) {
 	                historia.elegirOpcionDeCarta("B", personaje);
 	            }
-	            historia.aumentarAnio(historia.getCartaActual().getAnios()); // Incrementar el año de la historia
+	            historia.aumentarAnio(historia.getCartaActual().getAnios()); // Incrementa el anio de la historia
 	            personaje.aumentarAnios(historia.getCartaActual().getAnios());
 	            actualizarEstadisticas();
 	            historia.aumentarIndiceCartaActual();
