@@ -39,7 +39,7 @@ public class Personaje {
 	    	JsonArray jsonArray = gson.fromJson(reader, JsonArray.class); //array con datos del json
 	    	JsonObject jsonObject = jsonArray.get(i).getAsJsonObject();
 	    	String nombre = jsonObject.get("nombre").getAsString();
-	    	String elemento = jsonObject.get("nombre").getAsString();
+	    	String elemento = jsonObject.get("elemento").getAsString();
 	    	setNombre(nombre);
 	    	setElemento(elemento);
 		} catch (Exception e) {
