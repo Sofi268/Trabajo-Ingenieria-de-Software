@@ -33,5 +33,12 @@ public class Icono {
 	public ImageView getImageView() {
 		return imagenView;
 	}
+
+	public double getWidth() {
+		return imagenView.getFitWidth();
+	}
 	
+	public double getHeight() {
+		return imagenView.getFitHeight();
+	}
 }
