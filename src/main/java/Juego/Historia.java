@@ -37,6 +37,7 @@ public class Historia {
         		 // Obtiene nombre, descripción y anios de la carta
                  String nombre = jsonObject.get("nombre").getAsString();
                  String descripcion = jsonObject.get("descripcion").getAsString();
+                 String tipoDeCarta = jsonObject.get("tipo").getAsString();
                  int anios = jsonObject.get("anios").getAsInt();
                  String rutaImagen = jsonObject.get("imagen").getAsString();
                  InputStream inputStream = getClass().getResourceAsStream(rutaImagen);
@@ -71,6 +72,7 @@ public class Historia {
                  cartas[i].setAnios(anios);
                  cartas[i].setFondoCarta(fondo);
                  cartas[i].setColorFondo(colorFondo);
+                 cartas[i].setTipoDeCarta(tipoDeCarta);
                  // Crea las opciones A y B
                  Opcion opcionA = new Opcion();
                  opcionA.setInformacion(descripcionOpcionA);

@@ -43,6 +43,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -69,6 +70,8 @@ public class Juego extends Application{
 	
 	private int muertesTotales;
 	private boolean opcionElegida = false;
+	private double anchoPantalla = screenSize.getWidth();
+    private double altoPantalla = screenSize.getHeight();
 	
 	public Juego(){
 		fondoAire = new FondoAire();
@@ -185,7 +188,6 @@ public class Juego extends Application{
 		} else {
 			setFondoStrategy(fondoAire);
 		}
-	
 	}
 
 	private void verAniosHistoria(Pane pane) {
@@ -297,10 +299,6 @@ public class Juego extends Application{
 	
 	
 	private void interfazCarta() {
-	    // Configura el tamaño de la pantalla
-	    double anchoPantalla = screenSize.getWidth();
-	    double altoPantalla = screenSize.getHeight();
-
 	    // Calcula el tamaño del cuadrado
 	    double ladoCuadrado = Math.min(anchoPantalla, altoPantalla) * 0.45; // Tamaño del cuadrado (45% de la pantalla total)
 
@@ -370,8 +368,26 @@ public class Juego extends Application{
         imageView.setLayoutX(xImagen);
         imageView.setLayoutY(yImagen);
         
-        // Agrupa la imagen y el fondo
-        Group grupoCarta = new Group(cuadrado, imageView);
+        // Texto descripcion carta
+	    TextFlow textoDescripcion = new TextFlow();
+	    textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Centra el texto horizontalmente
+
+	    // Crea un Text con el contenido
+	    Text text = new Text(cartaActual.getDescripcion());
+	    text.setFont(Font.font("Rockwell", FontWeight.NORMAL, altoPantalla * 0.028));
+	    textoDescripcion.getChildren().add(text);
+        
+        Group grupoCarta;
+        
+        if (cartaActual.getTipoDeCarta().equals("contexto")) {
+        	Image fondoContexto = imageView.getImage();
+        	cuadrado.setFill(new ImagePattern(fondoContexto));
+        	grupoCarta = new Group(cuadrado, textoDescripcion);
+        }else {
+        	// Agrupa la imagen y el fondo
+            grupoCarta = new Group(cuadrado, imageView);
+        }
+               
 
 	    Text texto = new Text();
 	    texto.setFill(Color.WHITE); // Color del texto
@@ -420,27 +436,37 @@ public class Juego extends Application{
 	    // Coloca las propiedades de desplazamiento en el texto de las opciones
 	    texto.translateXProperty().bind(grupoCarta.translateXProperty());
 	    texto.translateYProperty().bind(grupoCarta.translateYProperty().subtract(ladoCuadrado * 0.1));
-
-	    // Texto descripcion carta
-	    TextFlow textoDescripcion = new TextFlow();
-	    textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Centra el texto horizontalmente
-
-	    // Crea un Text con el contenido
-	    Text text = new Text(cartaActual.getDescripcion());
-	    text.setFont(Font.font("Rockwell", FontWeight.NORMAL, altoPantalla * 0.028));
-	    text.setFill(Color.WHITE);
-	    textoDescripcion.getChildren().add(text);
-
-	    // Calcula el número de lineas de texto basado en el tamaño del contenedor
+	    
+	    // Variables para calcular la posición del texto y el ancho máximo dependiendo del tipo de carta
+	    double maxAnchoTexto;
+	    double xDescripcion;
+	    double yDescripcion;
 	    int numLineas = (int) Math.ceil(textoDescripcion.prefWidth(-1) / (anchoPantalla * 0.32));
 
-	    // Calcula la posición del texto
-	    double xDescripcion = (anchoPantalla - (anchoPantalla * 0.32)) / 2; // Centra horizontalmente el texto
+	    Group cartaConTexto;
+	    
+	    if (cartaActual.getTipoDeCarta().equals("contexto")) {
+	        // Establece que el ancho máximo del texto sea 1% menos que el ancho del cuadrado
+	        maxAnchoTexto = ladoCuadrado * 0.95;
+	        textoDescripcion.setPrefWidth(maxAnchoTexto);
+	        textoDescripcion.setLineSpacing(altoPantalla * 0.01);
+	        // Ajusta la posición vertical inicial dependiendo del número de líneas
+	        numLineas = (int) Math.ceil(textoDescripcion.prefWidth(-1) / (ladoCuadrado * 0.32));
+	        yDescripcion = yCuadrado + ladoCuadrado/2 - (numLineas * altoPantalla * 0.038) / 2 - altoPantalla * 0.035;
+	        text.setFill(Color.BLACK);
+	        cartaConTexto = carta;
+	    } else {
+	        // Establece que como máximo el ancho sea del 32% del ancho de la pantalla
+	        maxAnchoTexto = anchoPantalla * 0.32;
+	        textoDescripcion.setPrefWidth(maxAnchoTexto);
+	        // Ajusta la posición vertical inicial dependiendo del número de líneas
+	        yDescripcion = (altoPantalla * 0.52 - (numLineas * altoPantalla * 0.028)) / 2;
+	        text.setFill(Color.WHITE);
+	        cartaConTexto = new Group(carta, textoDescripcion);
+	    }
 
-	    // Ajusta la posición vertical inicial dependiendo del número de líneas
-	    double yDescripcion = (altoPantalla * 0.52 - (numLineas * altoPantalla * 0.028)) / 2;
-
-	    textoDescripcion.setPrefWidth(anchoPantalla * 0.32); // Establece que como máximo el ancho sea del 32%
+	    // Centra horizontalmente el texto
+	    xDescripcion = (anchoPantalla - maxAnchoTexto) / 2;
 	    textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Centra el texto horizontalmente
 	    textoDescripcion.setLayoutX(xDescripcion);
 	    textoDescripcion.setLayoutY(yDescripcion);
@@ -457,9 +483,9 @@ public class Juego extends Application{
         
 	    // Agrega los elementos de la interfaz de la carta al Pane
 	    interfazCartaPane.getChildren().add(textoNombrePersonaje);
-	    interfazCartaPane.getChildren().add(textoDescripcion);
 	    interfazCartaPane.getChildren().add(mazo);
-        interfazCartaPane.getChildren().add(carta);
+        interfazCartaPane.getChildren().add(cartaConTexto);
+        //interfazCartaPane.getChildren().add(textoDescripcion);
         interfazCartaPane.getChildren().add(texto);
         
 	    verAnios();
@@ -507,7 +533,7 @@ public class Juego extends Application{
 	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), angulo * 2.5);
 	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), desplazamientoY);
 
-	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.025), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
+	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.0025), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
 
 	                Timeline timeline = new Timeline(keyFrame);
 	                timeline.play();
@@ -552,9 +578,6 @@ public class Juego extends Application{
 
 	
 	public void pantallaFinal(Pane pane) {
-        double anchoPantalla = screenSize.getWidth();
-        double altoPantalla = screenSize.getHeight();
-
         // Define el color de fondo
         String colorFondo = "04042C";
         Rectangle fondo = new Rectangle(anchoPantalla, altoPantalla);
@@ -610,7 +633,8 @@ public class Juego extends Application{
         nombrePersonajeTexto.setLayoutY(altoPantalla - rectanguloNegro.getHeight() / 2 - altoPantalla * 0.085);  
         
         String anioInicial = String.format("%03d", personaje.getAnioInicial());
-        String anios = String.format("%03d", personaje.getAnios());
+        int anioDeMuerte = personaje.getAnios() + personaje.getAnioInicial();
+        String anios = String.format("%03d", anioDeMuerte);
         Text aniosTotales = new Text(anioInicial + " - " + anios);
         aniosTotales.setFont(Font.font(customFont.getFamily(), anchoPantalla * 0.0125));
         aniosTotales.setFill(Color.web("FEEFB3"));
