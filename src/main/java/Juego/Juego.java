@@ -289,8 +289,8 @@ public class Juego extends Application{
 	            } else if (opcion.equals(historia.getCartaPorId(cartaActual.getId()).getOpciones()[1])) {
 	                historia.elegirOpcionDeCarta("B", personaje, cartaActual.getId());
 	            }
-	            historia.aumentarAnio(historia.getCartaActual().getAnios()); // Incrementa el anio de la historia
-	            personaje.aumentarAnios(historia.getCartaActual().getAnios());
+	            historia.aumentarAnio(historia.getCartaPorId(cartaActual.getId()).getAnios()); // Incrementa el anio de la historia
+	            personaje.aumentarAnios(historia.getCartaPorId(cartaActual.getId()).getAnios());
 	            actualizarEstadisticas();
 	            idSiguiente = opcion.getIdSiguiente();
 	            continuarJugando();

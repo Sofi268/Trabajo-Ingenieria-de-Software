@@ -830,7 +830,7 @@
 	    "id": "conflicto_10.2",
 	    "nombre": "Toph",
 	    "descripcion": "Yo puedo ser tu maestra tierra",
-	    "imagen":"/Personajes/maestra_fuego_niña.png",
+	    "imagen":"/Personajes/maestro_tierra_joven.png",
 	    "tipo" : "historia",
 	    "color": "5B394F",
 	    "anios": 0,
@@ -855,7 +855,7 @@
 	    "id": "conflicto_10.3",
 	    "nombre": "Kuvira",
 	    "descripcion": "Entonces sere yo",
-	    "imagen":"/Personajes/maestro_fuego.png",
+	    "imagen":"/Personajes/maestro_tierra_moderno.png",
 	    "tipo" : "historia",
 	    "color": "5B394F",
 	    "anios": 0,
@@ -1440,7 +1440,7 @@
 	        "agua": 10,
 	        "fuego": 10,
 	        "aire": 10,
-	        "cartaSiguiente" : "16.2"
+	        "cartaSiguiente" : "conflicto_16.2"
 	    },
 	    "opcionB": {
 	        "descripcion": "Luchar",
@@ -1448,7 +1448,7 @@
 	        "agua": 10,
 	        "fuego": 10,
 	        "aire": 10,
-	        "cartaSiguiente" : "16.2"
+	        "cartaSiguiente" : "conflicto_16.2"
 	    }
 	},
 	{
@@ -1490,7 +1490,7 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_final_1.1"
+            "cartaSiguiente" : "contexto_final_1.2"
         },
         "opcionB": {
             "descripcion": "",
@@ -1498,7 +1498,7 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_final_1.1"
+            "cartaSiguiente" : "contexto_final_1.2"
         }
     },
     {
@@ -1640,7 +1640,7 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_final_1.4"
+            "cartaSiguiente" : "contexto_final_2.4"
         },
         "opcionB": {
             "descripcion": "",
@@ -1648,7 +1648,7 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_final_1.4"
+            "cartaSiguiente" : "contexto_final_2.4"
         }
     },
     {
