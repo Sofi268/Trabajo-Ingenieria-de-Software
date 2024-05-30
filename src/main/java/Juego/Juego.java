@@ -70,9 +70,11 @@ public class Juego extends Application{
 	
 	private int muertesTotales;
 	private boolean opcionElegida = false;
+	private String idSiguiente;
 	private double anchoPantalla = screenSize.getWidth();
     private double altoPantalla = screenSize.getHeight();
-	
+
+    
 	public Juego(){
 		fondoAire = new FondoAire();
         fondoAgua = new FondoAgua();
@@ -104,6 +106,7 @@ public class Juego extends Application{
 	
 	private void comenzarJuego(){
 		muertesTotales = 0;
+		idSiguiente = "contexto_1";
 		personaje = new Personaje(historia.getAnioActual(), muertesTotales); 
 	    barrasEstadisticas = new ConjuntoBarras(screenSize.getHeight()*0.05); // barras al 50%
 	    actualizarFondo();
@@ -122,7 +125,7 @@ public class Juego extends Application{
         fondoCarta();
         opcionElegida = false;
 	    if(historia.getCartaActual() != null && anioActual < anioLimite) {
-	        cartaActual = historia.jugarCarta();
+	        cartaActual = historia.getCartaPorId(idSiguiente);
 	        interfazCartaPane.getChildren().clear();
 	        interfazCarta();
 	    }
@@ -280,15 +283,16 @@ public class Juego extends Application{
 	    if (!opcionElegida) {
 	        opcionElegida = true;
 	        try {
-	            if (opcion.equals(historia.getCartaActual().getOpciones()[0])) {
-	                historia.elegirOpcionDeCarta("A", personaje);
-	            } else if (opcion.equals(historia.getCartaActual().getOpciones()[1])) {
-	                historia.elegirOpcionDeCarta("B", personaje);
+	            if (opcion.equals(historia.getCartaPorId(cartaActual.getId()).getOpciones()[0])) {
+	                historia.elegirOpcionDeCarta("A", personaje, cartaActual.getId());
+	                
+	            } else if (opcion.equals(historia.getCartaPorId(cartaActual.getId()).getOpciones()[1])) {
+	                historia.elegirOpcionDeCarta("B", personaje, cartaActual.getId());
 	            }
 	            historia.aumentarAnio(historia.getCartaActual().getAnios()); // Incrementa el anio de la historia
 	            personaje.aumentarAnios(historia.getCartaActual().getAnios());
 	            actualizarEstadisticas();
-	            historia.aumentarIndiceCartaActual();
+	            idSiguiente = opcion.getIdSiguiente();
 	            continuarJugando();
 	        } catch (NivelExcedidoException | NivelInvalidoException e) {
 	            System.out.println("Excepcion");

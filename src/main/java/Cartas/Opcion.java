@@ -8,6 +8,7 @@ public class Opcion {
 	
 	private String informacion;
 	private int niveles[];
+	private String idSiguiente;
 	
 	public Opcion() {
 		informacion = null;
@@ -35,5 +36,13 @@ public class Opcion {
 	
 	public void setNiveles(int niveles[]) {
 		this.niveles = niveles;
+	}
+
+	public String getIdSiguiente() {
+		return idSiguiente;
+	}
+
+	public void setIdSiguiente(String idSiguiente) {
+		this.idSiguiente = idSiguiente;
 	}
 }

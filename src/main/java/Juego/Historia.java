@@ -23,7 +23,7 @@ public class Historia {
 	
 	public Historia() {
 		anioActual = ANIO_INICIAL;
-		cartas = new Carta[20];//SE MODIFICO PARCIALMENTE SEGUN CARTAS DEFINIDAS
+		cartas = new Carta[67];//SE MODIFICO PARCIALMENTE SEGUN CARTAS DEFINIDAS
 	}
 	
 	public void llenarCartas(){
@@ -36,6 +36,7 @@ public class Historia {
         		 
         		 // Obtiene nombre, descripción y anios de la carta
                  String nombre = jsonObject.get("nombre").getAsString();
+                 String idCarta = jsonObject.get("id").getAsString();
                  String descripcion = jsonObject.get("descripcion").getAsString();
                  String tipoDeCarta = jsonObject.get("tipo").getAsString();
                  int anios = jsonObject.get("anios").getAsInt();
@@ -55,6 +56,7 @@ public class Historia {
                  int aguaOpcionA = opcionAJson.get("agua").getAsInt();
                  int fuegoOpcionA = opcionAJson.get("fuego").getAsInt();
                  int aireOpcionA = opcionAJson.get("aire").getAsInt();
+                 String idSiguienteOpcionA = opcionAJson.get("cartaSiguiente").getAsString();
 
                  JsonObject opcionBJson = jsonObject.getAsJsonObject("opcionB");//obj con datos de opcion B
                  // Obtiene datos(descripcion y niveles) de opcion B
@@ -63,6 +65,7 @@ public class Historia {
                  int aguaOpcionB = opcionBJson.get("agua").getAsInt();
                  int fuegoOpcionB = opcionBJson.get("fuego").getAsInt();
                  int aireOpcionB = opcionBJson.get("aire").getAsInt();
+                 String idSiguienteOpcionB = opcionBJson.get("cartaSiguiente").getAsString();
                  
                  // Crea una nueva instancia de Carta y la asina al arreglo en la posición i
                  cartas[i] = new Carta();
@@ -73,13 +76,16 @@ public class Historia {
                  cartas[i].setFondoCarta(fondo);
                  cartas[i].setColorFondo(colorFondo);
                  cartas[i].setTipoDeCarta(tipoDeCarta);
+                 cartas[i].setId(idCarta);
                  // Crea las opciones A y B
                  Opcion opcionA = new Opcion();
                  opcionA.setInformacion(descripcionOpcionA);
                  opcionA.setNiveles(new int[]{tierraOpcionA, aguaOpcionA, fuegoOpcionA, aireOpcionA});
+                 opcionA.setIdSiguiente(idSiguienteOpcionA);
                  Opcion opcionB = new Opcion();
                  opcionB.setInformacion(descripcionOpcionB);
                  opcionB.setNiveles(new int[]{tierraOpcionB, aguaOpcionB, fuegoOpcionB, aireOpcionB});
+                 opcionB.setIdSiguiente(idSiguienteOpcionB);
                  // Asigna las opciones a la carta en la posición i
      	         cartas[i].setOpcionA(opcionA);
      	         cartas[i].setOpcionB(opcionB);
@@ -109,12 +115,21 @@ public class Historia {
 		return cartas[i];
 	}
 	
+	public Carta getCartaPorId(String idBuscado) {
+        for (Carta carta : cartas) {
+            if (carta.getId().equals(idBuscado)) {
+                return carta;
+            }
+        }
+        return getCartaActual();
+    }
+	
 	public void aumentarIndiceCartaActual() {
 		indiceCartaActual++;
 	}
 	
-	public void elegirOpcionDeCarta(String opcionElegida, Personaje personaje) throws NivelExcedidoException, NivelInvalidoException {
-	    Carta cartaActual = getCartaActual();
+	public void elegirOpcionDeCarta(String opcionElegida, Personaje personaje, String idBuscado) throws NivelExcedidoException, NivelInvalidoException {
+	    Carta cartaActual = getCartaPorId(idBuscado);
 	    cartaActual.elegirOpcion(personaje, cartaActual.getOpciones()[0].getNiveles(), cartaActual.getOpciones()[1].getNiveles(), opcionElegida);
 	   
 	}

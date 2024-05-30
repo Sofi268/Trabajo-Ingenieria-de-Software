@@ -16,6 +16,7 @@ public class Carta {
 	private Image fondo;
 	private String colorFondo;
 	private String tipoDeCarta;
+	private String id;
 
 	public Carta() {
 		opcionA = new Opcion();
@@ -124,5 +125,13 @@ public class Carta {
 
 	public void setTipoDeCarta(String tipoDeCarta) {
 		this.tipoDeCarta = tipoDeCarta;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }
