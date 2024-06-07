@@ -18,7 +18,7 @@ public class HistoriaTest {
     private Historia historia = new Historia();
 
     private final int ANIO_INICIAL = 0;
-    private final int ANIO_FINAL = 200;
+    private final int ANIO_FINAL = 670;
 
     @BeforeEach
     void setup() {
@@ -45,8 +45,8 @@ public class HistoriaTest {
     @DisplayName("DADO una instancia de Historia, CUANDO se aumentan los años, ENTONCES el año actual se incrementa correctamente")
     public void testAumentarAnio() {
     	
-        // Crea una historia y define que los anios aumenten 5
-    	final int ANIOS_AUMENTO = 5;
+        // Crea una historia y define que los anios aumenten 10
+    	final int ANIOS_AUMENTO = 10;
     	
     	// Define el valor esperado como los anios que aumentan
     	int expected = ANIOS_AUMENTO;
@@ -57,7 +57,7 @@ public class HistoriaTest {
         // Establece el valor resultante como el que tiene la historia en ese momento
         int result = historia.getAnioActual();
         
-        Assertions.assertEquals(expected, result); // Verifica que haya 5 anios de historia
+        Assertions.assertEquals(expected, result); // Verifica que haya 10 anios de historia
     }
     
     @Test
@@ -66,13 +66,13 @@ public class HistoriaTest {
     	// Llama al metodo llenar cartas de historia
     	historia.llenarCartas();
     	
-    	// Obtiene la carta 4 de historia
+    	// Obtiene la carta 6 de historia
     	Carta cartas[] = historia.getCartas();
-    	Carta carta = cartas[3];
+    	Carta carta = cartas[5];
     	
     	// Establece los niveles esperados
-    	int expected_nivelesOpcionA[] = {-5, 0, 15, 0};
-    	int expected_nivelesOpcionB[] = {10, 0, -5, 0};
+    	int expected_nivelesOpcionA[] = {-10, 0, 10, 0};
+    	int expected_nivelesOpcionB[] = {5, 0, -5, 0};
     	
     	// Establece los resultantes como los obtenidos de las opciones
     	int result_nivelesOpcionA[] = carta.getOpcionA().getNiveles();
