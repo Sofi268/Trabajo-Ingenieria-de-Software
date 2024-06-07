@@ -1,5 +1,6 @@
 package Juego;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.google.gson.Gson;
@@ -7,21 +8,26 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import Estadisticas.EstadisticasConjuntas;
+import Estadisticas.Estadistica.NivelExcedidoException;
+import Estadisticas.Estadistica.NivelInvalidoException;
+import Observer_Estadisticas.Observer;
+import Observer_Estadisticas.Subject;
 
-public class Personaje {
+public class Personaje implements Subject{
 	private int anios;
 	private EstadisticasConjuntas estadisticas;
 	private int anioInicial;
 	private String nombre;
 	private String elemento;
 	private int numeroDeAvatar;
-	
+	private ArrayList<Observer> observers;
 	
 	public Personaje() {
 		anios = 0;
 		estadisticas = new EstadisticasConjuntas();
 		anioInicial = 0;
 		numeroDeAvatar = 0;
+		observers = new ArrayList<Observer>();
 		configurarPersonaje(numeroDeAvatar);
 	}
 	
@@ -30,6 +36,7 @@ public class Personaje {
 		estadisticas = new EstadisticasConjuntas();
 		this.anioInicial = anioInicial;
 		this.numeroDeAvatar = numeroDeAvatar;
+		observers = new ArrayList<Observer>();
 		configurarPersonaje(numeroDeAvatar);
 	}
 	
@@ -62,10 +69,6 @@ public class Personaje {
 	public void aumentarAnios(int aniosPasados) {
 		anios += aniosPasados;
 	}
-	
-	public HashMap<String, Integer> getNiveles(){
-		return estadisticas.getEstadisticasNiveles();
-	}
 
 	public int getAnioInicial() {
 		return anioInicial;
@@ -91,4 +94,34 @@ public class Personaje {
 		this.elemento = elemento;
 	}
 	
+	public void modificarEstadisticas(int[] niveles) throws NivelExcedidoException, NivelInvalidoException {
+		estadisticas.modificarTierra(niveles[0]);
+		estadisticas.modificarAgua(niveles[1]);
+		estadisticas.modificarFuego(niveles[2]);
+		estadisticas.modificarAire(niveles[3]);
+		estadisticasChanged();
+	}
+	
+	public void estadisticasChanged() {
+		notifyObservers();
+	}
+	
+	public void registerObserver(Observer o) {
+		observers.add(o);
+	}
+	
+	public void removeObserver(Observer o) {
+		int i = observers.indexOf(o);
+		if (i == -1) {
+			return;
+		}
+		observers.remove(i);
+	}
+	
+	public void notifyObservers() {
+		for(int i = 0; i < observers.size(); i++) {
+			Observer observer = (Observer)observers.get(i);
+			observer.update(estadisticas.getEstadisticasNiveles());
+		}
+	}
 }

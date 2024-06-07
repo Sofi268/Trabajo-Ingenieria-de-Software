@@ -113,6 +113,8 @@ public class Juego extends Application{
 	    fondo();
         fondoCarta();
 	    historia.llenarCartas(); 
+	    //Se registra el conjunto de barras como observer de personaje
+	    personaje.registerObserver(barrasEstadisticas);
 	    generarVistaEstadisticas(interfazEstadisticasPane);
 	    continuarJugando();
 	}
@@ -143,6 +145,7 @@ public class Juego extends Application{
 		interfazFinal.getChildren().clear();
 		personaje = null;
 	    personaje = new Personaje(historia.getAnioActual(), muertesTotales); 
+	    personaje.registerObserver(barrasEstadisticas);
 	    barrasEstadisticas.resetBarras();
 	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.03); // reubica Y de barras 
 	    historia.aumentarIndiceCartaActual();
@@ -267,17 +270,6 @@ public class Juego extends Application{
 		pane.getChildren().add(iconoFuego.getImageView());
 		pane.getChildren().add(iconoAire.getImageView());
 	}
-	
-	public void actualizarEstadisticas() {
-		//hashmap con niveles actuales de estadisticas
-		HashMap<String, Integer> niveles = personaje.getNiveles();
-		barrasEstadisticas.nuevasAlturas(
-				niveles.get("tierra"),
-				niveles.get("agua"),
-				niveles.get("fuego"),
-				niveles.get("aire"));
-		System.out.println("--Actualizacion de estadisticas--");
-	}
 
 	private void elegirOpcion(Opcion opcion) {
 	    if (!opcionElegida) {
@@ -291,7 +283,6 @@ public class Juego extends Application{
 	            }
 	            historia.aumentarAnio(historia.getCartaPorId(cartaActual.getId()).getAnios()); // Incrementa el anio de la historia
 	            personaje.aumentarAnios(historia.getCartaPorId(cartaActual.getId()).getAnios());
-	            actualizarEstadisticas();
 	            idSiguiente = opcion.getIdSiguiente();
 	            continuarJugando();
 	        } catch (NivelExcedidoException | NivelInvalidoException e) {
