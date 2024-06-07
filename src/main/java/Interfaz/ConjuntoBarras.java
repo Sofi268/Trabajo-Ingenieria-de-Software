@@ -1,6 +1,10 @@
 package Interfaz;
 
-public class ConjuntoBarras {
+import java.util.HashMap;
+
+import Observer_Estadisticas.Observer;
+
+public class ConjuntoBarras implements Observer{
 
 	private Barra barraTierra;
 	private Barra barraAgua;
@@ -46,6 +50,15 @@ public class ConjuntoBarras {
 		barraAgua.setBarraLayoutY(y, posRelleno);
 		barraFuego.setBarraLayoutY(y, posRelleno);
 		barraAire.setBarraLayoutY(y, posRelleno);
+	}
+	
+	public void update(HashMap<String, Integer> estadisticas) {
+		nuevasAlturas(
+				estadisticas.get("tierra"),
+				estadisticas.get("agua"),
+				estadisticas.get("fuego"),
+				estadisticas.get("aire")
+		);
 	}
 	
 	// cambio de alturas en todas las barras
