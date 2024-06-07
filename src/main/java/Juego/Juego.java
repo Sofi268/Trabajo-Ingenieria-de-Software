@@ -10,11 +10,8 @@ import Estadisticas.Estadistica.NivelInvalidoException;
 import Interfaz.ConjuntoBarras;
 import Interfaz.FlipCarta;
 import Interfaz.Icono;
-import Strategy_Fondo.FondoAgua;
 import Strategy_Fondo.FondoAire;
-import Strategy_Fondo.FondoFuego;
 import Strategy_Fondo.FondoStrategy;
-import Strategy_Fondo.FondoTierra;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -43,7 +40,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Translate;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -55,10 +51,6 @@ public class Juego extends Application{
 	private Carta cartaActual;
 	private ConjuntoBarras barrasEstadisticas;
 	private FondoStrategy fondoStrategy;
-	private FondoAire fondoAire;
-	private FondoAgua fondoAgua;
-	private FondoTierra fondoTierra;
-	private FondoFuego fondoFuego;
 	private Group root;
 	private Scene escena;
 	private Canvas lienzo;
@@ -76,11 +68,6 @@ public class Juego extends Application{
 
     
 	public Juego(){
-		fondoAire = new FondoAire();
-        fondoAgua = new FondoAgua();
-        fondoTierra = new FondoTierra();
-        fondoFuego = new FondoFuego();
-		
 	}
 	
 	public static void main(String[] args) {
@@ -104,15 +91,15 @@ public class Juego extends Application{
 	}
 	
 	
-	private void comenzarJuego(){
-		muertesTotales = 0;
-		idSiguiente = "contexto_1";
-		personaje = new Personaje(historia.getAnioActual(), muertesTotales); 
-	    barrasEstadisticas = new ConjuntoBarras(screenSize.getHeight()*0.05); // barras al 50%
-	    actualizarFondo();
-	    fondo();
-        fondoCarta();
+	private void comenzarJuego() {
+	    muertesTotales = 0;
+	    idSiguiente = "contexto_1";
+	    personaje = new Personaje(historia.getAnioActual(), muertesTotales); 
+	    barrasEstadisticas = new ConjuntoBarras(screenSize.getHeight() * 0.05); // barras al 50%
 	    historia.llenarCartas(); 
+	    actualizarFondo(); 
+	    fondo();
+	    fondoCarta();
 	    generarVistaEstadisticas(interfazEstadisticasPane);
 	    continuarJugando();
 	}
@@ -121,10 +108,10 @@ public class Juego extends Application{
 	    int anioActual = historia.getAnioActual();
 	    int anioLimite = 200;
 	    actualizarFondo();
-	    fondo();
-        fondoCarta();
-        opcionElegida = false;
-	    if(historia.getCartaActual() != null && anioActual < anioLimite) {
+	    fondo(); // Llama al método fondo() que usa la estrategia seleccionada
+	    fondoCarta();
+	    opcionElegida = false;
+	    if (historia.getCartaActual() != null && anioActual < anioLimite) {
 	        cartaActual = historia.getCartaPorId(idSiguiente);
 	        interfazCartaPane.getChildren().clear();
 	        interfazCarta();
@@ -132,10 +119,12 @@ public class Juego extends Application{
 	}
 
 
+
 	private void morir() {
 		interfazCartaPane.getChildren().clear();
 		historia.aumentarAnio(15);
 		muertesTotales++;
+		historia.aumentarMuertes();
 		pantallaFinal(interfazFinal);
 	}
 	
@@ -167,8 +156,9 @@ public class Juego extends Application{
 	}
 	
 	private void setFondoStrategy(FondoStrategy fondoStrategy) {
-        this.fondoStrategy = fondoStrategy;
-    }
+	    this.fondoStrategy = fondoStrategy;
+	}
+
 	
 	private void fondo() {
 		fondoStrategy.dibujarFondo(graficos, screenSize);
@@ -179,18 +169,8 @@ public class Juego extends Application{
 	}
 	
 	private void actualizarFondo() {
-		String elemento = personaje.getElemento();
-		if (elemento.equals("Aire")) {
-			setFondoStrategy(fondoAire);
-		} else if (elemento.equals("Agua")) {
-			setFondoStrategy(fondoAgua);
-		} else if (elemento.equals("Tierra")) {
-			setFondoStrategy(fondoTierra);
-		} else if (elemento.equals("Fuego")) {
-			setFondoStrategy(fondoFuego);
-		} else {
-			setFondoStrategy(fondoAire);
-		}
+		FondoStrategy estrategia = historia.getSiguienteEstrategia();
+	    setFondoStrategy(estrategia);
 	}
 
 	private void verAniosHistoria(Pane pane) {

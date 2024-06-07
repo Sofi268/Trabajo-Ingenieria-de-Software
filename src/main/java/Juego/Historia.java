@@ -2,6 +2,8 @@ package Juego;
 
 import java.io.FileReader;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -11,6 +13,11 @@ import Cartas.Carta;
 import Cartas.Opcion;
 import Estadisticas.Estadistica.NivelExcedidoException;
 import Estadisticas.Estadistica.NivelInvalidoException;
+import Strategy_Fondo.FondoAgua;
+import Strategy_Fondo.FondoAire;
+import Strategy_Fondo.FondoFuego;
+import Strategy_Fondo.FondoStrategy;
+import Strategy_Fondo.FondoTierra;
 import javafx.scene.image.Image;
 
 
@@ -20,10 +27,18 @@ public class Historia {
 	private int anioActual;
 	private int indiceCartaActual = 0;
 	private Carta[] cartas;
+	private List<FondoStrategy> ciclosElemento;
+	private int muertesTotales;
 	
 	public Historia() {
 		anioActual = ANIO_INICIAL;
 		cartas = new Carta[67];//SE MODIFICO PARCIALMENTE SEGUN CARTAS DEFINIDAS
+		ciclosElemento = new ArrayList<>();
+        ciclosElemento.add(new FondoAire());
+        ciclosElemento.add(new FondoAgua());
+        ciclosElemento.add(new FondoTierra());
+        ciclosElemento.add(new FondoFuego());
+        muertesTotales = 0;
 	}
 	
 	public void llenarCartas(){
@@ -136,6 +151,15 @@ public class Historia {
 
 	public Carta[] getCartas() {
 		return cartas;
+	}
+	
+	public FondoStrategy getSiguienteEstrategia() {
+	    FondoStrategy estrategia = ciclosElemento.get(muertesTotales % ciclosElemento.size());
+	    return estrategia;
+	}
+	
+	public void aumentarMuertes() {
+		muertesTotales++;
 	}
 	
 }

@@ -136,7 +136,7 @@
             "descripcion": "Permanecer escondido",
             "tierra": -10,
             "agua": 0,
-            "fuego": 10,
+            "fuego": 50,
             "aire": 0,
             "cartaSiguiente" : "conflicto_2"
         },
@@ -161,7 +161,7 @@
             "descripcion": "No...",
             "tierra": -10,
             "agua": 0,
-            "fuego": 10,
+            "fuego": 50,
             "aire": 0,
             "cartaSiguiente" : "conflicto_2"
         },
