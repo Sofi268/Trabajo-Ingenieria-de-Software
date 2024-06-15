@@ -134,17 +134,17 @@
         "anios": 10,
         "opcionA": {
             "descripcion": "Permanecer escondido",
-            "tierra": -10,
+            "tierra": -20,
             "agua": 0,
-            "fuego": 10,
+            "fuego": 20,
             "aire": 0,
             "cartaSiguiente" : "conflicto_2"
         },
         "opcionB": {
             "descripcion": "Defender a los aldeanos",
-            "tierra": 5,
+            "tierra": 10,
             "agua": 0,
-            "fuego": -5,
+            "fuego": -10,
             "aire": 0,
             "cartaSiguiente" : "conflicto_1.2"
         }
@@ -159,17 +159,17 @@
         "anios":0,
         "opcionA": {
             "descripcion": "No...",
-            "tierra": -10,
+            "tierra": -20,
             "agua": 0,
-            "fuego": 10,
+            "fuego": 20,
             "aire": 0,
             "cartaSiguiente" : "conflicto_2"
         },
         "opcionB": {
             "descripcion": "Siempre que sea necesario",
-            "tierra": 5,
+            "tierra": 10,
             "agua": 0,
-            "fuego": -5,
+            "fuego": -10,
             "aire": 0,
             "cartaSiguiente" : "conflicto_1.3"
         }
@@ -186,13 +186,13 @@
             "descripcion": "Gracias...",
             "tierra": 0,
             "agua": 0,
-            "fuego": 5,
+            "fuego": 10,
             "aire": 0,
             "cartaSiguiente" : "conflicto_2"
         },
         "opcionB": {
             "descripcion": "No regresen",
-            "tierra": 5,
+            "tierra": 10,
             "agua": 0,
             "fuego": 0,
             "aire": 0,
@@ -208,7 +208,7 @@
         "color": "FB8665",
         "anios":3,
         "opcionA": {
-            "descripcion": "",
+            "descripcion": "...",
             "tierra": 0,
             "agua": 0,
             "fuego": 0,
@@ -216,7 +216,7 @@
             "cartaSiguiente" : "conflicto_2.2"
         },
         "opcionB": {
-            "descripcion": "",
+            "descripcion": "...",
             "tierra": 0,
             "agua": 0,
             "fuego": 0,
@@ -235,16 +235,16 @@
         "opcionA": {
             "descripcion": "Por supuesto",
             "tierra": 0,
-            "agua": 5,
-            "fuego": -10,
+            "agua": 10,
+            "fuego": -20,
             "aire": 0,
             "cartaSiguiente" : "conflicto_3"
         },
         "opcionB": {
             "descripcion": "No es mi problema...",
             "tierra": 0,
-            "agua": -10,
-            "fuego": 5,
+            "agua": -20,
+            "fuego": 10,
             "aire": 0,
             "cartaSiguiente" : "conflicto_3"
         }
@@ -259,10 +259,10 @@
         "anios":10,
         "opcionA": {
             "descripcion": "Perder el control",
-            "tierra": -5,
-            "agua": -5,
-            "fuego": -5,
-            "aire": -5,
+            "tierra": -10,
+            "agua": -10,
+            "fuego": -10,
+            "aire": -10,
             "cartaSiguiente" : "conflicto_3.2"
         },
         "opcionB": {
@@ -270,7 +270,7 @@
             "tierra": 0,
             "agua": 0,
             "fuego": 0,
-            "aire": 10,
+            "aire": 20,
             "cartaSiguiente" : "conflicto_4"
         }
     },
@@ -284,18 +284,18 @@
         "anios": 0,
         "opcionA": {
             "descripcion": "...",
-            "tierra": -5,
-            "agua": -5,
-            "fuego": -5,
-            "aire": -5,
+            "tierra": -10,
+            "agua": -10,
+            "fuego": -10,
+            "aire": -10,
             "cartaSiguiente" : "conflicto_3.3"
         },
         "opcionB": {
             "descripcion": "Tienes razón",
             "tierra": 0,
-            "agua": 5,
+            "agua": 10,
             "fuego": 0,
-            "aire": 5,
+            "aire": 10,
             "cartaSiguiente" : "conflicto_4"
         }
     },
@@ -309,18 +309,18 @@
         "anios":0,
         "opcionA": {
             "descripcion": "Dejame en paz",
-            "tierra": -5,
-            "agua": -5,
-            "fuego": -5,
-            "aire": -5,
+            "tierra": -10,
+            "agua": -10,
+            "fuego": -10,
+            "aire": -10,
             "cartaSiguiente" : "conflicto_4"
         },
         "opcionB": {
             "descripcion": "Lo siento...",
-            "tierra": 5,
-            "agua": 5,
-            "fuego": 5,
-            "aire": 5,
+            "tierra": 10,
+            "agua": 10,
+            "fuego": 10,
+            "aire": 10,
             "cartaSiguiente" : "conflicto_4"
         }
     },
@@ -334,7 +334,7 @@
         "anios":10,
         "opcionA": {
             "descripcion": "Atacas el palacio",
-            "tierra": -5,
+            "tierra": -10,
             "agua": 0,
             "fuego": 0,
             "aire": 0,
@@ -359,7 +359,7 @@
         "anios":0,
         "opcionA": {
             "descripcion": "Tendré que detenerte",
-            "tierra": 5,
+            "tierra": 10,
             "agua": 0,
             "fuego": 0,
             "aire": 0,
@@ -384,7 +384,7 @@
         "anios": 0,
         "opcionA": {
             "descripcion": "",
-            "tierra": -5,
+            "tierra": -10,
             "agua": 0,
             "fuego": 0,
             "aire": 0,
@@ -392,7 +392,7 @@
         },
         "opcionB": {
             "descripcion": "",
-            "tierra": -5,
+            "tierra": -10,
             "agua": 0,
             "fuego": 0,
             "aire": 0,
@@ -409,7 +409,7 @@
         "anios": 10,
         "opcionA": {
             "descripcion": "",
-            "tierra": -5,
+            "tierra": -10,
             "agua": 0,
             "fuego": 0,
             "aire": 0,
@@ -417,7 +417,7 @@
         },
         "opcionB": {
             "descripcion": "",
-            "tierra": -5,
+            "tierra": -10,
             "agua": 0,
             "fuego": 0,
             "aire": 0,
@@ -434,17 +434,17 @@
 	    "anios":0,
 	    "opcionA": {
 	        "descripcion": "No lo sé",
-	        "tierra": -10,
+	        "tierra": -20,
 	        "agua": 0,
-	        "fuego": 10,
-	        "aire": 5,
+	        "fuego": 20,
+	        "aire": 10,
 	        "cartaSiguiente" : "conflicto_6"
 	    },
 	    "opcionB": {
 	        "descripcion": "Soy el Avatar",
-	        "tierra": 10,
+	        "tierra": 20,
 	        "agua": 0,
-	        "fuego": -10,
+	        "fuego": -20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_5.3"
 	    }
@@ -459,17 +459,17 @@
 	    "anios":0,
 	    "opcionA": {
 	        "descripcion": "Enfrentarlos",
-	        "tierra": 10,
+	        "tierra": 20,
 	        "agua": 0,
-	        "fuego": -10,
+	        "fuego": -20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_6"
 	    },
 	    "opcionB": {
 	        "descripcion": "Escapar",
-	        "tierra": -5,
+	        "tierra": -10,
 	        "agua": 0,
-	        "fuego": 5,
+	        "fuego": 10,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_6"
 	    }
@@ -485,17 +485,17 @@
 	    "opcionA": {
 	        "descripcion": "Darles tu aprobación",
 	        "tierra": 0,
-	        "agua": 10,
+	        "agua": 20,
 	        "fuego": 0,
-	        "aire": 10,
+	        "aire": 20,
 	        "cartaSiguiente" : "conflicto_6.2"
 	    },
 	    "opcionB": {
 	        "descripcion": "Rechazar la idea",
 	        "tierra": 0,
-	        "agua": -5,
+	        "agua": -10,
 	        "fuego": 0,
-	        "aire": -5,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_7"
 	    }
 	},
@@ -510,17 +510,17 @@
 	    "opcionA": {
 	        "descripcion": "De acuerdo",
 	        "tierra": 0,
-	        "agua": 5,
-	        "fuego": -10,
-	        "aire": 5,
+	        "agua": 10,
+	        "fuego": -20,
+	        "aire": 10,
 	        "cartaSiguiente" : "conflicto_7"
 	    },
 	    "opcionB": {
 	        "descripcion": "No debo hacer eso",
 	        "tierra": 0,
-	        "agua": -5,
-	        "fuego": 5,
-	        "aire": -5,
+	        "agua": -10,
+	        "fuego": 10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_7"
 	    }
 	},
@@ -543,9 +543,9 @@
 	    "opcionB": {
 	        "descripcion": "Buscar aliados",
 	        "tierra": 0,
-	        "agua": 5,
+	        "agua": 10,
 	        "fuego": 0,
-	        "aire": -5,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_7.3"
 	    }
 	},
@@ -560,17 +560,17 @@
 	    "opcionA": {
 	        "descripcion": "Por supuesto",
 	        "tierra": 0,
-	        "agua": 10,
+	        "agua": 20,
 	        "fuego": 0,
-	        "aire": -5,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_8"
 	    },
 	    "opcionB": {
 	        "descripcion": "No puedo",
 	        "tierra": 0,
-	        "agua": -10,
+	        "agua": -20,
 	        "fuego": 0,
-	        "aire": 10,
+	        "aire": 20,
 	        "cartaSiguiente" : "conflicto_8"
 	    }
 	},
@@ -584,7 +584,7 @@
 	    "anios":0,
 	    "opcionA": {
 	        "descripcion": "En el Reino tierra",
-	        "tierra": 10,
+	        "tierra": 20,
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
@@ -592,7 +592,7 @@
 	    },
 	    "opcionB": {
 	        "descripcion": "En la Nacion del fuego",
-	        "tierra": 10,
+	        "tierra": 20,
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
@@ -613,12 +613,12 @@
 	        "tierra": 0,
 	        "agua": 0,
 	        "fuego": 0,
-	        "aire": 10,
+	        "aire": 20,
 	        "cartaSiguiente" : "conflicto_8.2"
 	    },
 	    "opcionB": {
 	        "descripcion": "Proteger la aldea",
-	        "tierra": 10,
+	        "tierra": 20,
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
@@ -635,18 +635,18 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Los ayudare",
-	        "tierra": -10,
+	        "tierra": -20,
 	        "agua": 0,
 	        "fuego": 0,
-	        "aire": 10,
+	        "aire": 20,
 	        "cartaSiguiente" : "conflicto_8.4"
 	    },
 	    "opcionB": {
 	        "descripcion": "No me parece",
-	        "tierra": 10,
-	        "agua": -10,
-	        "fuego": -10,
-	        "aire": -10,
+	        "tierra": 20,
+	        "agua": -20,
+	        "fuego": -20,
+	        "aire": -20,
 	        "cartaSiguiente" : "conflicto_8.3"
 	    }
 	},
@@ -660,17 +660,17 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Intentar detenerlos",
-	        "tierra": -10,
-	        "agua": -10,
-	        "fuego": -10,
-	        "aire": -10,
+	        "tierra": -20,
+	        "agua": -20,
+	        "fuego": -20,
+	        "aire": -20,
 	        "cartaSiguiente" : "conflicto_9"
 	    },
 	    "opcionB": {
 	        "descripcion": "Retractarse",
-	        "tierra": 10,
+	        "tierra": 20,
 	        "agua": 0,
-	        "fuego": -5,
+	        "fuego": -10,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_9"
 	    }
@@ -685,7 +685,7 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Claro que si",
-	        "tierra": 10,
+	        "tierra": 20,
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
@@ -696,7 +696,7 @@
 	        "tierra": 0,
 	        "agua": 0,
 	        "fuego": 0,
-	        "aire": 10,
+	        "aire": 20,
 	        "cartaSiguiente" : "conflicto_9"
 	    }
 	},
@@ -714,14 +714,14 @@
 	        "tierra": 0,
 	        "agua": 0,
 	        "fuego": 0,
-	        "aire": 10,
+	        "aire": 20,
 	        "cartaSiguiente" : "conflicto_9.2"
 	    },
 	    "opcionB": {
 	        "descripcion": "Advertir al Señor del Fuego",
 	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": 10,
+	        "fuego": 20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_9.3"
 	    }
@@ -736,18 +736,18 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Tienen que deterse",
-	        "tierra": -10,
-	        "agua": -10,
+	        "tierra": -20,
+	        "agua": -20,
 	        "fuego": 0,
-	        "aire": -10,
+	        "aire": -20,
 	        "cartaSiguiente" : "conflicto_10"
 	    },
 	    "opcionB": {
 	        "descripcion": "Me parece bien",
-	        "tierra": 10,
-	        "agua": 10,
-	        "fuego": -20,
-	        "aire": 10,
+	        "tierra": 20,
+	        "agua": 20,
+	        "fuego": -30,
+	        "aire": 20,
 	        "cartaSiguiente" : "conflicto_10"
 	    }
 	},
@@ -763,16 +763,16 @@
 	        "descripcion": "Debe creerme",
 	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": 10,
+	        "fuego": 20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_9.4"
 	    },
 	    "opcionB": {
 	        "descripcion": "Es verdad...",
-	        "tierra": 10,
-	        "agua": 10,
-	        "fuego": -10,
-	        "aire": 10,
+	        "tierra": 20,
+	        "agua": 20,
+	        "fuego": -20,
+	        "aire": 20,
 	        "cartaSiguiente" : "conflicto_10"
 	    }
 	},
@@ -786,17 +786,17 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Debes atacarlos",
-	        "tierra": -10,
-	        "agua": -10,
+	        "tierra": -20,
+	        "agua": -20,
 	        "fuego": 0,
-	        "aire": -10,
+	        "aire": -20,
 	        "cartaSiguiente" : "conflicto_10"
 	    },
 	    "opcionB": {
 	        "descripcion": "Mejora la seguridad",
 	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": 20,
+	        "fuego": 30,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_10"
 	    }
@@ -811,7 +811,7 @@
 	    "anios":10,
 	    "opcionA": {
 	        "descripcion": "Buscar un maestro",
-	        "tierra": 10,
+	        "tierra": 20,
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
@@ -819,7 +819,7 @@
 	    },
 	    "opcionB": {
 	        "descripcion": "Dejarlo para despues",
-	        "tierra": -10,
+	        "tierra": -20,
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
@@ -844,7 +844,7 @@
 	    },
 	    "opcionB": {
 	        "descripcion": "De acuerdo",
-	        "tierra": 20,
+	        "tierra": 30,
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
@@ -861,7 +861,7 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "...",
-	        "tierra": 10,
+	        "tierra": 20,
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
@@ -869,7 +869,7 @@
 	    },
 	    "opcionB": {
 	        "descripcion": "...",
-	        "tierra": 10,
+	        "tierra": 20,
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
@@ -888,7 +888,7 @@
 	        "descripcion": "Ignorarlo",
 	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": 10,
+	        "fuego": 20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_12"
 	    },
@@ -896,7 +896,7 @@
 	        "descripcion": "Aceptarlo",
 	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": -10,
+	        "fuego": -20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_11.2"
 	    }
@@ -911,18 +911,18 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "No lo necesito",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_11.3"
 	    },
 	    "opcionB": {
 	        "descripcion": "Esta bien",
-	        "tierra": 5,
-	        "agua": 5,
-	        "fuego": 5,
-	        "aire": 5,
+	        "tierra": 10,
+	        "agua": 10,
+	        "fuego": 10,
+	        "aire": 10,
 	        "cartaSiguiente" : "conflicto_12"
 	    }
 	},
@@ -938,7 +938,7 @@
 	        "descripcion": "No",
 	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": -10,
+	        "fuego": -20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_12"
 	    },
@@ -946,7 +946,7 @@
 	        "descripcion": "Si",
 	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": 10,
+	        "fuego": 20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_12"
 	    }
@@ -961,17 +961,17 @@
 	    "anios": 10,
 	    "opcionA": {
 	        "descripcion": "Intentar detenerla",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_12.2"
 	    },
 	    "opcionB": {
 	        "descripcion": "Culpar a Zuko",
 	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": -10,
+	        "fuego": -20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_13"
 	    }
@@ -988,16 +988,16 @@
 	        "descripcion": "Claro que si",
 	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": -10,
+	        "fuego": -20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_13"
 	    },
 	    "opcionB": {
 	        "descripcion": "Tienes razon",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_13"
 	    }
 	},
@@ -1036,18 +1036,18 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Lo probaré",
-	        "tierra": 10,
-	        "agua": 10,
-	        "fuego": 10,
-	        "aire": 10,
+	        "tierra": 20,
+	        "agua": 20,
+	        "fuego": 20,
+	        "aire": 20,
 	        "cartaSiguiente" : "conflicto_14"
 	    },
 	    "opcionB": {
 	        "descripcion": "No sé...",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_14"
 	    }
 	},
@@ -1069,10 +1069,10 @@
 	    },
 	    "opcionB": {
 	        "descripcion": "Paso",
-	        "tierra": -20,
-	        "agua": -20,
-	        "fuego": -20,
-	        "aire": -20,
+	        "tierra": -30,
+	        "agua": -30,
+	        "fuego": -30,
+	        "aire": -30,
 	        "cartaSiguiente" : "conflicto_15"
 	    }
 	},
@@ -1094,10 +1094,10 @@
 	    },
 	    "opcionB": {
 	        "descripcion": "Repitemelo",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_14.2"
 	    }
 	},
@@ -1263,13 +1263,13 @@
 	        "descripcion": "No puedo aceptarlo",
 	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": 10,
+	        "fuego": 30,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_16"
 	    },
 	    "opcionB": {
 	        "descripcion": "Acepto",
-	        "tierra": 10,
+	        "tierra": 30,
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
@@ -1294,10 +1294,10 @@
 	    },
 	    "opcionB": {
 	        "descripcion": "Luchar",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_16.2"
 	    }
 	},
@@ -1311,18 +1311,18 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_16.3"
 	    },
 	    "opcionB": {
 	        "descripcion": "",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_16.3"
 	    }
 	},
@@ -1336,18 +1336,18 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_16.4"
 	    },
 	    "opcionB": {
 	        "descripcion": "",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_16.4"
 	    }
 	},
@@ -1361,18 +1361,18 @@
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_16.5"
 	    },
 	    "opcionB": {
 	        "descripcion": "",
-	        "tierra": -5,
-	        "agua": -5,
-	        "fuego": -5,
-	        "aire": -5,
+	        "tierra": -10,
+	        "agua": -10,
+	        "fuego": -10,
+	        "aire": -10,
 	        "cartaSiguiente" : "conflicto_16.5"
 	    }
 	},

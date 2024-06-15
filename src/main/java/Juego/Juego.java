@@ -1,5 +1,6 @@
 package Juego;
 
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import Cartas.Carta;
@@ -18,6 +19,7 @@ import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
@@ -30,7 +32,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -151,9 +155,10 @@ public class Juego extends Application{
 	    root.getChildren().add(interfazFinal);
 	}
 
-	public void verAnios() {
+	public void verInformacion() {
 		verAniosHistoria(interfazCartaPane);
 	    verAniosPersonaje(interfazCartaPane);
+	    verNombrePersonaje(interfazCartaPane);
 	}
 	
 	private void setFondoStrategy(FondoStrategy fondoStrategy) {
@@ -176,11 +181,12 @@ public class Juego extends Application{
 
 	private void verAniosHistoria(Pane pane) {
         // Obtiene el año actual desde la instancia de Historia
-        int anioActual = historia.getAnioActual();
+        String anioActual = String.format("%03d", historia.getAnioActual());
 
         // Crea el nodo de texto
-        Text textoAnio = new Text("Año actual: " + anioActual);
-        textoAnio.setFont(Font.font("Rockwell", screenSize.getHeight() * 0.05)); 
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Aldrich.ttf"), anchoPantalla * 0.04);
+        Text textoAnio = new Text(anioActual);
+        textoAnio.setFont(Font.font(customFont.getFamily(), screenSize.getHeight() * 0.04)); 
         textoAnio.setFill(Color.web("FEE78C")); // CColor en hex
 
         // Posiciona el texto 
@@ -195,11 +201,12 @@ public class Juego extends Application{
 	
 	private void verAniosPersonaje(Pane pane) {
         // Obtiene los años del personaje
-        int aniosPersonaje = personaje.getAnios();
+		int aniosPersonaje = personaje.getAnios();
 
         // Crea el nodo de texto
-        Text textoAnios = new Text("Años transcurridos: " + aniosPersonaje);
-        textoAnios.setFont(Font.font("Rockwell", screenSize.getHeight() * 0.05));
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Aldrich.ttf"), anchoPantalla * 0.04);
+        Text textoAnios = new Text(aniosPersonaje + " años");
+        textoAnios.setFont(Font.font(customFont.getFamily(), screenSize.getHeight() * 0.04));
         textoAnios.setFill(Color.web("FEE78C")); // Color amarillo hex
 
         // Posiciona el texto a la derecha
@@ -211,6 +218,27 @@ public class Juego extends Application{
         // Agrega el nodo de texto al pane
         pane.getChildren().add(textoAnios);
     }
+	
+	private void verNombrePersonaje(Pane pane) {
+        // Obtiene los años del personaje
+		String nombrePersonaje = personaje.getNombre();
+
+        // Crea el nodo de texto
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Aldrich.ttf"), anchoPantalla * 0.04);
+        Text textoAnios = new Text(nombrePersonaje);
+        textoAnios.setFont(Font.font(customFont.getFamily(), screenSize.getHeight() * 0.04));
+        textoAnios.setFill(Color.web("FEE78C")); // Color amarillo hex
+
+        // Posiciona el texto a la derecha
+        double x = screenSize.getWidth() - textoAnios.getLayoutBounds().getWidth() - screenSize.getWidth() * 0.025; // Alinea el texto al borde derecho con un margen de 2.5% del ancho de la pantalla
+        double y = screenSize.getHeight() * 0.9; // 10% de distancia del borde inferior
+        textoAnios.setX(x);
+        textoAnios.setY(y);
+
+        // Agrega el nodo de texto al pane
+        pane.getChildren().add(textoAnios);
+    }
+
 	
 	public void generarVistaEstadisticas(Pane pane) {
 		//barras de estadisticas
@@ -272,6 +300,10 @@ public class Juego extends Application{
 	
 	
 	private void interfazCarta() {
+		//----------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------Forma base de las cartas----------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+		
 	    // Calcula el tamaño del cuadrado
 	    double ladoCuadrado = Math.min(anchoPantalla, altoPantalla) * 0.45; // Tamaño del cuadrado (45% de la pantalla total)
 
@@ -304,6 +336,10 @@ public class Juego extends Application{
 	    cuadradoFondo.setArcWidth(radioEsquinas);
 	    cuadradoFondo.setArcHeight(radioEsquinas);
 	    
+	    //----------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------Ajusta el borde de la carta--------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+	    
 	    // Crea un borde para el fondo
 	    double borde = anchoPantalla * 0.0015; // Tamanio del borde
 	    // Crea el cuadrado del borde 
@@ -314,17 +350,29 @@ public class Juego extends Application{
 	    
 	    // Crea un Group para agrupar el cuadrado de fondo y el borde dorado
 	    Group mazo = new Group(bordeCarta, cuadradoFondo);
+	    
+	    //----------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------Ajusta la carta-------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
 
 	    // Dibuja el cuadrado de la carta
 	    Rectangle cuadrado = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
 	    cuadrado.setFill(Color.web(colorFondo));
 	    cuadrado.setArcWidth(radioEsquinas);
 	    cuadrado.setArcHeight(radioEsquinas);
-
+	    
+	    //----------------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------Ajusta el reverso de la carta----------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+	    
 	    Rectangle reversoCarta = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
 	    reversoCarta.setFill(new ImagePattern(dorso));
 	    reversoCarta.setArcWidth(radioEsquinas);
 	    reversoCarta.setArcHeight(radioEsquinas);
+	    
+	    //----------------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------Ajusta la imagen de la carta-----------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
 	    
 	    // Crea un ImageView para la imagen de la carta
         Image imagenCarta = cartaActual.getFondo();
@@ -341,16 +389,66 @@ public class Juego extends Application{
         imageView.setLayoutX(xImagen);
         imageView.setLayoutY(yImagen);
         
+        //----------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------Ajusta la descripcion de la carta-------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+        
         // Texto descripcion carta
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Aldrich.ttf"), anchoPantalla * 0.04);
 	    TextFlow textoDescripcion = new TextFlow();
 	    textoDescripcion.setTextAlignment(TextAlignment.CENTER); // Centra el texto horizontalmente
 
 	    // Crea un Text con el contenido
 	    Text text = new Text(cartaActual.getDescripcion());
-	    text.setFont(Font.font("Rockwell", FontWeight.NORMAL, altoPantalla * 0.028));
+	    text.setFont(Font.font(customFont.getFamily(), altoPantalla * 0.028));
 	    textoDescripcion.getChildren().add(text);
+	    
+	    //----------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------Fondo de las opciones de la carta-------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+	    
+	    // Crea el rectángulo negro con opacidad
+	    Rectangle rectanguloSuperiorA = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
+	    rectanguloSuperiorA.setFill(Color.BLACK);
+	    rectanguloSuperiorA.setOpacity(0.5); // Ajusta la opacidad según sea necesario
+	    
+	    // Crea el rectángulo negro con opacidad
+	    Rectangle rectanguloSuperiorB = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
+	    rectanguloSuperiorB.setFill(Color.BLACK);
+	    rectanguloSuperiorB.setOpacity(0.5); // Ajusta la opacidad según sea necesario
+
+	    // Crea un Shape para la forma de la carta
+	    Rectangle formaCarta = new Rectangle(xCuadrado, yCuadrado, ladoCuadrado, ladoCuadrado);
+	    formaCarta.setArcWidth(radioEsquinas);
+	    formaCarta.setArcHeight(radioEsquinas);
+
+	    double alturaLimite = altoPantalla * 0.45; // 75% de la altura de la pantalla
+
+	    // Crea el rectángulo de límite centrado y extendido a lo ancho de la pantalla
+	    Rectangle formaLimiteA = new Rectangle(0, 0, anchoPantalla, alturaLimite);
+	    formaLimiteA.setRotate(5);
+	    
+	    // Crea el rectángulo de límite centrado y extendido a lo ancho de la pantalla
+	    Rectangle formaLimiteB = new Rectangle(0, 0, anchoPantalla, alturaLimite);
+	    formaLimiteB.setRotate(355);
+	    
+	    Shape recorteCartaA = Shape.intersect(formaCarta, formaLimiteA);
+	    Shape recorteCartaB = Shape.intersect(formaCarta, formaLimiteB);
+	    
+	    rectanguloSuperiorA.setClip(recorteCartaA);
+	    rectanguloSuperiorA.setX(xCuadrado);
+	    
+	    rectanguloSuperiorB.setClip(recorteCartaB);
+	    rectanguloSuperiorB.setX(xCuadrado);
         
         Group grupoCarta;
+        
+        rectanguloSuperiorA.setVisible(false);
+        rectanguloSuperiorB.setVisible(false);
+        
+        //----------------------------------------------------------------------------------------------------------------------
+        //----------------------------------Determina la carta segun contexto u elegir.-----------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
         
         if (cartaActual.getTipoDeCarta().equals("contexto")) {
         	Image fondoContexto = imageView.getImage();
@@ -358,32 +456,38 @@ public class Juego extends Application{
         	grupoCarta = new Group(cuadrado, textoDescripcion);
         }else {
         	// Agrupa la imagen y el fondo
-            grupoCarta = new Group(cuadrado, imageView);
-        }
-               
+            grupoCarta = new Group(cuadrado, imageView, rectanguloSuperiorA, rectanguloSuperiorB);
+        }   
 
+        //----------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------Texto de las opciones de la carta-------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+        
 	    Text texto = new Text();
-	    texto.setFill(Color.WHITE); // Color del texto
-	    texto.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+	    texto.setFill(Color.web("FEE78C")); // Color del texto
+	    texto.setFont(Font.font(customFont.getFamily(), 16));
 
 	    // Posicionamiento del texto
-	    texto.setLayoutX(xCuadrado + ladoCuadrado * 0.15);
-	    texto.setLayoutY(yCuadrado + ladoCuadrado * 0.225); // Coloca el texto a un 22.5% del borde superior
+	    texto.setLayoutY(yCuadrado + ladoCuadrado * 0.2); // Coloca el texto a un 22.5% del borde superior
 	    texto.setTextAlignment(TextAlignment.CENTER); //
 
 	    // Establece un ancho fijo
-	    texto.setWrappingWidth(ladoCuadrado * 0.7);
-
-	    // Calcula la posición horizontal para centrar el rectángulo en la carta
-	    double xRectangulo = (anchoPantalla - ladoCuadrado) / 2;
-
+	    texto.setWrappingWidth(ladoCuadrado * 0.5);
+	    
 	    // Crea una carta con su frente y atrás
 	    Group carta = new Group(reversoCarta, grupoCarta);
-
-	    // Realiza un flip de la carta
-	    FlipCarta flipCarta = new FlipCarta(carta, reversoCarta, grupoCarta);
+	    
+	    //----------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------Realiza un flip de la carta--------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+        
+        FlipCarta flipCarta = new FlipCarta(carta, reversoCarta, grupoCarta);
 	    flipCarta.flip();
-
+        
+	    //----------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------Maneja eventos del mouse-----------------------------------------------
+	    //----------------------------------------------------------------------------------------------------------------------
+	    
 	    // Aplica la rotación al grupo que contiene el cuadrado y la imagen
 	    Rotate rotacionGrupo = new Rotate();
 	    rotacionGrupo.setPivotX(xCuadrado + ladoCuadrado / 2);
@@ -402,13 +506,110 @@ public class Juego extends Application{
 	    // Inicializa la posición inicial del mouse en el centro de la pantalla
 	    double centroX = escena.getWidth() / 2;
 	    double centroY = escena.getHeight() / 2;
-
-	    // Maneja los eventos con el mouse
-	    manejarEventosMouse(grupoCarta, rotacionGrupo, escena, cartaActual, centroX, centroY, ladoCuadrado, anchoPantalla, altoPantalla, movimientoHabilitado, movimientoActivado, temporizador, texto);
+	   
 
 	    // Coloca las propiedades de desplazamiento en el texto de las opciones
 	    texto.translateXProperty().bind(grupoCarta.translateXProperty());
 	    texto.translateYProperty().bind(grupoCarta.translateYProperty().subtract(ladoCuadrado * 0.1));
+	    
+        escena.setOnMouseMoved(event -> {
+	        double mouseX = event.getSceneX();
+	        double mouseY = event.getSceneY();
+
+	        double difX = mouseX - centroX;
+	        double difY = mouseY - centroY;
+
+	        boolean mouseSobreCuadrado = Math.abs(difX) < Math.abs(ladoCuadrado/2) && Math.abs(difY) < Math.abs(ladoCuadrado/2);
+
+	        if ((rotacionGrupo.getAngle() == 0) && mouseSobreCuadrado && movimientoHabilitado.get()) {
+	            movimientoActivado.set(true);
+	        }
+
+	        if ((rotacionGrupo.getAngle() == 0) && !(mouseSobreCuadrado) && movimientoHabilitado.get()) {
+	            movimientoActivado.set(false);
+	        }
+
+	        if (movimientoActivado.get()) {
+	            if (Math.abs(difX) >= (Math.abs(anchoPantalla - centroX) * 0.95) || Math.abs(difY) >= (Math.abs(altoPantalla - centroY) * 0.95)) {
+	                KeyValue rotacionKeyValue = new KeyValue(rotacionGrupo.angleProperty(), 0);
+	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), 0);
+	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), 0);
+
+	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
+
+	                Timeline timeline = new Timeline(keyFrame);
+	                texto.setText("");
+	                rectanguloSuperiorA.setVisible(false);
+                    rectanguloSuperiorB.setVisible(false);
+	                timeline.play();
+	            } else {
+	                double angulo = difX / 10;
+	                double desplazamientoY = difY * 0.03;
+
+	                if (angulo > 20) {
+	                    angulo = 20;
+	                } else if (angulo < -20) {
+	                    angulo = -20;
+	                }
+
+	                KeyValue rotacionKeyValue = new KeyValue(rotacionGrupo.angleProperty(), angulo);
+	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), angulo * 2.5);
+	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), desplazamientoY);
+
+	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.0025), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
+
+	                Timeline timeline = new Timeline(keyFrame);
+	                timeline.play();
+
+	                if (angulo >= 1) {
+	                	texto.setLayoutX(xCuadrado + ladoCuadrado * 0.3);
+	                    texto.setText(cartaActual.getOpciones()[0].getInformacion());
+	                    rectanguloSuperiorA.setVisible(false);
+	                    rectanguloSuperiorB.setVisible(true);
+	                } else if (angulo < -1) {
+	                	texto.setLayoutX(xCuadrado + + ladoCuadrado * 0.2);
+	                    texto.setText(cartaActual.getOpciones()[1].getInformacion());
+	                    rectanguloSuperiorA.setVisible(true);
+	                    rectanguloSuperiorB.setVisible(false);
+	                } else {
+	                	texto.setText("");
+	                	
+	                }
+	            }
+	        }
+	    });
+
+	    temporizador.play();
+
+	    escena.setOnMouseClicked(event -> {
+	        movimientoActivado.set(false);
+	        double angulo = rotacionGrupo.getAngle();
+	        if (angulo >= 1) {
+	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
+
+	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
+
+	            transicion.setOnFinished(finishedEvent -> {
+	                elegirOpcion(cartaActual.getOpcionA());
+	            });
+
+	            transicion.play();
+	        } else if (angulo < -1) {
+	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
+	      
+	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
+
+	            transicion.setOnFinished(finishedEvent -> {
+	                elegirOpcion(cartaActual.getOpcionB());
+	            });
+
+	            transicion.play();
+	        }
+	    });
+	    
+	    //----------------------------------------------------------------------------------------------------------------------
+        //---------------------------------------------Ajustes de visualizacion-------------------------------------------------
+	    //----------------------------------------------------------------------------------------------------------------------
 	    
 	    // Variables para calcular la posición del texto y el ancho máximo dependiendo del tipo de carta
 	    double maxAnchoTexto;
@@ -458,95 +659,9 @@ public class Juego extends Application{
 	    interfazCartaPane.getChildren().add(textoNombrePersonaje);
 	    interfazCartaPane.getChildren().add(mazo);
         interfazCartaPane.getChildren().add(cartaConTexto);
-        //interfazCartaPane.getChildren().add(textoDescripcion);
         interfazCartaPane.getChildren().add(texto);
         
-	    verAnios();
-	}
-	
-	private void manejarEventosMouse(Group grupoCarta, Rotate rotacionGrupo, Scene escena, Carta cartaActual, double centroX, double centroY, double ladoCuadrado, double anchoPantalla, double altoPantalla, AtomicBoolean movimientoHabilitado, AtomicBoolean movimientoActivado, Timeline temporizador, Text texto) {
-	    escena.setOnMouseMoved(event -> {
-	        double mouseX = event.getSceneX();
-	        double mouseY = event.getSceneY();
-
-	        double difX = mouseX - centroX;
-	        double difY = mouseY - centroY;
-
-	        boolean mouseSobreCuadrado = Math.abs(difX) < Math.abs(ladoCuadrado/2) && Math.abs(difY) < Math.abs(ladoCuadrado/2);
-
-	        if ((rotacionGrupo.getAngle() == 0) && mouseSobreCuadrado && movimientoHabilitado.get()) {
-	            movimientoActivado.set(true);
-	        }
-
-	        if ((rotacionGrupo.getAngle() == 0) && !(mouseSobreCuadrado) && movimientoHabilitado.get()) {
-	            movimientoActivado.set(false);
-	        }
-
-	        if (movimientoActivado.get()) {
-	            if (Math.abs(difX) >= (Math.abs(anchoPantalla - centroX) * 0.95) || Math.abs(difY) >= (Math.abs(altoPantalla - centroY) * 0.95)) {
-	                KeyValue rotacionKeyValue = new KeyValue(rotacionGrupo.angleProperty(), 0);
-	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), 0);
-	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), 0);
-
-	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
-
-	                Timeline timeline = new Timeline(keyFrame);
-	                timeline.play();
-	            } else {
-	                double angulo = difX / 10;
-	                double desplazamientoY = difY * 0.03;
-
-	                if (angulo > 20) {
-	                    angulo = 20;
-	                } else if (angulo < -20) {
-	                    angulo = -20;
-	                }
-
-	                KeyValue rotacionKeyValue = new KeyValue(rotacionGrupo.angleProperty(), angulo);
-	                KeyValue translateXKeyValue = new KeyValue(grupoCarta.translateXProperty(), angulo * 2.5);
-	                KeyValue translateYKeyValue = new KeyValue(grupoCarta.translateYProperty(), desplazamientoY);
-
-	                KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.0025), rotacionKeyValue, translateXKeyValue, translateYKeyValue);
-
-	                Timeline timeline = new Timeline(keyFrame);
-	                timeline.play();
-
-	                if (angulo >= 1) {
-	                    texto.setText(cartaActual.getOpciones()[0].getInformacion());
-	                } else if (angulo < -1) {
-	                    texto.setText(cartaActual.getOpciones()[1].getInformacion());
-	                }
-	            }
-	        }
-	    });
-
-	    temporizador.play();
-
-	    escena.setOnMouseClicked(event -> {
-	        movimientoActivado.set(false);
-	        double angulo = rotacionGrupo.getAngle();
-	        if (angulo >= 1) {
-	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
-
-	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
-
-	            transicion.setOnFinished(finishedEvent -> {
-	                elegirOpcion(cartaActual.getOpcionA());
-	            });
-
-	            transicion.play();
-	        } else if (angulo < -1) {
-	            TranslateTransition transicion = new TranslateTransition(Duration.seconds(0.8), grupoCarta);
-
-	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
-
-	            transicion.setOnFinished(finishedEvent -> {
-	                elegirOpcion(cartaActual.getOpcionB());
-	            });
-
-	            transicion.play();
-	        }
-	    });
+	    verInformacion();
 	}
 
 	
