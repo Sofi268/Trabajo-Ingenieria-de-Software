@@ -71,8 +71,8 @@ public class HistoriaTest {
     	Carta carta = cartas[5];
     	
     	// Establece los niveles esperados
-    	int expected_nivelesOpcionA[] = {-10, 0, 10, 0};
-    	int expected_nivelesOpcionB[] = {5, 0, -5, 0};
+    	int expected_nivelesOpcionA[] = {-20, 0, 20, 0};
+    	int expected_nivelesOpcionB[] = {10, 0, -10, 0};
     	
     	// Establece los resultantes como los obtenidos de las opciones
     	int result_nivelesOpcionA[] = carta.getOpcionA().getNiveles();
