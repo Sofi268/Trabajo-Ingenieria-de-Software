@@ -1,6 +1,5 @@
 package Juego;
 
-import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import Cartas.Carta;
@@ -19,7 +18,6 @@ import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
@@ -32,7 +30,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.shape.StrokeType;
@@ -61,13 +58,12 @@ public class Juego extends Application{
     private Pane interfazFinal = new Pane();
 	private GraphicsContext graficos;
 	private Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
-	
 	private int muertesTotales;
 	private boolean opcionElegida = false;
 	private String idSiguiente;
+	private String idMuerte;
 	private double anchoPantalla = screenSize.getWidth();
     private double altoPantalla = screenSize.getHeight();
-
     
 	public Juego(){
 	}
@@ -105,6 +101,7 @@ public class Juego extends Application{
 	    //Se registra el conjunto de barras como observer de personaje
 	    personaje.registerObserver(barrasEstadisticas);
 	    generarVistaEstadisticas(interfazEstadisticasPane);
+	    cartaActual = historia.getCartaPorId(idSiguiente);
 	    continuarJugando();
 	}
 
@@ -115,21 +112,49 @@ public class Juego extends Application{
 	    fondo(); // Llama al método fondo() que usa la estrategia seleccionada
 	    fondoCarta();
 	    opcionElegida = false;
-	    if (historia.getCartaActual() != null && anioActual < anioLimite) {
+	    if (cartaActual != null && anioActual < anioLimite) {
+	    	if(idSiguiente.equals("inicio_2")) {
+	    		idSiguiente = idMuerte;
+	    
+	    	}
+	    	if(idSiguiente.equals("final_2") || idSiguiente.equals("final_3")) {
+	    		pantallaFinal(interfazFinal);
+	    		historia.aumentarAnio(15);
+	    	}
 	        cartaActual = historia.getCartaPorId(idSiguiente);
+	        if(!(cartaActual.getOpcionA().getIdSiguienteMuerte().equals(""))) {
+	    		idMuerte = cartaActual.getOpcionA().getIdSiguienteMuerte();
+	    	}
 	        interfazCartaPane.getChildren().clear();
 	        interfazCarta();
 	    }
 	}
 
-
-
 	private void morir() {
-		interfazCartaPane.getChildren().clear();
-		historia.aumentarAnio(15);
+		personaje.getEstadisticas().setAgua(1);
+		personaje.getEstadisticas().setAire(1);
+		personaje.getEstadisticas().setTierra(1);
+		personaje.getEstadisticas().setFuego(1);
 		muertesTotales++;
-		historia.aumentarMuertes();
-		pantallaFinal(interfazFinal);
+		continuarJugando();
+	}
+	
+	private void morirExcesoNivel() {
+		if(personaje.getEstadisticas().getFuego() >= 100) {
+			idSiguiente = "final_fuego_1";
+		} else if(personaje.getEstadisticas().getAgua() >= 100) {
+			idSiguiente = "final_agua_1";
+		} else if(personaje.getEstadisticas().getAire() >= 100) {
+			idSiguiente = "final_aire_1";
+		} else if(personaje.getEstadisticas().getTierra() >= 100) {
+			idSiguiente = "final_tierra_1";
+		}
+		morir();
+	}
+	
+	private void morirNivelBajo() {
+		idSiguiente = "final_mundo";
+		morir();
 	}
 	
 	private void nuevaPartida() {
@@ -140,6 +165,19 @@ public class Juego extends Application{
 	    barrasEstadisticas.resetBarras();
 	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.03); // reubica Y de barras 
 	    historia.aumentarIndiceCartaActual();
+	    nuevoAvatar();
+	}
+	
+	private void nuevoAvatar() {
+		if(personaje.getElemento().equals("Agua")) {
+			idSiguiente = "inicio_agua";
+		} else if(personaje.getElemento().equals("Fuego")){
+			idSiguiente = "inicio_fuego";
+		} else if(personaje.getElemento().equals("Tierra")){
+			idSiguiente = "inicio_tierra";
+		} else if(personaje.getElemento().equals("Aire")){
+			idSiguiente = "inicio_aire";
+		}
 	    continuarJugando();
 	}
 
@@ -291,14 +329,14 @@ public class Juego extends Application{
 	            personaje.aumentarAnios(historia.getCartaPorId(cartaActual.getId()).getAnios());
 	            idSiguiente = opcion.getIdSiguiente();
 	            continuarJugando();
-	        } catch (NivelExcedidoException | NivelInvalidoException e) {
-	            System.out.println("Excepcion");
-	            morir();
+	        } catch (NivelExcedidoException e) {
+	            morirExcesoNivel();
+	        } catch (NivelInvalidoException e) {
+	        	morirNivelBajo();
 	        }
 	    }
 	}
-	
-	
+
 	private void interfazCarta() {
 		//----------------------------------------------------------------------------------------------------------------------
         //------------------------------------------Forma base de las cartas----------------------------------------------------
@@ -590,7 +628,8 @@ public class Juego extends Application{
 	            transicion.setToY(screenSize.getHeight() + grupoCarta.getBoundsInParent().getHeight());
 
 	            transicion.setOnFinished(finishedEvent -> {
-	                elegirOpcion(cartaActual.getOpcionA());
+	            	elegirOpcion(cartaActual.getOpcionA());
+	            	
 	            });
 
 	            transicion.play();
@@ -868,6 +907,8 @@ public class Juego extends Application{
 
         // Iniciar la animación secuencial
         sequential.play();
+        
+        historia.aumentarMuertes();
         
         continuar.setOnMouseClicked(event -> {
             nuevaPartida();

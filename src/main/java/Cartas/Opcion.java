@@ -9,6 +9,7 @@ public class Opcion {
 	private String informacion;
 	private int niveles[];
 	private String idSiguiente;
+	private String idSiguienteMuerte;
 	
 	public Opcion() {
 		informacion = null;
@@ -41,5 +42,13 @@ public class Opcion {
 
 	public void setIdSiguiente(String idSiguiente) {
 		this.idSiguiente = idSiguiente;
+	}
+
+	public String getIdSiguienteMuerte() {
+		return idSiguienteMuerte;
+	}
+
+	public void setIdSiguienteMuerte(String idSiguienteMuerte) {
+		this.idSiguienteMuerte = idSiguienteMuerte;
 	}
 }

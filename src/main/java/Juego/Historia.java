@@ -32,7 +32,7 @@ public class Historia {
 	
 	public Historia() {
 		anioActual = ANIO_INICIAL;
-		cartas = new Carta[67];//SE MODIFICO PARCIALMENTE SEGUN CARTAS DEFINIDAS
+		cartas = new Carta[85];//SE MODIFICO PARCIALMENTE SEGUN CARTAS DEFINIDAS
 		ciclosElemento = new ArrayList<>();
         ciclosElemento.add(new FondoAire());
         ciclosElemento.add(new FondoAgua());
@@ -72,7 +72,8 @@ public class Historia {
                  int fuegoOpcionA = opcionAJson.get("fuego").getAsInt();
                  int aireOpcionA = opcionAJson.get("aire").getAsInt();
                  String idSiguienteOpcionA = opcionAJson.get("cartaSiguiente").getAsString();
-
+                 String idMuerteA = opcionAJson.get("cartaSiguienteMuerte").getAsString();
+                 
                  JsonObject opcionBJson = jsonObject.getAsJsonObject("opcionB");//obj con datos de opcion B
                  // Obtiene datos(descripcion y niveles) de opcion B
                  String descripcionOpcionB = opcionBJson.get("descripcion").getAsString();
@@ -81,6 +82,7 @@ public class Historia {
                  int fuegoOpcionB = opcionBJson.get("fuego").getAsInt();
                  int aireOpcionB = opcionBJson.get("aire").getAsInt();
                  String idSiguienteOpcionB = opcionBJson.get("cartaSiguiente").getAsString();
+                 String idMuerteB = opcionBJson.get("cartaSiguienteMuerte").getAsString();
                  
                  // Crea una nueva instancia de Carta y la asina al arreglo en la posición i
                  cartas[i] = new Carta();
@@ -97,10 +99,13 @@ public class Historia {
                  opcionA.setInformacion(descripcionOpcionA);
                  opcionA.setNiveles(new int[]{tierraOpcionA, aguaOpcionA, fuegoOpcionA, aireOpcionA});
                  opcionA.setIdSiguiente(idSiguienteOpcionA);
+                 opcionA.setIdSiguiente(idSiguienteOpcionA);
+                 opcionA.setIdSiguienteMuerte(idMuerteA);
                  Opcion opcionB = new Opcion();
                  opcionB.setInformacion(descripcionOpcionB);
                  opcionB.setNiveles(new int[]{tierraOpcionB, aguaOpcionB, fuegoOpcionB, aireOpcionB});
                  opcionB.setIdSiguiente(idSiguienteOpcionB);
+                 opcionB.setIdSiguienteMuerte(idMuerteB);
                  // Asigna las opciones a la carta en la posición i
      	         cartas[i].setOpcionA(opcionA);
      	         cartas[i].setOpcionB(opcionB);

@@ -13,7 +13,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_2"
+            "cartaSiguiente" : "contexto_2",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -21,7 +22,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_2"
+            "cartaSiguiente" : "contexto_2",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -38,7 +40,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_3"
+            "cartaSiguiente" : "contexto_3",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -46,7 +49,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_3"
+            "cartaSiguiente" : "contexto_3",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -63,7 +67,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_4"
+            "cartaSiguiente" : "contexto_4",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -71,7 +76,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_4"
+            "cartaSiguiente" : "contexto_4",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -88,7 +94,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_5"
+            "cartaSiguiente" : "contexto_5",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -96,7 +103,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_5"
+            "cartaSiguiente" : "contexto_5",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -113,7 +121,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "conflicto_1"
+            "cartaSiguiente" : "conflicto_1",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -121,7 +130,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_1"
+            "cartaSiguiente" : "conflicto_1",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -138,7 +148,8 @@
             "agua": 0,
             "fuego": 20,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_2"
+            "cartaSiguiente" : "conflicto_2",
+            "cartaSiguienteMuerte" : "conflicto_2"
         },
         "opcionB": {
             "descripcion": "Defender a los aldeanos",
@@ -146,7 +157,8 @@
             "agua": 0,
             "fuego": -10,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_1.2"
+            "cartaSiguiente" : "conflicto_1.2",
+            "cartaSiguienteMuerte" : "conflicto_2"
         }
     },
     {
@@ -163,7 +175,8 @@
             "agua": 0,
             "fuego": 20,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_2"
+            "cartaSiguiente" : "conflicto_2",
+            "cartaSiguienteMuerte" : "conflicto_2"
         },
         "opcionB": {
             "descripcion": "Siempre que sea necesario",
@@ -171,7 +184,8 @@
             "agua": 0,
             "fuego": -10,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_1.3"
+            "cartaSiguiente" : "conflicto_1.3",
+            "cartaSiguienteMuerte" : "conflicto_2"
         }
     },
     {
@@ -188,7 +202,8 @@
             "agua": 0,
             "fuego": 10,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_2"
+            "cartaSiguiente" : "conflicto_2",
+            "cartaSiguienteMuerte" : "conflicto_2"
         },
         "opcionB": {
             "descripcion": "No regresen",
@@ -196,7 +211,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_2"
+            "cartaSiguiente" : "conflicto_2",
+            "cartaSiguienteMuerte" : "conflicto_2"
         }
     },
     {
@@ -213,7 +229,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_2.2"
+            "cartaSiguiente" : "conflicto_2.2",
+            "cartaSiguienteMuerte" : "conflicto_3"
         },
         "opcionB": {
             "descripcion": "...",
@@ -221,7 +238,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_2.2"
+            "cartaSiguiente" : "conflicto_2.2",
+            "cartaSiguienteMuerte" : "conflicto_3"
         }
     },
     {
@@ -238,7 +256,8 @@
             "agua": 10,
             "fuego": -20,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_3"
+            "cartaSiguiente" : "conflicto_3",
+            "cartaSiguienteMuerte" : "conflicto_3"
         },
         "opcionB": {
             "descripcion": "No es mi problema...",
@@ -246,7 +265,8 @@
             "agua": -20,
             "fuego": 10,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_3"
+            "cartaSiguiente" : "conflicto_3",
+            "cartaSiguienteMuerte" : "conflicto_3"
         }
     },
     {
@@ -263,7 +283,8 @@
             "agua": -10,
             "fuego": -10,
             "aire": -10,
-            "cartaSiguiente" : "conflicto_3.2"
+            "cartaSiguiente" : "conflicto_3.2",
+            "cartaSiguienteMuerte" : "conflicto_4"
         },
         "opcionB": {
             "descripcion": "Hacer duelo",
@@ -271,7 +292,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 20,
-            "cartaSiguiente" : "conflicto_4"
+            "cartaSiguiente" : "conflicto_4",
+            "cartaSiguienteMuerte" : "conflicto_4"
         }
     },
     {
@@ -288,7 +310,8 @@
             "agua": -10,
             "fuego": -10,
             "aire": -10,
-            "cartaSiguiente" : "conflicto_3.3"
+            "cartaSiguiente" : "conflicto_3.3",
+            "cartaSiguienteMuerte" : "conflicto_4"
         },
         "opcionB": {
             "descripcion": "Tienes razón",
@@ -296,7 +319,8 @@
             "agua": 10,
             "fuego": 0,
             "aire": 10,
-            "cartaSiguiente" : "conflicto_4"
+            "cartaSiguiente" : "conflicto_4",
+            "cartaSiguienteMuerte" : "conflicto_4"
         }
     },
     {
@@ -313,7 +337,8 @@
             "agua": -10,
             "fuego": -10,
             "aire": -10,
-            "cartaSiguiente" : "conflicto_4"
+            "cartaSiguiente" : "conflicto_4",
+            "cartaSiguienteMuerte" : "conflicto_4"
         },
         "opcionB": {
             "descripcion": "Lo siento...",
@@ -321,7 +346,8 @@
             "agua": 10,
             "fuego": 10,
             "aire": 10,
-            "cartaSiguiente" : "conflicto_4"
+            "cartaSiguiente" : "conflicto_4",
+            "cartaSiguienteMuerte" : "conflicto_4"
         }
     },
     {
@@ -338,7 +364,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_4.2"
+            "cartaSiguiente" : "conflicto_4.2",
+            "cartaSiguienteMuerte" : "conflicto_5"
         },
         "opcionB": {
             "descripcion": "Ignoras la situación",
@@ -346,7 +373,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_5"
+            "cartaSiguiente" : "conflicto_5",
+            "cartaSiguienteMuerte" : "conflicto_5"
         }
     },
     {
@@ -363,7 +391,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_5"
+            "cartaSiguiente" : "conflicto_5",
+            "cartaSiguienteMuerte" : "conflicto_5"
         },
         "opcionB": {
             "descripcion": "Contar la verdad",
@@ -371,7 +400,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_4.3"
+            "cartaSiguiente" : "conflicto_4.3",
+            "cartaSiguienteMuerte" : "conflicto_5"
         }
     },
     {
@@ -388,7 +418,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_5"
+            "cartaSiguiente" : "conflicto_5",
+            "cartaSiguienteMuerte" : "conflicto_5"
         },
         "opcionB": {
             "descripcion": "",
@@ -396,7 +427,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_5"
+            "cartaSiguiente" : "conflicto_5",
+            "cartaSiguienteMuerte" : "conflicto_5"
         }
     },
     {
@@ -408,20 +440,23 @@
         "color": "5B394F",
         "anios": 10,
         "opcionA": {
-            "descripcion": "",
+            "descripcion": "...",
             "tierra": -10,
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_5.2"
+            "cartaSiguiente" : "conflicto_5.2",
+            "cartaSiguienteMuerte" : "conflicto_6"
+            
         },
         "opcionB": {
-            "descripcion": "",
+            "descripcion": "...",
             "tierra": -10,
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "conflicto_5.2"
+            "cartaSiguiente" : "conflicto_5.2",
+            "cartaSiguienteMuerte" : "conflicto_6"
         }
     },
     {
@@ -438,7 +473,8 @@
 	        "agua": 0,
 	        "fuego": 20,
 	        "aire": 10,
-	        "cartaSiguiente" : "conflicto_6"
+	        "cartaSiguiente" : "conflicto_6",
+            "cartaSiguienteMuerte" : "conflicto_6"
 	    },
 	    "opcionB": {
 	        "descripcion": "Soy el Avatar",
@@ -446,7 +482,8 @@
 	        "agua": 0,
 	        "fuego": -20,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_5.3"
+	        "cartaSiguiente" : "conflicto_5.3",
+            "cartaSiguienteMuerte" : "conflicto_6"
 	    }
 	},
 	{
@@ -463,7 +500,8 @@
 	        "agua": 0,
 	        "fuego": -20,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_6"
+	        "cartaSiguiente" : "conflicto_6",
+            "cartaSiguienteMuerte" : "conflicto_6"
 	    },
 	    "opcionB": {
 	        "descripcion": "Escapar",
@@ -471,7 +509,8 @@
 	        "agua": 0,
 	        "fuego": 10,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_6"
+	        "cartaSiguiente" : "conflicto_6",
+            "cartaSiguienteMuerte" : "conflicto_6"
 	    }
 	},
     {
@@ -488,7 +527,8 @@
 	        "agua": 20,
 	        "fuego": 0,
 	        "aire": 20,
-	        "cartaSiguiente" : "conflicto_6.2"
+	        "cartaSiguiente" : "conflicto_6.2",
+            "cartaSiguienteMuerte" : "conflicto_7"
 	    },
 	    "opcionB": {
 	        "descripcion": "Rechazar la idea",
@@ -496,7 +536,8 @@
 	        "agua": -10,
 	        "fuego": 0,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_7"
+	        "cartaSiguiente" : "conflicto_7",
+            "cartaSiguienteMuerte" : "conflicto_7"
 	    }
 	},
 	{
@@ -513,7 +554,8 @@
 	        "agua": 10,
 	        "fuego": -20,
 	        "aire": 10,
-	        "cartaSiguiente" : "conflicto_7"
+	        "cartaSiguiente" : "conflicto_7",
+            "cartaSiguienteMuerte" : "conflicto_7"
 	    },
 	    "opcionB": {
 	        "descripcion": "No debo hacer eso",
@@ -521,7 +563,8 @@
 	        "agua": -10,
 	        "fuego": 10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_7"
+	        "cartaSiguiente" : "conflicto_7",
+            "cartaSiguienteMuerte" : "conflicto_7"
 	    }
 	},
 	{
@@ -538,7 +581,8 @@
 	        "agua": 10,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_7.2"
+	        "cartaSiguiente" : "conflicto_7.2",
+            "cartaSiguienteMuerte" : "conflicto_8"
 	    },
 	    "opcionB": {
 	        "descripcion": "Buscar aliados",
@@ -546,7 +590,8 @@
 	        "agua": 10,
 	        "fuego": 0,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_7.3"
+	        "cartaSiguiente" : "conflicto_7.3",
+            "cartaSiguienteMuerte" : "conflicto_8"
 	    }
 	},
 	{
@@ -563,7 +608,8 @@
 	        "agua": 20,
 	        "fuego": 0,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_8"
+	        "cartaSiguiente" : "conflicto_8",
+            "cartaSiguienteMuerte" : "conflicto_8"
 	    },
 	    "opcionB": {
 	        "descripcion": "No puedo",
@@ -571,7 +617,8 @@
 	        "agua": -20,
 	        "fuego": 0,
 	        "aire": 20,
-	        "cartaSiguiente" : "conflicto_8"
+	        "cartaSiguiente" : "conflicto_8",
+            "cartaSiguienteMuerte" : "conflicto_8"
 	    }
 	},
 	{
@@ -588,7 +635,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_8"
+	        "cartaSiguiente" : "conflicto_8",
+            "cartaSiguienteMuerte" : "conflicto_8"
 	    },
 	    "opcionB": {
 	        "descripcion": "En la Nacion del fuego",
@@ -596,7 +644,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_8"
+	        "cartaSiguiente" : "conflicto_8",
+            "cartaSiguienteMuerte" : "conflicto_8"
 	    }
 	},
 	
@@ -614,7 +663,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 20,
-	        "cartaSiguiente" : "conflicto_8.2"
+	        "cartaSiguiente" : "conflicto_8.2",
+            "cartaSiguienteMuerte" : "conflicto_9"
 	    },
 	    "opcionB": {
 	        "descripcion": "Proteger la aldea",
@@ -622,7 +672,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_8.4"
+	        "cartaSiguiente" : "conflicto_8.4",
+            "cartaSiguienteMuerte" : "conflicto_9"
 	    }
 	},
 	{
@@ -639,7 +690,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 20,
-	        "cartaSiguiente" : "conflicto_8.4"
+	        "cartaSiguiente" : "conflicto_8.4",
+            "cartaSiguienteMuerte" : "conflicto_9"
 	    },
 	    "opcionB": {
 	        "descripcion": "No me parece",
@@ -647,7 +699,8 @@
 	        "agua": -20,
 	        "fuego": -20,
 	        "aire": -20,
-	        "cartaSiguiente" : "conflicto_8.3"
+	        "cartaSiguiente" : "conflicto_8.3",
+            "cartaSiguienteMuerte" : "conflicto_9"
 	    }
 	},
 	{
@@ -664,7 +717,8 @@
 	        "agua": -20,
 	        "fuego": -20,
 	        "aire": -20,
-	        "cartaSiguiente" : "conflicto_9"
+	        "cartaSiguiente" : "conflicto_9",
+            "cartaSiguienteMuerte" : "conflicto_9"
 	    },
 	    "opcionB": {
 	        "descripcion": "Retractarse",
@@ -672,7 +726,8 @@
 	        "agua": 0,
 	        "fuego": -10,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_9"
+	        "cartaSiguiente" : "conflicto_9",
+            "cartaSiguienteMuerte" : "conflicto_9"
 	    }
 	},
 	{
@@ -689,7 +744,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_9"
+	        "cartaSiguiente" : "conflicto_9",
+            "cartaSiguienteMuerte" : "conflicto_9"
 	    },
 	    "opcionB": {
 	        "descripcion": "No",
@@ -697,7 +753,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 20,
-	        "cartaSiguiente" : "conflicto_9"
+	        "cartaSiguiente" : "conflicto_9",
+            "cartaSiguienteMuerte" : "conflicto_9"
 	    }
 	},
 	
@@ -715,7 +772,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 20,
-	        "cartaSiguiente" : "conflicto_9.2"
+	        "cartaSiguiente" : "conflicto_9.2",
+            "cartaSiguienteMuerte" : "conflicto_10"
 	    },
 	    "opcionB": {
 	        "descripcion": "Advertir al Señor del Fuego",
@@ -723,7 +781,8 @@
 	        "agua": 0,
 	        "fuego": 20,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_9.3"
+	        "cartaSiguiente" : "conflicto_9.3",
+            "cartaSiguienteMuerte" : "conflicto_10"
 	    }
 	},
 	{
@@ -740,7 +799,8 @@
 	        "agua": -20,
 	        "fuego": 0,
 	        "aire": -20,
-	        "cartaSiguiente" : "conflicto_10"
+	        "cartaSiguiente" : "conflicto_10",
+            "cartaSiguienteMuerte" : "conflicto_10"
 	    },
 	    "opcionB": {
 	        "descripcion": "Me parece bien",
@@ -748,7 +808,8 @@
 	        "agua": 20,
 	        "fuego": -30,
 	        "aire": 20,
-	        "cartaSiguiente" : "conflicto_10"
+	        "cartaSiguiente" : "conflicto_10",
+            "cartaSiguienteMuerte" : "conflicto_10"
 	    }
 	},
 	{
@@ -765,7 +826,8 @@
 	        "agua": 0,
 	        "fuego": 20,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_9.4"
+	        "cartaSiguiente" : "conflicto_9.4",
+            "cartaSiguienteMuerte" : "conflicto_10"
 	    },
 	    "opcionB": {
 	        "descripcion": "Es verdad...",
@@ -773,7 +835,8 @@
 	        "agua": 20,
 	        "fuego": -20,
 	        "aire": 20,
-	        "cartaSiguiente" : "conflicto_10"
+	        "cartaSiguiente" : "conflicto_10",
+            "cartaSiguienteMuerte" : "conflicto_10"
 	    }
 	},
 	{
@@ -790,7 +853,8 @@
 	        "agua": -20,
 	        "fuego": 0,
 	        "aire": -20,
-	        "cartaSiguiente" : "conflicto_10"
+	        "cartaSiguiente" : "conflicto_10",
+            "cartaSiguienteMuerte" : "conflicto_10"
 	    },
 	    "opcionB": {
 	        "descripcion": "Mejora la seguridad",
@@ -798,7 +862,8 @@
 	        "agua": 0,
 	        "fuego": 30,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_10"
+	        "cartaSiguiente" : "conflicto_10",
+            "cartaSiguienteMuerte" : "conflicto_10"
 	    }
 	},
 	{
@@ -815,7 +880,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_10.2"
+	        "cartaSiguiente" : "conflicto_10.2",
+            "cartaSiguienteMuerte" : "conflicto_11"
 	    },
 	    "opcionB": {
 	        "descripcion": "Dejarlo para despues",
@@ -823,7 +889,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_11"
+	        "cartaSiguiente" : "conflicto_11",
+            "cartaSiguienteMuerte" : "conflicto_11"
 	    }
 	},
 	{
@@ -840,7 +907,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_10.3"
+	        "cartaSiguiente" : "conflicto_10.3",
+            "cartaSiguienteMuerte" : "conflicto_11"
 	    },
 	    "opcionB": {
 	        "descripcion": "De acuerdo",
@@ -848,7 +916,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_11"
+	        "cartaSiguiente" : "conflicto_11",
+            "cartaSiguienteMuerte" : "conflicto_11"
 	    }
 	},
 	{
@@ -865,7 +934,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_11"
+	        "cartaSiguiente" : "conflicto_11",
+            "cartaSiguienteMuerte" : "conflicto_11"
 	    },
 	    "opcionB": {
 	        "descripcion": "...",
@@ -873,7 +943,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_11"
+	        "cartaSiguiente" : "conflicto_11",
+            "cartaSiguienteMuerte" : "conflicto_11"
 	    }
 	},
 	{
@@ -890,7 +961,8 @@
 	        "agua": 0,
 	        "fuego": 20,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_12"
+	        "cartaSiguiente" : "conflicto_12",
+            "cartaSiguienteMuerte" : "conflicto_12"
 	    },
 	    "opcionB": {
 	        "descripcion": "Aceptarlo",
@@ -898,7 +970,8 @@
 	        "agua": 0,
 	        "fuego": -20,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_11.2"
+	        "cartaSiguiente" : "conflicto_11.2",
+            "cartaSiguienteMuerte" : "conflicto_12"
 	    }
 	},
 	{
@@ -915,7 +988,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_11.3"
+	        "cartaSiguiente" : "conflicto_11.3",
+            "cartaSiguienteMuerte" : "conflicto_12"
 	    },
 	    "opcionB": {
 	        "descripcion": "Esta bien",
@@ -923,7 +997,8 @@
 	        "agua": 10,
 	        "fuego": 10,
 	        "aire": 10,
-	        "cartaSiguiente" : "conflicto_12"
+	        "cartaSiguiente" : "conflicto_12",
+            "cartaSiguienteMuerte" : "conflicto_12"
 	    }
 	},
 	{
@@ -940,7 +1015,8 @@
 	        "agua": 0,
 	        "fuego": -20,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_12"
+	        "cartaSiguiente" : "conflicto_12",
+            "cartaSiguienteMuerte" : "conflicto_12"
 	    },
 	    "opcionB": {
 	        "descripcion": "Si",
@@ -948,7 +1024,8 @@
 	        "agua": 0,
 	        "fuego": 20,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_12"
+	        "cartaSiguiente" : "conflicto_12",
+            "cartaSiguienteMuerte" : "conflicto_12"
 	    }
 	},
 	{
@@ -965,7 +1042,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_12.2"
+	        "cartaSiguiente" : "conflicto_12.2",
+            "cartaSiguienteMuerte" : "conflicto_13"
 	    },
 	    "opcionB": {
 	        "descripcion": "Culpar a Zuko",
@@ -973,7 +1051,8 @@
 	        "agua": 0,
 	        "fuego": -20,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_13"
+	        "cartaSiguiente" : "conflicto_13",
+            "cartaSiguienteMuerte" : "conflicto_13"
 	    }
 	},
 	{
@@ -990,7 +1069,8 @@
 	        "agua": 0,
 	        "fuego": -20,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_13"
+	        "cartaSiguiente" : "conflicto_13",
+            "cartaSiguienteMuerte" : "conflicto_13"
 	    },
 	    "opcionB": {
 	        "descripcion": "Tienes razon",
@@ -998,7 +1078,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_13"
+	        "cartaSiguiente" : "conflicto_13",
+            "cartaSiguienteMuerte" : "conflicto_13"
 	    }
 	},
 	{
@@ -1015,7 +1096,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14"
+	        "cartaSiguiente" : "conflicto_14",
+            "cartaSiguienteMuerte" : "conflicto_14"
 	    },
 	    "opcionB": {
 	        "descripcion": "Dime",
@@ -1023,7 +1105,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_13.2"
+	        "cartaSiguiente" : "conflicto_13.2",
+            "cartaSiguienteMuerte" : "conflicto_14"
 	    }
 	},
 	{
@@ -1040,7 +1123,8 @@
 	        "agua": 20,
 	        "fuego": 20,
 	        "aire": 20,
-	        "cartaSiguiente" : "conflicto_14"
+	        "cartaSiguiente" : "conflicto_14",
+            "cartaSiguienteMuerte" : "conflicto_14"
 	    },
 	    "opcionB": {
 	        "descripcion": "No sé...",
@@ -1048,7 +1132,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_14"
+	        "cartaSiguiente" : "conflicto_14",
+            "cartaSiguienteMuerte" : "conflicto_14"
 	    }
 	},
 	{
@@ -1065,7 +1150,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14.2"
+	        "cartaSiguiente" : "conflicto_14.2",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    },
 	    "opcionB": {
 	        "descripcion": "Paso",
@@ -1073,7 +1159,8 @@
 	        "agua": -30,
 	        "fuego": -30,
 	        "aire": -30,
-	        "cartaSiguiente" : "conflicto_15"
+	        "cartaSiguiente" : "conflicto_15",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    }
 	},
 	{
@@ -1090,7 +1177,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14.3"
+	        "cartaSiguiente" : "conflicto_14.3",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    },
 	    "opcionB": {
 	        "descripcion": "Repitemelo",
@@ -1098,7 +1186,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_14.2"
+	        "cartaSiguiente" : "conflicto_14.2",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    }
 	},
 	{
@@ -1115,7 +1204,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14.4"
+	        "cartaSiguiente" : "conflicto_14.4",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    },
 	    "opcionB": {
 	        "descripcion": "Derecha",
@@ -1123,7 +1213,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14.8"
+	        "cartaSiguiente" : "conflicto_14.8",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    }
 	},
 	{
@@ -1140,7 +1231,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14.8"
+	        "cartaSiguiente" : "conflicto_14.8",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    },
 	    "opcionB": {
 	        "descripcion": "Izquierda",
@@ -1148,7 +1240,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14.5"
+	        "cartaSiguiente" : "conflicto_14.5",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    }
 	},
 	{
@@ -1165,7 +1258,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14.6"
+	        "cartaSiguiente" : "conflicto_14.6",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    },
 	    "opcionB": {
 	        "descripcion": "Atras",
@@ -1173,7 +1267,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14.8"
+	        "cartaSiguiente" : "conflicto_14.8",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    }
 	},
 	{
@@ -1190,7 +1285,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14.7"
+	        "cartaSiguiente" : "conflicto_14.7",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    },
 	    "opcionB": {
 	        "descripcion": "Saltar",
@@ -1198,7 +1294,8 @@
 	        "agua": 0,
 	        "fuego": 10,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_14.8"
+	        "cartaSiguiente" : "conflicto_14.8",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    }
 	},
 	{
@@ -1215,7 +1312,8 @@
 	        "agua": 10,
 	        "fuego": 10,
 	        "aire": 10,
-	        "cartaSiguiente" : "conflicto_15"
+	        "cartaSiguiente" : "conflicto_15",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    },
 	    "opcionB": {
 	        "descripcion": "",
@@ -1223,7 +1321,8 @@
 	        "agua": 10,
 	        "fuego": 10,
 	        "aire": 10,
-	        "cartaSiguiente" : "conflicto_15"
+	        "cartaSiguiente" : "conflicto_15",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    }
 	},
 	{
@@ -1240,7 +1339,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_14.2"
+	        "cartaSiguiente" : "conflicto_14.2",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    },
 	    "opcionB": {
 	        "descripcion": "No",
@@ -1248,7 +1348,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_15"
+	        "cartaSiguiente" : "conflicto_15",
+            "cartaSiguienteMuerte" : "conflicto_15"
 	    }
 	},
 	{
@@ -1265,7 +1366,8 @@
 	        "agua": 0,
 	        "fuego": 30,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_16"
+	        "cartaSiguiente" : "conflicto_16",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
 	        "descripcion": "Acepto",
@@ -1273,7 +1375,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_17"
+	        "cartaSiguiente" : "conflicto_17",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    }
 	},
 	{
@@ -1290,7 +1393,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "conflicto_16.6"
+	        "cartaSiguiente" : "conflicto_16.6",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
 	        "descripcion": "Luchar",
@@ -1298,7 +1402,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_16.2"
+	        "cartaSiguiente" : "conflicto_16.2",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    }
 	},
 	{
@@ -1315,7 +1420,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_16.3"
+	        "cartaSiguiente" : "conflicto_16.3",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
 	        "descripcion": "",
@@ -1323,7 +1429,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_16.3"
+	        "cartaSiguiente" : "conflicto_16.3",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    }
 	},
 	{
@@ -1340,7 +1447,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_16.4"
+	        "cartaSiguiente" : "conflicto_16.4",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
 	        "descripcion": "",
@@ -1348,7 +1456,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_16.4"
+	        "cartaSiguiente" : "conflicto_16.4",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    }
 	},
 	{
@@ -1365,7 +1474,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_16.5"
+	        "cartaSiguiente" : "conflicto_16.5",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
 	        "descripcion": "",
@@ -1373,7 +1483,8 @@
 	        "agua": -10,
 	        "fuego": -10,
 	        "aire": -10,
-	        "cartaSiguiente" : "conflicto_16.5"
+	        "cartaSiguiente" : "conflicto_16.5",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    }
 	},
 	{
@@ -1390,7 +1501,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "contexto_final_1"
+	        "cartaSiguiente" : "contexto_final_1",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
 	        "descripcion": "Soy el avatar",
@@ -1398,7 +1510,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "contexto_final_1"
+	        "cartaSiguiente" : "contexto_final_1",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    }
 	},
 	{
@@ -1415,7 +1528,8 @@
 	        "agua": 0,
 	        "fuego": 0,
 	        "aire": 0,
-	        "cartaSiguiente" : "16.7"
+	        "cartaSiguiente" : "conflicto_16.7",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
 	        "descripcion": "Luchar",
@@ -1423,7 +1537,9 @@
 	        "agua": 5,
 	        "fuego": 5,
 	        "aire": 5,
-	        "cartaSiguiente" : "16.2"
+	        "cartaSiguiente" : "conflicto_16.2",
+            "cartaSiguienteMuerte" : "contexto_final_3"
+	        
 	    }
 	},
 	{
@@ -1440,7 +1556,8 @@
 	        "agua": 10,
 	        "fuego": 10,
 	        "aire": 10,
-	        "cartaSiguiente" : "conflicto_16.2"
+	        "cartaSiguiente" : "conflicto_16.2",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
 	        "descripcion": "Luchar",
@@ -1448,7 +1565,8 @@
 	        "agua": 10,
 	        "fuego": 10,
 	        "aire": 10,
-	        "cartaSiguiente" : "conflicto_16.2"
+	        "cartaSiguiente" : "conflicto_16.2",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    }
 	},
 	{
@@ -1465,7 +1583,8 @@
 	        "agua": -50,
 	        "fuego": -50,
 	        "aire": -50,
-	        "cartaSiguiente" : "contexto_final_2"
+	        "cartaSiguiente" : "contexto_final_2",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
 	        "descripcion": "Matar a Ozai",
@@ -1473,7 +1592,8 @@
 	        "agua": -50,
 	        "fuego": -50,
 	        "aire": -50,
-	        "cartaSiguiente" : "contexto_final_2"
+	        "cartaSiguiente" : "contexto_final_2",
+            "cartaSiguienteMuerte" : "contexto_final_3"
 	    }
 	},
 	{
@@ -1490,7 +1610,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_final_1.2"
+            "cartaSiguiente" : "contexto_final_1.2",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -1498,7 +1619,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_final_1.2"
+            "cartaSiguiente" : "contexto_final_1.2",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -1515,7 +1637,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "ccontexto_final_1.3"
+            "cartaSiguiente" : "ccontexto_final_1.3",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -1523,7 +1646,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_final_1.3"
+            "cartaSiguiente" : "contexto_final_1.3",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -1540,7 +1664,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_final_1.4"
+            "cartaSiguiente" : "contexto_final_1.4",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -1548,7 +1673,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_final_1.4"
+            "cartaSiguiente" : "contexto_final_1.4",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -1565,7 +1691,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "Final_1"
+            "cartaSiguiente" : "Final_1",
+            "cartaSiguienteMuerte" : "contexto_1"
         },
         "opcionB": {
             "descripcion": "",
@@ -1573,7 +1700,9 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "Final_1"
+            "cartaSiguiente" : "Final_1",
+            "cartaSiguienteMuerte" : "contexto_1"
+            
         }
     },
     {
@@ -1590,7 +1719,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_final_2.2"
+            "cartaSiguiente" : "contexto_final_2.2",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -1598,7 +1728,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_final_2.2"
+            "cartaSiguiente" : "contexto_final_2.2",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -1615,7 +1746,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "ccontexto_final_2.3"
+            "cartaSiguiente" : "ccontexto_final_2.3",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -1623,7 +1755,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_final_2.3"
+            "cartaSiguiente" : "contexto_final_2.3",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -1640,7 +1773,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_final_2.4"
+            "cartaSiguiente" : "contexto_final_2.4",
+            "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
             "descripcion": "",
@@ -1648,7 +1782,8 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_final_2.4"
+            "cartaSiguiente" : "contexto_final_2.4",
+            "cartaSiguienteMuerte" : ""
         }
     },
     {
@@ -1665,7 +1800,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "Final_2"
+            "cartaSiguiente" : "Final_2",
+            "cartaSiguienteMuerte" : "contexto_1"
         },
         "opcionB": {
             "descripcion": "",
@@ -1673,8 +1809,525 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "Final_2"
+            "cartaSiguiente" : "Final_2",
+            "cartaSiguienteMuerte" : "contexto_1"
+        }
+    },
+    {
+        "id": "contexto_final_3",
+        "nombre": "",
+        "descripcion": "Perdiste en la batalla contra el señor del fuego Ozai",
+        "imagen":"/Fondos/fondoCartaAire.png",
+        "tipo" : "contexto",
+        "color": "2E4F6D",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire":0,
+            "cartaSiguiente" : "contexto_final_3.2",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "contexto_final_3.2",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "contexto_final_3.2",
+        "nombre": "",
+        "descripcion": "La nación del fuego ha ganado",
+        "imagen":"/Fondos/fondoCartaAire.png",
+        "tipo" : "contexto",
+        "color": "2E4F6D",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire":0,
+            "cartaSiguiente" : "contexto_final_3.3",
+            "cartaSiguienteMuerte" : ""
+            
+        },
+        "opcionB": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "contexto_final_3.3",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "contexto_final_3.3",
+        "nombre": "",
+        "descripcion": "El mundo entero está condenado a sumirse en la desesperación",
+        "imagen":"/Fondos/fondoCartaAire.png",
+        "tipo" : "contexto",
+        "color": "C5283D",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire":0,
+            "cartaSiguiente" : "contexto_final_3.4",
+            "cartaSiguienteMuerte" : ""
+            
+        },
+        "opcionB": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "contexto_final_3.4",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "contexto_final_3.4",
+        "nombre": "",
+        "descripcion": "Quizá puedes intentarlo de nuevo",
+        "imagen":"/Fondos/fondoCartaAire.png",
+        "tipo" : "contexto",
+        "color": "C5283D",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire":0,
+            "cartaSiguiente" : "Final_2",
+            "cartaSiguienteMuerte" : "contexto_1"
+        },
+        "opcionB": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "Final_2",
+            "cartaSiguienteMuerte" : "contexto_1"
+        }
+    },
+    {
+        "id": "inicio_fuego",
+        "nombre": "",
+        "descripcion": "En las llamas del destino, un nuevo Avatar emerge. El poder del fuego arde en sus venas, listo para traer equilibrio y justicia al mundo. Que su espíritu sea tan indomable como las llamas que lo forjan",
+        "imagen":"/Fondos/fondoCartaFuego.png",
+        "tipo" : "contexto",
+        "color": "2E4F6D",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire":0,
+            "cartaSiguiente" : "inicio_2",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "inicio_2",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "inicio_agua",
+        "nombre": "",
+        "descripcion": "En el tranquilo murmullo de los ríos y mares, el Avatar emerge. El flujo del agua le confiere la habilidad de adaptarse y sanar, guiando a su gente con sabiduría y compasión. Que su espíritu sea tan vasto como el mar",
+        "imagen":"/Fondos/fondoCartaAgua.png",
+        "tipo" : "contexto",
+        "color": "2E4F6D",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire":0,
+            "cartaSiguiente" : "inicio_2",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "inicio_2",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "inicio_tierra",
+        "nombre": "",
+        "descripcion": "En el retumbar de los terremotos y el silencio de las cuevas, el Avatar emerge. Con el poder de la tierra, está destinado a ser el pilar sobre el que se construye la paz y la estabilidad. Que su voluntad sea tan resistente como el granito",
+        "imagen":"/Fondos/fondoCartaTierra.png",
+        "tipo" : "contexto",
+        "color": "C5283D",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire":0,
+            "cartaSiguiente" : "inicio_2",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "inicio_2",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "inicio_aire",
+        "nombre": "",
+        "descripcion": "Desde la ligereza de la brisa y la fuerza del vendaval, el Avatar surge. Portador del aire, su misión es llevar paz y equilibrio a todos los rincones del mundo. Que su espíritu sea tan libre y puro como el aire que respira",
+        "imagen":"/Fondos/fondoCartaAire.png",
+        "tipo" : "contexto",
+        "color": "C5283D",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire":0,
+            "cartaSiguiente" : "inicio_2",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "inicio_2",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "final_fuego_1",
+        "nombre": "Maestro fuego",
+        "descripcion": "La nación del fuego finalmente ha logrado acumular poder suficiente para tomar el control del mundo",
+        "imagen":"/Personajes/maestro_fuego.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios": 10,
+        "opcionA": {
+            "descripcion": "¡¿QUÉÉ?!",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_fuego_2",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "¡¿QUÉÉ?!",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_fuego_2",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "final_fuego_2",
+        "nombre": "",
+        "descripcion": "La figura del Avatar ya no tiene ninguna importancia",
+        "imagen":"/Personajes/maestro_fuego.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "...",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_3",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "...",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_3",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "final_agua_1",
+        "nombre": "Maestra agua",
+        "descripcion": "Con todo el poder acumulado, la tribu Agua del sur decidió despertar a un poderoso espíritu maligno",
+        "imagen":"/Personajes/maestra_agua_joven.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios": 10,
+        "opcionA": {
+            "descripcion": "¡¿QUÉÉ?!",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_agua_2",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "¡¿QUÉÉ?!",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_agua_2",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "final_agua_2",
+        "nombre": "",
+        "descripcion": "Ni el avatar es incapaz de evitar la destrucción del mundo",
+        "imagen":"/Personajes/maestro_fuego.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "...",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_3",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "...",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_3",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "final_tierra_1",
+        "nombre": "Maestra tierra",
+        "descripcion": "El poder cegó al reino tierra quien lo destruyó todo con ansias de más poder",
+        "imagen":"/Personajes/guerrara_kyoshi_joven.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios": 10,
+        "opcionA": {
+            "descripcion": "¡¿QUÉÉ?!",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_tierra_2",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "¡¿QUÉÉ?!",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_tierra_2",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "final_tierra_2",
+        "nombre": "",
+        "descripcion": "La figura del Avatar también ha sido destruida",
+        "imagen":"/Personajes/maestro_fuego.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "...",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_3",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "...",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_3",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "final_aire_1",
+        "nombre": "Maestro aire",
+        "descripcion": "Llenos de poder, los nomadas aire planearon una venganza contra la Nación del fuego",
+        "imagen":"/Personajes/monje_aire.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios": 10,
+        "opcionA": {
+            "descripcion": "¡¿QUÉÉ?!",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_aire_2",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "¡¿QUÉÉ?!",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_aire_2",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "final_aire_2",
+        "nombre": "",
+        "descripcion": "Nadie habia previsto que destruyeran todo a su paso",
+        "imagen":"/Personajes/maestro_fuego.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "...",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_3",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "...",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_3",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "final_mundo",
+        "nombre": "",
+        "descripcion": "La destrucción de un pueblo también significa el fin del ciclo avatar",
+        "imagen":"/Personajes/maestro_fuego.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "¡¿QUÉÉ?!",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_general_2",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "¡¿QUÉÉ?!",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_general_2",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "final_general_2",
+        "nombre": "",
+        "descripcion": "Tienes una ultima oportunidad para equilibrar el mundo",
+        "imagen":"/Personajes/maestro_fuego.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "...",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_3",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "...",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "final_3",
+            "cartaSiguienteMuerte" : ""
+        }
+    },
+    {
+    	"id": "",
+        "nombre": "",
+        "descripcion": "",
+        "imagen":"/Personajes/maestro_fuego.png",
+        "tipo" : "historia",
+        "color": "59CD90",
+        "anios":0,
+        "opcionA": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "",
+            "cartaSiguienteMuerte" : ""
+        },
+        "opcionB": {
+            "descripcion": "",
+            "tierra": 0,
+            "agua": 0,
+            "fuego": 0,
+            "aire": 0,
+            "cartaSiguiente" : "",
+            "cartaSiguienteMuerte" : ""
         }
     }
+    
     
 ]

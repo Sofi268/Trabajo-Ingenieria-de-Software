@@ -59,5 +59,21 @@ public class EstadisticasConjuntas {
 	public int getFuego() {
 		return fuego.getNivelActual();
 	}
+	
+	public void setAgua(int t) {
+		agua.setNivelActual(t);;
+	}
+	
+	public void setTierra(int t) {
+		tierra.setNivelActual(t);;
+	}
+	
+	public void setAire(int t) {
+		aire.setNivelActual(t);;
+	}
+	
+	public void setFuego(int t) {
+		fuego.setNivelActual(t);;
+	}
 
 }
