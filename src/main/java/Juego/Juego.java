@@ -121,10 +121,13 @@ public class Juego extends Application{
 	    		pantallaFinal(interfazFinal);
 	    		historia.aumentarAnio(15);
 	    	}
-	        cartaActual = historia.getCartaPorId(idSiguiente);
+	    	if(idSiguiente.equals("final_1")) {
+	    		pantallaVictoria(interfazFinal);
+	    	}
 	        if(!(cartaActual.getOpcionA().getIdSiguienteMuerte().equals(""))) {
 	    		idMuerte = cartaActual.getOpcionA().getIdSiguienteMuerte();
 	    	}
+	        cartaActual = historia.getCartaPorId(idSiguiente);
 	        interfazCartaPane.getChildren().clear();
 	        interfazCarta();
 	    }
@@ -166,6 +169,18 @@ public class Juego extends Application{
 	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.03); // reubica Y de barras 
 	    historia.aumentarIndiceCartaActual();
 	    nuevoAvatar();
+	}
+	
+	private void nuevoJuego() {
+		interfazFinal.getChildren().clear();
+		historia = null;
+		historia = new Historia();
+		personaje = null;
+	    personaje = new Personaje(historia.getAnioActual(), muertesTotales); 
+	    personaje.registerObserver(barrasEstadisticas);
+	    barrasEstadisticas.resetBarras();
+	    barrasEstadisticas.setBarrasLayoutY(screenSize.getHeight() * 0.03); // reubica Y de barras 
+	    continuarJugando();
 	}
 	
 	private void nuevoAvatar() {
@@ -912,6 +927,217 @@ public class Juego extends Application{
         
         continuar.setOnMouseClicked(event -> {
             nuevaPartida();
+        });
+
+    }
+	
+	public void pantallaVictoria(Pane pane) {
+        // Define el color de fondo
+        String colorFondo = "04042C";
+        Rectangle fondo = new Rectangle(anchoPantalla, altoPantalla);
+        fondo.setFill(Color.web(colorFondo));
+
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Aldrich.ttf"), anchoPantalla * 0.04);
+
+        // Crear y configurar los textos
+        Text elTexto = new Text("El");
+        elTexto.setFont(Font.font(customFont.getFamily(), anchoPantalla * 0.04));
+        elTexto.setFill(Color.web("FEEFB3"));
+        elTexto.setLayoutX(anchoPantalla * 0.35);
+        elTexto.setLayoutY(altoPantalla * 0.3);
+
+        Text avatarTexto = new Text("Avatar");
+        avatarTexto.setFont(Font.font(customFont.getFamily(), anchoPantalla * 0.08));
+        avatarTexto.setFill(Color.web("FEEFB3"));
+        avatarTexto.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        avatarTexto.setLayoutX(anchoPantalla * 0.5 - avatarTexto.getLayoutBounds().getWidth() / 2);
+        avatarTexto.setLayoutY(altoPantalla * 0.45);
+
+        Text haTriunfadoTexto = new Text("ha triunfado");
+        haTriunfadoTexto.setFont(Font.font(customFont.getFamily(), anchoPantalla * 0.04));
+        haTriunfadoTexto.setFill(Color.web("FEEFB3"));
+        haTriunfadoTexto.setLayoutX(anchoPantalla * 0.5);
+        haTriunfadoTexto.setLayoutY(altoPantalla * 0.55);
+
+        // Crea y configura el rectángulo negro
+        Rectangle rectanguloNegro = new Rectangle(anchoPantalla, altoPantalla * 0.2);
+        rectanguloNegro.setFill(Color.web("000000"));
+        rectanguloNegro.setLayoutY(altoPantalla - rectanguloNegro.getHeight() - altoPantalla * 0.1);
+
+        // Crea y configura el borde del rectángulo negro
+        Rectangle bordeRectangulo = new Rectangle(anchoPantalla, altoPantalla * 0.225);
+        bordeRectangulo.setFill(Color.web("1A130A"));
+
+        // Calcula la diferencia en altura entre el borde y el rectángulo negro
+        double diferenciaAltura = rectanguloNegro.getHeight() - bordeRectangulo.getHeight();
+
+        // Calcula la posición vertical del borde para que esté centrado respecto al rectángulo negro
+        bordeRectangulo.setLayoutY(rectanguloNegro.getLayoutY() + diferenciaAltura / 2);
+
+        // Carga y configura el icono
+        Icono iconoMuerte = new Icono("/Iconos/death.png", anchoPantalla * 0.015, anchoPantalla * 0.015);
+        iconoMuerte.setX((anchoPantalla - iconoMuerte.getWidth()) / 2); // Centra horizontalmente
+        iconoMuerte.setY(rectanguloNegro.getLayoutY() + rectanguloNegro.getHeight() * 0.15); // 15% desde el borde superior del rectángulo negro
+
+        Text nombrePersonajeTexto = new Text(personaje.getNombre());
+        nombrePersonajeTexto.setFont(Font.font(customFont.getFamily(), anchoPantalla * 0.015));
+        nombrePersonajeTexto.setFill(Color.web("FEEFB3"));
+        nombrePersonajeTexto.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        nombrePersonajeTexto.setLayoutX(anchoPantalla * 0.5 - nombrePersonajeTexto.getLayoutBounds().getWidth() / 2);
+        nombrePersonajeTexto.setLayoutY(altoPantalla - rectanguloNegro.getHeight() / 2 - altoPantalla * 0.085);  
+        
+        String anioInicial = String.format("%03d", personaje.getAnioInicial());
+        String anios = "∞";
+        Text aniosTotales = new Text(anioInicial + " - " + anios);
+        aniosTotales.setFont(Font.font(customFont.getFamily(), anchoPantalla * 0.0125));
+        aniosTotales.setFill(Color.web("FEEFB3"));
+        aniosTotales.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        aniosTotales.setLayoutX(anchoPantalla * 0.5 - aniosTotales.getLayoutBounds().getWidth() / 2);
+        aniosTotales.setLayoutY(altoPantalla - rectanguloNegro.getHeight() / 2 - altoPantalla * 0.03);
+        
+        // Crea el texto "Continuar"
+        Text continuarTexto = new Text("CONTINUAR");
+        continuarTexto.setFont(Font.font(customFont.getFamily(), anchoPantalla * 0.012));
+        continuarTexto.setFill(Color.web("FFFFFF"));
+        continuarTexto.setTextAlignment(TextAlignment.CENTER);
+
+        // Calcula la posición Y del texto para que esté centrado verticalmente respecto al rectángulo
+        double continuarTextX = anchoPantalla * 0.95 - continuarTexto.getLayoutBounds().getWidth();
+
+        // Calcula la posición Y del texto para que esté centrado verticalmente respecto al rectángulo
+        double continuarTextY = rectanguloNegro.getLayoutY() + rectanguloNegro.getHeight() / 2 + continuarTexto.getLayoutBounds().getHeight() / 2;
+
+        // Establece la posición del texto "Continuar"
+        continuarTexto.setLayoutX(continuarTextX);
+        continuarTexto.setLayoutY(continuarTextY);
+
+        // Tamaño del borde (0.5% del tamaño de la pantalla)
+        double bordeSize = screenSize.getWidth() * 0.001;
+
+        // Crea el círculo blanco con borde
+        Circle circle = new Circle(10);
+        circle.setFill(Color.web("#FFFFFF", 0.5)); // Relleno blanco con opacidad del 50%
+        circle.setStroke(Color.web("#FFFFFF")); // Borde blanco
+        circle.setStrokeWidth(bordeSize); // Ancho del borde
+        circle.setStrokeType(StrokeType.OUTSIDE); // Tipo de trazo fuera del círculo
+        circle.setOpacity(0.5); // Opacidad del círculo al 50%
+
+        // Crea el símbolo ">"
+        Text arrow = new Text(">");
+        arrow.setFont(Font.font("Courier New", FontWeight.BOLD, 12));
+        arrow.setFill(Color.web("#54D42B")); // Color verde hexadecimal
+
+        // Calcula la posición X del símbolo ">" para que esté centrado horizontalmente en el círculo
+        double arrowX = circle.getCenterX() - arrow.getLayoutBounds().getWidth() / 2;
+
+        // Calcula la posición Y del símbolo ">" para que esté centrado verticalmente en el círculo
+        double arrowY = circle.getCenterY() + arrow.getLayoutBounds().getHeight() / 4; // Desplazamiento para centrarlo correctamente verticalmente
+
+        // Establecer la posición del símbolo ">"
+        arrow.setX(arrowX);
+        arrow.setY(arrowY);
+
+        // Agrupa el círculo y el símbolo ">" en un nodo de grupo
+        Group boton = new Group(circle, arrow);
+
+        // Calcula la posición X del botón para que esté a 1% a la izquierda del texto
+        double botonX = continuarTextX - continuarTexto.getLayoutBounds().getWidth() * 0.01 - circle.getRadius() * 2;
+
+        // Calcula la posición Y del botón para que esté centrado verticalmente
+        double botonY = continuarTextY - circle.getRadius() / 2;
+
+        // Establecer la posición del botón
+        boton.setLayoutX(botonX);
+        boton.setLayoutY(botonY);
+        
+        Group continuar = new Group(boton, continuarTexto);
+
+        // Agrega todos los elementos al Pane
+        pane.getChildren().addAll(fondo, bordeRectangulo, rectanguloNegro, elTexto, avatarTexto, haTriunfadoTexto, iconoMuerte.getImageView(), nombrePersonajeTexto, aniosTotales, continuar);
+        
+        // Animacion de entrada de los textos con fade
+        TranslateTransition translateEl = new TranslateTransition(Duration.seconds(0.5), elTexto);
+        FadeTransition fadeEl = new FadeTransition(Duration.seconds(0.5), elTexto);
+        translateEl.setFromX(250);
+        translateEl.setToX(0); // Destino en X relativo a la posición original
+        fadeEl.setFromValue(0); // Opacidad inicial
+        fadeEl.setToValue(1); // Opacidad final
+
+        TranslateTransition translateAvatar = new TranslateTransition(Duration.seconds(0.5), avatarTexto);
+        FadeTransition fadeAvatar = new FadeTransition(Duration.seconds(0.5), avatarTexto);
+        translateAvatar.setFromX(-250);
+        translateAvatar.setToX(0); // Destino en X relativo a la posición original
+        fadeAvatar.setFromValue(0); // Opacidad inicial
+        fadeAvatar.setToValue(1); // Opacidad final
+
+        TranslateTransition translateHaTriunfado = new TranslateTransition(Duration.seconds(0.5), haTriunfadoTexto);
+        FadeTransition fadeHaTriunfado = new FadeTransition(Duration.seconds(0.5), haTriunfadoTexto);
+        translateHaTriunfado.setFromX(250); 
+        translateHaTriunfado.setToX(0); // Destino en X relativo a la posición original
+        fadeHaTriunfado.setFromValue(0); // Opacidad inicial
+        fadeHaTriunfado.setToValue(1); // Opacidad final
+
+        // Animación de entrada del grupo "Continuar" con fade
+        TranslateTransition translateBoton = new TranslateTransition(Duration.seconds(0.5), continuar);
+        FadeTransition fadeBoton = new FadeTransition(Duration.seconds(0.5), continuar);
+        translateBoton.setFromX(250);
+        translateBoton.setToX(0); // Destino en X relativo a la posición original
+        fadeBoton.setFromValue(0); // Opacidad inicial
+        fadeBoton.setToValue(1); // Opacidad final
+
+        // Animacion de entrada de los textos con fade
+        TranslateTransition translateIcon = new TranslateTransition(Duration.seconds(0.5), iconoMuerte.getImageView());
+        FadeTransition fadeIcon = new FadeTransition(Duration.seconds(0.5), iconoMuerte.getImageView());
+        translateIcon.setFromY(150);
+        translateIcon.setToY(0); // Destino en Y relativo a la posición original
+        fadeIcon.setFromValue(0); // Opacidad inicial
+        fadeIcon.setToValue(1); // Opacidad final
+
+        TranslateTransition translateNombreAvatar = new TranslateTransition(Duration.seconds(0.5), nombrePersonajeTexto);
+        FadeTransition fadeNombreAvatar = new FadeTransition(Duration.seconds(0.5), nombrePersonajeTexto);
+        translateNombreAvatar.setFromY(50);
+        translateNombreAvatar.setToY(0); // Destino en Y relativo a la posición original
+        fadeNombreAvatar.setFromValue(0); // Opacidad inicial
+        fadeNombreAvatar.setToValue(1); // Opacidad final
+
+        TranslateTransition translateAniosTotales = new TranslateTransition(Duration.seconds(0.5), aniosTotales);
+        FadeTransition fadeAniosTotales = new FadeTransition(Duration.seconds(0.5), aniosTotales);
+        translateAniosTotales.setFromY(50); 
+        translateAniosTotales.setToY(0); // Destino en Y relativo a la posición original
+        fadeAniosTotales.setFromValue(0); // Opacidad inicial
+        fadeAniosTotales.setToValue(1); // Opacidad final
+        
+        // Quita la visibilidad inicial
+        elTexto.setOpacity(0);
+        avatarTexto.setOpacity(0);
+        haTriunfadoTexto.setOpacity(0);
+        nombrePersonajeTexto.setOpacity(0);
+        aniosTotales.setOpacity(0);
+        continuar.setOpacity(0);
+        
+        // Animación paralela de los textos "El" y "Icono"
+        ParallelTransition parallelElIcon = new ParallelTransition();
+        parallelElIcon.getChildren().addAll(translateEl, fadeEl, translateIcon, fadeIcon);
+
+        // Animación paralela de los textos "Avatar", "Nombre de Avatar" y "Continuar"
+        ParallelTransition parallelAvatarNombreContinuar = new ParallelTransition();
+        parallelAvatarNombreContinuar.getChildren().addAll(translateAvatar, fadeAvatar, translateNombreAvatar, fadeNombreAvatar, translateBoton, fadeBoton);
+
+        // Animación paralela de los textos "Ha muerto" y "Años Totales"
+        ParallelTransition parallelHaMuertoAnios = new ParallelTransition();
+        parallelHaMuertoAnios.getChildren().addAll(translateHaTriunfado, fadeHaTriunfado, translateAniosTotales, fadeAniosTotales);
+
+        // Animación secuencial de las tres paralelas
+        SequentialTransition sequential = new SequentialTransition();
+        sequential.getChildren().addAll(parallelElIcon, parallelAvatarNombreContinuar, parallelHaMuertoAnios);
+
+        // Iniciar la animación secuencial
+        sequential.play();
+        
+        historia.aumentarMuertes();
+        
+        continuar.setOnMouseClicked(event -> {
+            nuevoJuego();
         });
 
     }

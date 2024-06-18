@@ -413,7 +413,7 @@
         "color": "5B394F",
         "anios": 0,
         "opcionA": {
-            "descripcion": "",
+            "descripcion": "...",
             "tierra": -10,
             "agua": 0,
             "fuego": 0,
@@ -422,7 +422,7 @@
             "cartaSiguienteMuerte" : "conflicto_5"
         },
         "opcionB": {
-            "descripcion": "",
+            "descripcion": "...",
             "tierra": -10,
             "agua": 0,
             "fuego": 0,
@@ -1307,7 +1307,7 @@
 	    "color": "5B394F",
 	    "anios": 0,
 	    "opcionA": {
-	        "descripcion": "",
+	        "descripcion": "...",
 	        "tierra": 10,
 	        "agua": 10,
 	        "fuego": 10,
@@ -1316,7 +1316,7 @@
             "cartaSiguienteMuerte" : "conflicto_15"
 	    },
 	    "opcionB": {
-	        "descripcion": "",
+	        "descripcion": "...",
 	        "tierra": 10,
 	        "agua": 10,
 	        "fuego": 10,
@@ -1415,7 +1415,7 @@
 	    "color": "5B394F",
 	    "anios": 0,
 	    "opcionA": {
-	        "descripcion": "",
+	        "descripcion": "...",
 	        "tierra": -10,
 	        "agua": -10,
 	        "fuego": -10,
@@ -1424,7 +1424,7 @@
             "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
-	        "descripcion": "",
+	        "descripcion": "...",
 	        "tierra": -10,
 	        "agua": -10,
 	        "fuego": -10,
@@ -1442,7 +1442,7 @@
 	    "color": "5B394F",
 	    "anios": 0,
 	    "opcionA": {
-	        "descripcion": "",
+	        "descripcion": "...",
 	        "tierra": -10,
 	        "agua": -10,
 	        "fuego": -10,
@@ -1451,7 +1451,7 @@
             "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
-	        "descripcion": "",
+	        "descripcion": "...",
 	        "tierra": -10,
 	        "agua": -10,
 	        "fuego": -10,
@@ -1469,7 +1469,7 @@
 	    "color": "5B394F",
 	    "anios": 0,
 	    "opcionA": {
-	        "descripcion": "",
+	        "descripcion": "...",
 	        "tierra": -10,
 	        "agua": -10,
 	        "fuego": -10,
@@ -1478,7 +1478,7 @@
             "cartaSiguienteMuerte" : "contexto_final_3"
 	    },
 	    "opcionB": {
-	        "descripcion": "",
+	        "descripcion": "...",
 	        "tierra": -10,
 	        "agua": -10,
 	        "fuego": -10,
@@ -1626,13 +1626,13 @@
     {
     	"id": "contexto_final_1.2",
         "nombre": "",
-        "descripcion": "La guerra finalmente cesa y las naciones comienzan a reconstruirse. Una nueva era de paz comienza",
+        "descripcion": "La guerra finalmente cesa y las naciones comienzan a reconstruirse. Una nueva era de paz comienza...",
         "imagen":"/Fondos/fondoCartaAire.png",
         "tipo" : "contexto",
         "color": "2E4F6D",
         "anios":0,
         "opcionA": {
-            "descripcion": "",
+            "descripcion": "...",
             "tierra": 0,
             "agua": 0,
             "fuego": 0,
@@ -1653,7 +1653,7 @@
     {
     	"id": "contexto_final_1.3",
         "nombre": "",
-        "descripcion": "Ahora todos te recordarán como el Avatar que consiguió poner fin al caos...",
+        "descripcion": "Ahora todos te recordarán como el Avatar que consiguió poner fin al caos... Lo has logrado",
         "imagen":"/Fondos/fondoCartaAire.png",
         "tipo" : "contexto",
         "color": "C5283D",
@@ -1664,45 +1664,17 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_final_1.4",
-            "cartaSiguienteMuerte" : ""
+            "cartaSiguiente" : "final_1",
+            "cartaSiguienteMuerte" : "contexto_1"
         },
         "opcionB": {
-            "descripcion": "",
+            "descripcion": "...",
             "tierra": 0,
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "contexto_final_1.4",
-            "cartaSiguienteMuerte" : ""
-        }
-    },
-    {
-    	"id": "contexto_final_1.4",
-        "nombre": "",
-        "descripcion": "Lo has logrado",
-        "imagen":"/Fondos/fondoCartaAire.png",
-        "tipo" : "contexto",
-        "color": "C5283D",
-        "anios":0,
-        "opcionA": {
-            "descripcion": "",
-            "tierra": 0,
-            "agua": 0,
-            "fuego": 0,
-            "aire":0,
-            "cartaSiguiente" : "Final_1",
+            "cartaSiguiente" : "final_1",
             "cartaSiguienteMuerte" : "contexto_1"
-        },
-        "opcionB": {
-            "descripcion": "",
-            "tierra": 0,
-            "agua": 0,
-            "fuego": 0,
-            "aire": 0,
-            "cartaSiguiente" : "Final_1",
-            "cartaSiguienteMuerte" : "contexto_1"
-            
         }
     },
     {
@@ -1762,7 +1734,7 @@
     {
     	"id": "contexto_final_2.3",
         "nombre": "",
-        "descripcion": "Ya ni el avatar puede detenerlo...",
+        "descripcion": "Ya ni el avatar puede detenerlo... Quizá puedes intentarlo de nuevo.",
         "imagen":"/Fondos/fondoCartaAire.png",
         "tipo" : "contexto",
         "color": "C5283D",
@@ -1773,34 +1745,7 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "contexto_final_2.4",
-            "cartaSiguienteMuerte" : ""
-        },
-        "opcionB": {
-            "descripcion": "",
-            "tierra": 0,
-            "agua": 0,
-            "fuego": 0,
-            "aire": 0,
-            "cartaSiguiente" : "contexto_final_2.4",
-            "cartaSiguienteMuerte" : ""
-        }
-    },
-    {
-    	"id": "contexto_final_2.4",
-        "nombre": "",
-        "descripcion": "Quizá puedes intentarlo de nuevo",
-        "imagen":"/Fondos/fondoCartaAire.png",
-        "tipo" : "contexto",
-        "color": "C5283D",
-        "anios":0,
-        "opcionA": {
-            "descripcion": "",
-            "tierra": 0,
-            "agua": 0,
-            "fuego": 0,
-            "aire":0,
-            "cartaSiguiente" : "Final_2",
+            "cartaSiguiente" : "final_2",
             "cartaSiguienteMuerte" : "contexto_1"
         },
         "opcionB": {
@@ -1809,7 +1754,7 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "Final_2",
+            "cartaSiguiente" : "final_2",
             "cartaSiguienteMuerte" : "contexto_1"
         }
     },
@@ -1910,7 +1855,7 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "Final_2",
+            "cartaSiguiente" : "final_2",
             "cartaSiguienteMuerte" : "contexto_1"
         },
         "opcionB": {
@@ -1919,14 +1864,14 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "Final_2",
+            "cartaSiguiente" : "final_2",
             "cartaSiguienteMuerte" : "contexto_1"
         }
     },
     {
         "id": "inicio_fuego",
         "nombre": "",
-        "descripcion": "En las llamas del destino, un nuevo Avatar emerge. El poder del fuego arde en sus venas, listo para traer equilibrio y justicia al mundo. Que su espíritu sea tan indomable como las llamas que lo forjan",
+        "descripcion": "En las llamas del destino, un nuevo Avatar emerge. El poder del fuego arde en sus venas, listo para traer equilibrio y justicia al mundo.",
         "imagen":"/Fondos/fondoCartaFuego.png",
         "tipo" : "contexto",
         "color": "2E4F6D",
@@ -1953,7 +1898,7 @@
     {
     	"id": "inicio_agua",
         "nombre": "",
-        "descripcion": "En el tranquilo murmullo de los ríos y mares, el Avatar emerge. El flujo del agua le confiere la habilidad de adaptarse y sanar, guiando a su gente con sabiduría y compasión. Que su espíritu sea tan vasto como el mar",
+        "descripcion": "En el murmullo de los ríos y mares, el Avatar emerge. El flujo del agua le confiere la habilidad de adaptarse y sanar, guiando a su gente con sabiduría y compasión.",
         "imagen":"/Fondos/fondoCartaAgua.png",
         "tipo" : "contexto",
         "color": "2E4F6D",
@@ -1980,7 +1925,7 @@
     {
     	"id": "inicio_tierra",
         "nombre": "",
-        "descripcion": "En el retumbar de los terremotos y el silencio de las cuevas, el Avatar emerge. Con el poder de la tierra, está destinado a ser el pilar sobre el que se construye la paz y la estabilidad. Que su voluntad sea tan resistente como el granito",
+        "descripcion": "En el retumbar de los terremotos, el Avatar emerge. Con el poder de la tierra, está destinado a ser el pilar sobre el que se construye la paz y la estabilidad.",
         "imagen":"/Fondos/fondoCartaTierra.png",
         "tipo" : "contexto",
         "color": "C5283D",
@@ -2007,7 +1952,7 @@
     {
     	"id": "inicio_aire",
         "nombre": "",
-        "descripcion": "Desde la ligereza de la brisa y la fuerza del vendaval, el Avatar surge. Portador del aire, su misión es llevar paz y equilibrio a todos los rincones del mundo. Que su espíritu sea tan libre y puro como el aire que respira",
+        "descripcion": "Desde la ligereza de la brisa, el Avatar surge. Portador del aire, su misión es llevar paz y equilibrio a todos los rincones del mundo.",
         "imagen":"/Fondos/fondoCartaAire.png",
         "tipo" : "contexto",
         "color": "C5283D",
@@ -2062,9 +2007,9 @@
     	"id": "final_fuego_2",
         "nombre": "",
         "descripcion": "La figura del Avatar ya no tiene ninguna importancia",
-        "imagen":"/Personajes/maestro_fuego.png",
+        "imagen":"",
         "tipo" : "historia",
-        "color": "59CD90",
+        "color": "000000",
         "anios":0,
         "opcionA": {
             "descripcion": "...",
@@ -2116,9 +2061,9 @@
     	"id": "final_agua_2",
         "nombre": "",
         "descripcion": "Ni el avatar es incapaz de evitar la destrucción del mundo",
-        "imagen":"/Personajes/maestro_fuego.png",
+        "imagen":"",
         "tipo" : "historia",
-        "color": "59CD90",
+        "color": "000000",
         "anios":0,
         "opcionA": {
             "descripcion": "...",
@@ -2170,9 +2115,9 @@
     	"id": "final_tierra_2",
         "nombre": "",
         "descripcion": "La figura del Avatar también ha sido destruida",
-        "imagen":"/Personajes/maestro_fuego.png",
+        "imagen":"",
         "tipo" : "historia",
-        "color": "59CD90",
+        "color": "000000",
         "anios":0,
         "opcionA": {
             "descripcion": "...",
@@ -2223,10 +2168,10 @@
     {
     	"id": "final_aire_2",
         "nombre": "",
-        "descripcion": "Nadie habia previsto que destruyeran todo a su paso",
+        "descripcion": "",
         "imagen":"/Personajes/maestro_fuego.png",
         "tipo" : "historia",
-        "color": "59CD90",
+        "color": "000000",
         "anios":0,
         "opcionA": {
             "descripcion": "...",
@@ -2251,7 +2196,7 @@
     	"id": "final_mundo",
         "nombre": "",
         "descripcion": "La destrucción de un pueblo también significa el fin del ciclo avatar",
-        "imagen":"/Personajes/maestro_fuego.png",
+        "imagen":"/Personajes/maestro_aire_joven.png",
         "tipo" : "historia",
         "color": "59CD90",
         "anios":0,
@@ -2278,9 +2223,9 @@
     	"id": "final_general_2",
         "nombre": "",
         "descripcion": "Tienes una ultima oportunidad para equilibrar el mundo",
-        "imagen":"/Personajes/maestro_fuego.png",
+        "imagen":"",
         "tipo" : "historia",
-        "color": "59CD90",
+        "color": "000000",
         "anios":0,
         "opcionA": {
             "descripcion": "...",
@@ -2305,7 +2250,7 @@
     	"id": "",
         "nombre": "",
         "descripcion": "",
-        "imagen":"/Personajes/maestro_fuego.png",
+        "imagen":"",
         "tipo" : "historia",
         "color": "59CD90",
         "anios":0,
@@ -2315,7 +2260,7 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "",
+            "cartaSiguiente" : "final_3",
             "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
@@ -2324,7 +2269,7 @@
             "agua": 0,
             "fuego": 0,
             "aire": 0,
-            "cartaSiguiente" : "",
+            "cartaSiguiente" : "final_3",
             "cartaSiguienteMuerte" : ""
         }
     }
