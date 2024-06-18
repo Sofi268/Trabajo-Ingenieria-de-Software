@@ -18,7 +18,7 @@ public class HistoriaTest {
     private Historia historia = new Historia();
 
     private final int ANIO_INICIAL = 0;
-    private final int ANIO_FINAL = 670;
+    private final int ANIO_FINAL = 850;
 
     @BeforeEach
     void setup() {
