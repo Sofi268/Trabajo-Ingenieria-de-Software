@@ -119,8 +119,7 @@ public class Personaje implements Subject{
 	}
 	
 	public void notifyObservers() {
-		for(int i = 0; i < observers.size(); i++) {
-			Observer observer = (Observer)observers.get(i);
+		for(Observer observer : observers) {
 			observer.update(estadisticas.getEstadisticasNiveles());
 		}
 	}
