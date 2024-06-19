@@ -25,4 +25,4 @@ build/
 java/build/**
 
 # Maven
-target/
+/target
