@@ -167,4 +167,8 @@ public class Historia {
 		muertesTotales++;
 	}
 	
+	public void setAnios(int anios) {
+		anioActual = anios;
+	}
+	
 }

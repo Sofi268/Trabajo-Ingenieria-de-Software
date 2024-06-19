@@ -1692,7 +1692,7 @@
             "fuego": 0,
             "aire":0,
             "cartaSiguiente" : "contexto_final_2.2",
-            "cartaSiguienteMuerte" : ""
+            "cartaSiguienteMuerte" : "contexto_final_3"
         },
         "opcionB": {
             "descripcion": "",
@@ -1701,7 +1701,7 @@
             "fuego": 0,
             "aire": 0,
             "cartaSiguiente" : "contexto_final_2.2",
-            "cartaSiguienteMuerte" : ""
+            "cartaSiguienteMuerte" : "contexto_final_3"
         }
     },
     {
@@ -1718,8 +1718,8 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "ccontexto_final_2.3",
-            "cartaSiguienteMuerte" : ""
+            "cartaSiguiente" : "contexto_final_2.3",
+            "cartaSiguienteMuerte" : "contexto_final_3"
         },
         "opcionB": {
             "descripcion": "",
@@ -1728,7 +1728,7 @@
             "fuego": 0,
             "aire": 0,
             "cartaSiguiente" : "contexto_final_2.3",
-            "cartaSiguienteMuerte" : ""
+            "cartaSiguienteMuerte" : "contexto_final_3"
         }
     },
     {
@@ -2168,8 +2168,8 @@
     {
     	"id": "final_aire_2",
         "nombre": "",
-        "descripcion": "",
-        "imagen":"/Personajes/maestro_fuego.png",
+        "descripcion": "El avatar ya no puede hacer nada para detenerlo",
+        "imagen":"",
         "tipo" : "historia",
         "color": "000000",
         "anios":0,
