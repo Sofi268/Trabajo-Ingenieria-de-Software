@@ -113,24 +113,25 @@ public class Juego extends Application{
 	    fondoCarta();
 	    opcionElegida = false;
 	    if (cartaActual != null) {
-	    	if(idSiguiente.equals("inicio_2")) {
-	    		idSiguiente = idMuerte;
-	    
-	    	}
 	    	if(idSiguiente.equals("final_2") || idSiguiente.equals("final_3")) {
 	    		pantallaFinal(interfazFinal);
 	    		historia.aumentarAnio(15);
 	    	}
-	    	if(idSiguiente.equals("final_1")) {
+	    	else if(idSiguiente.equals("final_1")) {
 	    		pantallaVictoria(interfazFinal);
 	    	}
-	        if(!(cartaActual.getOpcionA().getIdSiguienteMuerte().equals(""))) {
-	    		idMuerte = cartaActual.getOpcionA().getIdSiguienteMuerte();
+	    	else {
+	    		if(idSiguiente.equals("inicio_2")) {
+		    		idSiguiente = idMuerte;
+		    	}
+	    		if (!(cartaActual.getOpcionA().getIdSiguienteMuerte().equals(""))) {
+	    			idMuerte = cartaActual.getOpcionA().getIdSiguienteMuerte();
+	    		}
+		        cartaActual = historia.getCartaPorId(idSiguiente);
+		        interfazCartaPane.getChildren().clear();
+		        interfazCarta();
 	    	}
-	        System.out.println(idSiguiente);
-	        cartaActual = historia.getCartaPorId(idSiguiente);
-	        interfazCartaPane.getChildren().clear();
-	        interfazCarta();
+	        
 	    }
 	}
 
@@ -157,13 +158,20 @@ public class Juego extends Application{
 	}
 	
 	private void morirNivelBajo() {
-		idSiguiente = "final_mundo";
-		morir();
+		if(idSiguiente.equals("contexto_final_3")) {
+			continuarJugando();
+		}
+		else {
+			idSiguiente = "final_mundo";
+			morir();
+		}
+		
 	}
 	
 	private void nuevaPartida() {
 		interfazFinal.getChildren().clear();
 		murio = false;
+		historia.aumentarMuertes();
 		personaje = null;
 	    personaje = new Personaje(historia.getAnioActual(), muertesTotales); 
 	    personaje.registerObserver(barrasEstadisticas);
@@ -178,6 +186,7 @@ public class Juego extends Application{
 		ganoJuego = false;
 		historia.setAnios(0);
 		idSiguiente = "contexto_1";
+		historia.aumentarMuertes();
 		personaje = null;
 	    personaje = new Personaje(historia.getAnioActual(), muertesTotales); 
 	    personaje.registerObserver(barrasEstadisticas);
@@ -927,11 +936,10 @@ public class Juego extends Application{
 	        // Iniciar la animación secuencial
 	        sequential.play();
 	        
-	        historia.aumentarMuertes();
 	        idSiguiente = idMuerte;
 	        continuar.setOnMouseClicked(event -> {
 	        	murio = true;
-	        	if(idMuerte != "contexto_final_3") {
+	        	if(!idSiguiente.equals("final_2") || !idSiguiente.equals("final_3")) {
 	            	nuevaPartida();
 	            }
 	            else {
@@ -987,7 +995,7 @@ public class Juego extends Application{
 	        bordeRectangulo.setLayoutY(rectanguloNegro.getLayoutY() + diferenciaAltura / 2);
 	
 	        // Carga y configura el icono
-	        Icono iconoMuerte = new Icono("/Iconos/death.png", anchoPantalla * 0.015, anchoPantalla * 0.015);
+	        Icono iconoMuerte = new Icono("/Iconos/victory.png", anchoPantalla * 0.015, anchoPantalla * 0.015);
 	        iconoMuerte.setX((anchoPantalla - iconoMuerte.getWidth()) / 2); // Centra horizontalmente
 	        iconoMuerte.setY(rectanguloNegro.getLayoutY() + rectanguloNegro.getHeight() * 0.15); // 15% desde el borde superior del rectángulo negro
 	

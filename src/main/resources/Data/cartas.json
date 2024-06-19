@@ -356,7 +356,7 @@
         "descripcion": "Descubren que el Rey Tierra está siendo engañado por Long Feng para creer que la guerra no existe",
         "imagen":"/Personajes/maestro_tierra_moderno.png",
         "tipo" : "historia",
-        "color": "5B394F",
+        "color": "92946E",
         "anios":10,
         "opcionA": {
             "descripcion": "Atacas el palacio",
@@ -383,7 +383,7 @@
         "descripcion": "¿Qué harás ahora, Avatar?",
         "imagen":"/Personajes/maestro_tierra_moderno.png",
         "tipo" : "historia",
-        "color": "5B394F",
+        "color": "92946E",
         "anios":0,
         "opcionA": {
             "descripcion": "Tendré que detenerte",
@@ -410,7 +410,7 @@
         "descripcion": "Te arrepentiras de eso...",
         "imagen":"/Personajes/maestro_tierra_moderno.png",
         "tipo" : "historia",
-        "color": "5B394F",
+        "color": "92946E",
         "anios": 0,
         "opcionA": {
             "descripcion": "...",
@@ -437,7 +437,7 @@
         "descripcion": "Llegas a la isla Kioshi pero la nacion del fuego los persigue de cerca",
         "imagen":"/Personajes/guerrara_kyoshi_joven.png",
         "tipo" : "historia",
-        "color": "5B394F",
+        "color": "3FA7D6",
         "anios": 10,
         "opcionA": {
             "descripcion": "...",
@@ -465,7 +465,7 @@
 	    "descripcion": "¿Por qué te persiguen?",
 	    "imagen":"/Personajes/guerrara_kyoshi_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "3FA7D6",
 	    "anios":0,
 	    "opcionA": {
 	        "descripcion": "No lo sé",
@@ -573,7 +573,7 @@
 	    "descripcion": "La Tribu del Agua del Sur enfrenta una creciente amenaza de nomadas aire",
 	    "imagen":"/Personajes/maestro_agua_joven.png",
 	    "tipo" : "historia",
-	    "color": "73B3C8",
+	    "color": "481D24",
 	    "anios":10,
 	    "opcionA": {
 	        "descripcion": "Organizar una defensa",
@@ -600,7 +600,7 @@
 	    "descripcion": "Ayudanos con la defensa",
 	    "imagen":"/Personajes/maestro_agua_joven.png",
 	    "tipo" : "historia",
-	    "color": "73B3C8",
+	    "color": "481D24",
 	    "anios":0,
 	    "opcionA": {
 	        "descripcion": "Por supuesto",
@@ -627,7 +627,7 @@
 	    "descripcion": "¿Dónde podemos buscar más aliados?",
 	    "imagen":"/Personajes/maestro_agua_joven.png",
 	    "tipo" : "historia",
-	    "color": "73B3C8",
+	    "color": "481D24",
 	    "anios":0,
 	    "opcionA": {
 	        "descripcion": "En el Reino tierra",
@@ -640,9 +640,9 @@
 	    },
 	    "opcionB": {
 	        "descripcion": "En la Nacion del fuego",
-	        "tierra": 20,
+	        "tierra": 0,
 	        "agua": 0,
-	        "fuego": 0,
+	        "fuego": 20,
 	        "aire": 0,
 	        "cartaSiguiente" : "conflicto_8",
             "cartaSiguienteMuerte" : "conflicto_8"
@@ -655,7 +655,7 @@
 	    "descripcion": "Los espíritus del bosque están furiosos y atacan a la aldea cercana.",
 	    "imagen":"/Personajes/avatar_adulto.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "CCBA7C",
 	    "anios": 10,
 	    "opcionA": {
 	        "descripcion": "Hablar con los espíritus",
@@ -682,7 +682,7 @@
 	    "descripcion": "Los espiritus queremos que respeten nuestro bosque",
 	    "imagen":"/Personajes/avatar_adulto.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "CCBA7C",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Los ayudare",
@@ -709,7 +709,7 @@
 	    "descripcion": "Entonces destuiremos todo",
 	    "imagen":"/Personajes/avatar_adulto.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "CCBA7C",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Intentar detenerlos",
@@ -732,11 +732,11 @@
 	},
 	{
 	    "id": "conflicto_8.4",
-	    "nombre": "Espiritu",
+	    "nombre": "Ciudadano",
 	    "descripcion": "¿Lucharas con los espiritus para protegernos?",
 	    "imagen":"/Personajes/avatar_adulto.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "CCBA7C",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Claro que si",
@@ -764,7 +764,7 @@
 	    "descripcion": "Descubres una conspiración para desestabilizar la paz en la Nación del Fuego.",
 	    "imagen":"/Personajes/maestra_fuego_niña.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "3FA7D6",
 	    "anios":10,
 	    "opcionA": {
 	        "descripcion": "Investigar más",
@@ -791,7 +791,7 @@
 	    "descripcion": "Nos hemos infiltrado en la Nación del fuego y planeamos tomar el control",
 	    "imagen":"/Personajes/maestra_fuego_niña.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "3FA7D6",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Tienen que deterse",
@@ -818,7 +818,7 @@
 	    "descripcion": "¿Una conspiración? Imposible",
 	    "imagen":"/Personajes/maestro_fuego.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "3FA7D6",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Debe creerme",
@@ -845,7 +845,7 @@
 	    "descripcion": "¿Entonces que recomiendas hacer?",
 	    "imagen":"/Personajes/maestro_fuego.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "3FA7D6",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Debes atacarlos",
@@ -872,7 +872,7 @@
 	    "descripcion": "Para ayudar a la nación y completar tu dominio de los elementos, necesitas un maestro tierra",
 	    "imagen":"/Personajes/maestro_tierra_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "E9724C",
 	    "anios":10,
 	    "opcionA": {
 	        "descripcion": "Buscar un maestro",
@@ -899,7 +899,7 @@
 	    "descripcion": "Yo puedo ser tu maestra tierra",
 	    "imagen":"/Personajes/maestro_tierra_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "E9724C",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Quiero uno que vea",
@@ -926,7 +926,7 @@
 	    "descripcion": "Entonces sere yo",
 	    "imagen":"/Personajes/maestro_tierra_moderno.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "E9724C",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "...",
@@ -953,7 +953,7 @@
 	    "descripcion": "El principe de la Nación del Fuego quiere redimirse por su pasado",
 	    "imagen":"/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "E9724C",
 	    "anios":10,
 	    "opcionA": {
 	        "descripcion": "Ignorarlo",
@@ -980,7 +980,7 @@
 	    "descripcion": "Dejame ayudarte con el dominio del fuego",
 	    "imagen": "/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "E9724C",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "No lo necesito",
@@ -1007,7 +1007,7 @@
 	    "descripcion": "¿Puedo ser parte de tu equipo?",
 	    "imagen":"/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "E9724C",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "No",
@@ -1088,7 +1088,7 @@
 	    "descripcion": "Avatar, tengo un consejo para darte que podrá ayudarte espiritualmente",
 	    "imagen":"/Personajes/maestro_fuego_anciano.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "C97E62",
 	    "anios": 10,
 	    "opcionA": {
 	        "descripcion": "No me interesa",
@@ -1115,7 +1115,7 @@
 	    "descripcion": "Fortalecer tu espiritu te ayudará a mejorar el nivel de las naciones",
 	    "imagen": "/Personajes/maestro_fuego_anciano.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "C97E62",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Lo probaré",
@@ -1142,7 +1142,7 @@
 	    "descripcion": "Debes aprender la danza de los dragones para obtener el verdadero poder del fuego",
 	    "imagen":"/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "59CD90",
 	    "anios":10,
 	    "opcionA": {
 	        "descripcion": "Dime cómo es",
@@ -1169,7 +1169,7 @@
 	    "descripcion": "Debes hacer dos pasos a la izquierda, uno adelante y finalmente inclinarte hacia la derecha",
 	    "imagen": "/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "59CD90",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Entendido",
@@ -1196,7 +1196,7 @@
 	    "descripcion": "Comienza",
 	    "imagen":"/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "59CD90",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Izquierda",
@@ -1223,7 +1223,7 @@
 	    "descripcion": "Sigue...",
 	    "imagen":"/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "59CD90",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Derecha",
@@ -1250,7 +1250,7 @@
 	    "descripcion": "¿Luego?",
 	    "imagen":"/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "59CD90",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Adelante",
@@ -1277,7 +1277,7 @@
 	    "descripcion": "Y para finalizar...",
 	    "imagen":"/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "59CD90",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Inclinarse",
@@ -1304,7 +1304,7 @@
 	    "descripcion": "Ya tienes dominio completo del fuego",
 	    "imagen":"/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "59CD90",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "...",
@@ -1331,7 +1331,7 @@
 	    "descripcion": "Así no era ¿Quieres intentarlo de nuevo?",
 	    "imagen":"/Personajes/maestra_fuego_joven.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "59CD90",
 	    "anios": 0,
 	    "opcionA": {
 	        "descripcion": "Si",
@@ -1358,7 +1358,7 @@
 	    "descripcion": "Se acerca el día final, si me prometes que matarás al señor del fuego te dare poder",
 	    "imagen":"/Personajes/avatar_kyoshi.png",
 	    "tipo" : "historia",
-	    "color": "5B394F",
+	    "color": "FFC857",
 	    "anios":10,
 	    "opcionA": {
 	        "descripcion": "No puedo aceptarlo",
@@ -1637,7 +1637,7 @@
             "agua": 0,
             "fuego": 0,
             "aire":0,
-            "cartaSiguiente" : "ccontexto_final_1.3",
+            "cartaSiguiente" : "contexto_final_1.3",
             "cartaSiguienteMuerte" : ""
         },
         "opcionB": {
